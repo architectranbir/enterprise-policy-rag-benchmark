@@ -2,12 +2,12 @@
 
 ## Current task
 
-Commit the controlled-chunking documentation updates and open a pull request.
+Commit the LlamaIndex node-mapping documentation and open a pull request.
 
 ## After that
 
-1. Merge the verified controlled-chunking implementation.
-2. Add stable LlamaIndex ingestion packages.
-3. Define the canonical `PolicyChunk` to LlamaIndex node mapping.
-4. Verify that node IDs and metadata remain deterministic.
-5. Prepare the embedding input contract.
+1. Merge the verified LlamaIndex node mapping.
+2. Create the Terraform remote-state bootstrap.
+3. Define the Azure development environment.
+4. Provision Microsoft Foundry and its project through Terraform.
+5. Provision the embedding deployment and Azure AI Search.

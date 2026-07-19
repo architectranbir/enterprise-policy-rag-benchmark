@@ -35,3 +35,36 @@ It also allows each backend to be tested independently using the same documents,
 * The application must not query all three backends for a single user request.
 * Controlled and platform-specific benchmark results must be reported separately.
 * Adding another retrieval backend later will require a new adapter rather than changes throughout the application.
+
+## ADR-002: Use LlamaIndex core for ingestion node mapping
+
+**Status:** Accepted  
+**Date:** 19 July 2026
+
+### Context
+
+The application already owns the canonical policy, section and chunk models.
+The benchmark requires identical chunks and metadata across Azure AI Search,
+PostgreSQL with pgvector and Qdrant.
+
+### Decision
+
+Use `llama-index-core` to convert canonical `PolicyChunk` objects into
+deterministic LlamaIndex `TextNode` objects.
+
+LlamaIndex will support the ingestion layer. Retrieval will remain behind the
+application-owned retrieval interface.
+
+### Reason
+
+This provides useful ingestion abstractions without hiding backend-specific
+retrieval behaviour or changing the canonical chunk contract.
+
+### Consequences
+
+- Canonical chunk IDs remain the LlamaIndex node IDs.
+- All retrieval backends receive the same node text and metadata.
+- ACL, policy-version and citation metadata remain application-controlled.
+- Embedding and retrieval integrations will be implemented separately.
+- Only required LlamaIndex packages will be installed.
+
