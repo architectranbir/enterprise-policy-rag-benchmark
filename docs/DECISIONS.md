@@ -68,3 +68,35 @@ retrieval behaviour or changing the canonical chunk contract.
 - Embedding and retrieval integrations will be implemented separately.
 - Only required LlamaIndex packages will be installed.
 
+## ADR-003: Store Terraform state in Azure Blob Storage
+
+**Status:** Accepted  
+**Date:** 19 July 2026
+
+### Context
+
+The Azure environment will be deployed from local development and later from
+CI/CD. Terraform state must not depend on one developer's machine.
+
+### Decision
+
+Store Terraform state in a private Azure Blob container and authenticate through
+Microsoft Entra ID.
+
+Commit the reusable backend declaration, but keep account-specific backend
+values in an ignored local configuration file.
+
+### Reason
+
+Azure Blob Storage provides central state storage, native locking and
+consistency checking. Microsoft Entra ID avoids storing a storage-account key
+in the repository or application configuration.
+
+### Consequences
+
+- Terraform operations use a shared remote state.
+- Backend configuration must be initialized before plan or apply.
+- Deployment identities require Blob data-plane access.
+- State and local backend-value files must never be committed.
+- CI/CD will later use workload identity federation rather than a developer login.
+

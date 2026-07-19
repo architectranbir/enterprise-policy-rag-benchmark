@@ -81,3 +81,27 @@ Each meaningful error should include:
 - **Fix:** Added package boundaries under the unit and integration test directories.
 - **Verification:** Strict mypy checking and the complete quality gate passed.
 - **Related commit:** `3492f7f`
+
+## ERR-006: Terraform version constraint blocked initialization
+
+- **Date:** 2026-07-19
+- **Component:** Terraform bootstrap
+- **Branch:** `feature/terraform-state-bootstrap`
+- **Error:** Terraform 1.15.7 did not satisfy the original minimum version constraint of 1.15.8.
+- **Root cause:** The project constraint was narrower than the installed stable Terraform version.
+- **Fix:** Changed the root-module constraint to `~> 1.15.7`, allowing compatible 1.15 patch releases while excluding 1.16 prereleases.
+- **Verification:** Terraform initialization and configuration validation completed successfully.
+- **Related commit:** `ca5904b`
+
+
+## ERR-007: Remote backend configuration contained empty values
+
+- **Date:** 2026-07-19
+- **Component:** Terraform state migration
+- **Branch:** `feature/terraform-state-bootstrap`
+- **Error:** Backend initialization failed because the Blob container name was empty.
+- **Root cause:** Terraform outputs were queried after the backend block had been introduced but before backend reinitialization, leaving the generated backend configuration empty.
+- **Fix:** Read the deployed storage-account and container outputs from the existing local state and regenerated the ignored backend configuration.
+- **Verification:** State migration completed, the remote Blob was verified and the no-drift plan succeeded.
+- **Related commit:** `ca5904b`
+
