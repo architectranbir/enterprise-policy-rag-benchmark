@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Virtual environment
+.venv/
+venv/
+
+# Environment variables and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+
+# macOS and editors
+.DS_Store
+.vscode/
+.idea/
+
+# Logs and build output
+*.log
+logs/
+build/
+dist/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+terraform.tfvars
+terraform.tfvars.json
+crash.log
+crash.*.log
+
+# Local data stores
+*.db
+*.sqlite
+postgres_data/
+qdrant_storage/
+
+# Generated results
+benchmark_results/*
+!benchmark_results/.gitkeep
