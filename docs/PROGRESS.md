@@ -2,36 +2,39 @@
 
 ## Current phase
 
-Phase 2 — Synthetic policy corpus and source loading
+Phase 3 — Policy section extraction and chunk foundation
 
 ## Completed and verified
 
-- Created the first fictional enterprise policy: Remote Working Policy.
-- Added machine-readable metadata and human-readable Markdown content.
-- Validated corpus metadata against the canonical `PolicyDocument` model.
-- Added `PolicySourceDocument` for validated metadata and source content.
-- Added a source loader for individual policy versions.
-- Added recursive corpus discovery with deterministic ordering.
-- Added duplicate document-version protection.
-- Added unit tests for valid and invalid source documents.
-- Added unit tests for empty and duplicate corpus scenarios.
-- Added an integration test against the committed synthetic corpus.
+- Added the canonical `PolicySection` model.
+- Added numbered Markdown section extraction.
+- Preserved policy version, effective-date, classification and ACL metadata.
+- Added the canonical `PolicyChunk` model.
+- Added deterministic section-to-chunk conversion.
+- Added unit tests for section and chunk validation.
+- Added parser tests for numbered and nested sections.
+- Added integration tests against the committed synthetic policy.
+- Verified that the policy produces 11 sections and 11 baseline chunks.
 - Ruff formatting and linting passed.
 - mypy strict type checking passed.
 - All current automated tests passed.
 
 ## Current branch
 
-`feature/synthetic-policy-corpus`
+`feature/policy-sections-chunks`
 
 ## Latest verified implementation commit
 
-`05ab1c7`
+`ec3498f`
+
+## Current chunking baseline
+
+Each logical policy section currently produces one deterministic retrieval chunk.
 
 ## Not started
 
-- Section extraction and chunk models
-- LlamaIndex ingestion
+- Long-section splitting
+- LlamaIndex integration
 - Embedding generation
 - Retrieval adapters
 - LangGraph workflow
@@ -42,7 +45,6 @@ Phase 2 — Synthetic policy corpus and source loading
 
 ## Known limitations
 
-The corpus currently contains one policy version.
+The current corpus contains one policy version.
 
-The loader validates and discovers source documents, but it does not yet split
-documents into sections or chunks.
+The baseline does not yet split long sections according to token limits.
