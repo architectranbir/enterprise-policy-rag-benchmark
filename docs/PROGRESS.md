@@ -2,30 +2,39 @@
 
 ## Current phase
 
-Phase 0 — Python project foundation
+Phase 1 — Policy domain models
 
 ## Completed and verified
 
-- Created and merged the initial repository foundation.
-- Created the `feature/python-foundation` branch.
-- Installed and verified Python 3.13.14.
-- Created the project virtual environment.
-- Installed and verified uv.
-- Added `pyproject.toml` and pinned Python 3.13.14.
-- Generated and verified `uv.lock`.
-- Added Ruff, mypy and pytest as development tools.
-- Configured linting, formatting, strict type checking and test discovery.
-- Created the initial `src/policy_rag` package.
-- Added the first package-discovery test.
-- Ruff checks passed.
-- mypy strict checks passed.
-- pytest completed successfully with 1 passing test.
+- Repository foundation created and merged.
+- Python 3.13.14 project environment configured.
+- Dependency management configured with uv.
+- Ruff, mypy and pytest quality checks configured.
+- Pydantic added as a runtime dependency.
+- Added the canonical `PolicyDocument` model.
+- Added policy classification values.
+- Added effective-date validation and lookup behaviour.
+- Added group-based policy access checks.
+- Added the `PolicyAccessContext` model.
+- Added the platform-independent policy retrieval eligibility rule.
+- Added unit tests for policy metadata, dates, access context and retrieval eligibility.
+- Ruff formatting and linting passed.
+- mypy strict type checking passed.
+- All current automated tests passed.
+
+## Current branch
+
+`feature/policy-domain-models`
+
+## Latest verified implementation commit
+
+`d7c5c10`
 
 ## Not started
 
-- Application domain models
-- Synthetic policy documents
+- Synthetic policy corpus
 - Document ingestion
+- Chunking and metadata propagation
 - Embedding generation
 - Retrieval adapters
 - LangGraph workflow
@@ -34,15 +43,7 @@ Phase 0 — Python project foundation
 - Azure deployment
 - Benchmark execution
 
-## Current branch
-
-`feature/python-foundation`
-
-## Current commit
-
-Python foundation changes have not yet been committed.
-
 ## Known limitations
 
-The current package contains no business functionality. The test only verifies that
-the Python package can be discovered correctly.
+The current implementation covers policy metadata and access decisions only.
+It does not yet load, split, index or retrieve policy content.
