@@ -2,50 +2,60 @@
 
 ## Current phase
 
-Phase 5 — LlamaIndex node mapping
+Phase 6 — Terraform state bootstrap
 
 ## Completed and verified
 
-- Added the stable `llama-index-core` dependency.
-- Added deterministic `PolicyChunk` to LlamaIndex `TextNode` mapping.
-- Preserved canonical chunk IDs as node IDs.
-- Added policy, version, date, classification, section and ACL metadata.
-- Excluded operational metadata from embedding input.
-- Excluded access-group metadata from LLM-visible metadata.
-- Verified 11 deterministic nodes from the committed policy.
-- Confirmed that embeddings are not generated in this phase.
-- Added unit and integration tests.
-- Added Python package boundaries for strict mypy checking.
-- Ruff, mypy and all automated tests passed.
+- Added the Terraform bootstrap configuration.
+- Pinned compatible Terraform and AzureRM provider versions.
+- Added validated bootstrap input variables.
+- Provisioned the Terraform state resource group.
+- Provisioned a hardened Azure Storage account.
+- Created a private Blob container for Terraform state.
+- Enabled Blob versioning and deletion-retention controls.
+- Disabled storage-account Shared Key authentication.
+- Added a delete lock to protect the state storage account.
+- Granted the local deployment identity Blob data access.
+- Migrated the bootstrap state from local storage to Azure Blob Storage.
+- Configured Microsoft Entra ID authentication for the remote backend.
+- Verified the four bootstrap resources through Terraform state.
+- Verified the remote state Blob.
+- Completed a no-drift Terraform plan.
 
 ## Current branch
 
-`feature/llamaindex-node-mapping`
+`feature/terraform-state-bootstrap`
 
 ## Latest verified implementation commit
 
-`3492f7f`
+`ca5904b`
 
-## Current ingestion flow
+## Remote state
 
-Synthetic policy files → validated source → sections → token-based chunks → LlamaIndex TextNodes
+- Backend: Azure Blob Storage
+- State key: `bootstrap.terraform.tfstate`
+- Authentication: Microsoft Entra ID
+- Backend values: local ignored configuration
+- State locking: Azure Blob native locking
 
 ## Not started
 
-- Terraform remote-state bootstrap
+- Terraform development-environment modules
 - Microsoft Foundry resource and project
-- Foundry embedding deployment
+- Foundry embedding-model deployment
 - Azure AI Search
+- Managed application identity
 - Embedding generation
-- Retrieval adapters
-- LangGraph workflow
-- FastAPI service
-- Azure deployment
-- Benchmark execution
+- Retrieval implementation
+- Application hosting and monitoring
 
 ## Known limitations
 
-The corpus currently contains one policy version.
+Public network access is currently enabled on the bootstrap storage account to
+support local development.
 
-The LlamaIndex nodes do not yet contain embeddings and have not been indexed
-into a retrieval backend.
+The local developer Blob role assignment was created through Azure CLI and is
+not managed by Terraform.
+
+A CI deployment identity and tighter network controls will be introduced in a
+later infrastructure phase.
