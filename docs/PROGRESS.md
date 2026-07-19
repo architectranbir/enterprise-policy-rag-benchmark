@@ -2,36 +2,47 @@
 
 ## Current phase
 
-Phase 0 — Repository foundation
+Phase 0 — Python project foundation
 
-## Completed
+## Completed and verified
 
-* Created the GitHub repository.
-* Cloned the repository to the local development environment.
-* Created the initial foundation branch.
-* Added the root `.gitignore`.
-* Documented the public project scope.
-* Recorded the first architecture decision for interchangeable retrieval backends.
-
-## In progress
-
-* Adding the minimum project documentation required before application development begins.
+- Created and merged the initial repository foundation.
+- Created the `feature/python-foundation` branch.
+- Installed and verified Python 3.13.14.
+- Created the project virtual environment.
+- Installed and verified uv.
+- Added `pyproject.toml` and pinned Python 3.13.14.
+- Generated and verified `uv.lock`.
+- Added Ruff, mypy and pytest as development tools.
+- Configured linting, formatting, strict type checking and test discovery.
+- Created the initial `src/policy_rag` package.
+- Added the first package-discovery test.
+- Ruff checks passed.
+- mypy strict checks passed.
+- pytest completed successfully with 1 passing test.
 
 ## Not started
 
-* Python project setup
-* Application source code
-* Synthetic policy documents
-* Document ingestion
-* Embedding generation
-* Retrieval adapters
-* RAG workflow
-* API implementation
-* Tests and evaluation
-* Terraform infrastructure
-* Azure deployment
-* Benchmark execution
+- Application domain models
+- Synthetic policy documents
+- Document ingestion
+- Embedding generation
+- Retrieval adapters
+- LangGraph workflow
+- FastAPI service
+- Terraform infrastructure
+- Azure deployment
+- Benchmark execution
 
-## Verification status
+## Current branch
 
-No application code, tests, cloud resources or benchmark results have been completed yet.
+`feature/python-foundation`
+
+## Current commit
+
+Python foundation changes have not yet been committed.
+
+## Known limitations
+
+The current package contains no business functionality. The test only verifies that
+the Python package can be discovered correctly.
