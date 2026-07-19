@@ -2,60 +2,73 @@
 
 ## Current phase
 
-Phase 6 — Terraform state bootstrap
+Phase 7 — Azure development foundation
 
 ## Completed and verified
 
-- Added the Terraform bootstrap configuration.
-- Pinned compatible Terraform and AzureRM provider versions.
-- Added validated bootstrap input variables.
-- Provisioned the Terraform state resource group.
-- Provisioned a hardened Azure Storage account.
-- Created a private Blob container for Terraform state.
-- Enabled Blob versioning and deletion-retention controls.
-- Disabled storage-account Shared Key authentication.
-- Added a delete lock to protect the state storage account.
-- Granted the local deployment identity Blob data access.
-- Migrated the bootstrap state from local storage to Azure Blob Storage.
-- Configured Microsoft Entra ID authentication for the remote backend.
-- Verified the four bootstrap resources through Terraform state.
-- Verified the remote state Blob.
-- Completed a no-drift Terraform plan.
+- Merged the Terraform state bootstrap through PR #8.
+- Created the Terraform development-environment root.
+- Configured the development state in the shared Azure Blob backend.
+- Defined shared resource naming, tags and validated environment variables.
+- Provisioned the development resource group.
+- Provisioned the user-assigned managed application identity.
+- Provisioned the Microsoft Foundry resource.
+- Provisioned the Microsoft Foundry project.
+- Deployed `text-embedding-3-large`, model version `1`.
+- Configured the embedding deployment with the `Standard` SKU, capacity `1` and `NoAutoUpgrade`.
+- Provisioned Azure AI Search with the Basic SKU, one replica and one partition.
+- Enabled the free semantic-search tier.
+- Disabled local authentication on Azure AI Search.
+- Granted the application identity `Cognitive Services OpenAI User` on the Foundry resource.
+- Granted the application identity `Search Index Data Contributor` on Azure AI Search.
+- Added Terraform outputs for application-facing resource names, endpoints and identity identifiers.
+- Verified the embedding deployment provisioning state as `Succeeded`.
+- Verified Azure AI Search as `Succeeded` and `running`.
+- Verified Terraform configuration and deployed infrastructure have no drift.
 
 ## Current branch
 
-`feature/terraform-state-bootstrap`
+`feature/azure-dev-foundation`
 
-## Latest verified implementation commit
+## Latest verified base commit
 
-`ca5904b`
+`d81f27c`
+
+The Azure development-foundation changes have not yet been recorded in a new commit.
+
+## Verified development resources
+
+- Resource group: `rg-polrag-dev-uks-001`
+- Managed identity: `id-polrag-dev-uks-001`
+- Foundry resource: `aif-polrag-dev-uks-316e18`
+- Foundry project: `proj-polrag-dev-001`
+- Embedding deployment: `text-embedding-3-large`
+- Azure AI Search: `srch-polrag-dev-uks-316e18`
+- Region: `uksouth`
 
 ## Remote state
 
 - Backend: Azure Blob Storage
-- State key: `bootstrap.terraform.tfstate`
 - Authentication: Microsoft Entra ID
-- Backend values: local ignored configuration
+- Backend values: ignored local configuration
 - State locking: Azure Blob native locking
+- Current Terraform plan: no drift
 
 ## Not started
 
-- Terraform development-environment modules
-- Microsoft Foundry resource and project
-- Foundry embedding-model deployment
-- Azure AI Search
-- Managed application identity
-- Embedding generation
-- Retrieval implementation
+- Application integration for keyless embedding generation
+- Azure AI Search index schema and retrieval adapter
+- PostgreSQL with pgvector infrastructure and retrieval adapter
+- Qdrant infrastructure and retrieval adapter
+- Cross-backend retrieval benchmark execution
 - Application hosting and monitoring
 
 ## Known limitations
 
-Public network access is currently enabled on the bootstrap storage account to
-support local development.
-
-The local developer Blob role assignment was created through Azure CLI and is
-not managed by Terraform.
-
-A CI deployment identity and tighter network controls will be introduced in a
-later infrastructure phase.
+- Public network access is enabled on Foundry and Azure AI Search for local development.
+- Azure AI Search currently has one replica and one partition and is not configured for production availability.
+- The free semantic-search tier has usage limits.
+- No hosted application currently uses the managed identity.
+- The bootstrap storage account permits public network access for local development.
+- The local developer Blob role assignment is managed through Azure CLI rather than Terraform.
+- CI/CD workload identity federation and tighter network controls will be added later.

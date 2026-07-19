@@ -105,3 +105,16 @@ Each meaningful error should include:
 - **Verification:** State migration completed, the remote Blob was verified and the no-drift plan succeeded.
 - **Related commit:** `ca5904b`
 
+
+## ERR-008: Terraform saved plan became stale
+
+- **Date:** 2026-07-20
+- **Component:** Terraform development-environment outputs
+- **Branch:** `feature/azure-dev-foundation`
+- **Command:** `terraform -chdir=infrastructure/environments/dev apply metadata-outputs.tfplan`
+- **Error:** Terraform rejected the saved plan because the remote state had changed after the plan was created.
+- **Expected behaviour:** The saved plan should apply only when it still matches the current Terraform state.
+- **Root cause:** Another Terraform operation updated the shared remote state after `metadata-outputs.tfplan` was generated.
+- **Fix:** Discarded the stale plan and ran a new Terraform plan against the current remote state.
+- **Verification:** The new plan reported no changes, and `terraform output` returned the expected Foundry, embedding, Azure AI Search and managed-identity values.
+- **Infrastructure impact:** None.
