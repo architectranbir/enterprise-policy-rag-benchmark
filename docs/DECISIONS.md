@@ -100,3 +100,49 @@ in the repository or application configuration.
 - State and local backend-value files must never be committed.
 - CI/CD will later use workload identity federation rather than a developer login.
 
+
+## ADR-004: Use the Microsoft Foundry resource and project model
+
+**Status:** Accepted
+**Date:** 20 July 2026
+
+### Context
+
+The benchmark requires a managed embedding-model deployment and a project
+boundary for the Enterprise Knowledge and Policy Intelligence use case.
+
+Microsoft Foundry supports projects as child resources of a project-enabled
+Microsoft Cognitive Services account. The previous classic Foundry Hub model
+does not represent the current architecture selected for this project.
+
+### Decision
+
+Provision the Microsoft Foundry resource with
+`azurerm_cognitive_account` and enable project management.
+
+Provision the Enterprise Knowledge and Policy Intelligence project with
+`azurerm_cognitive_account_project`.
+
+Manage both resources through the stable AzureRM provider.
+
+Do not use classic Foundry Hub resources, preview APIs or private-preview
+features.
+
+### Reason
+
+This is the current resource-and-project model supported by Microsoft Foundry
+and the AzureRM provider.
+
+It provides a clear parent resource for model deployments and an independently
+named project boundary without introducing the older hub architecture.
+
+### Consequences
+
+- The Foundry resource owns model deployments and its inference endpoint.
+- The Foundry project provides the project-level organizational boundary.
+- Terraform records the resource and project as separate state objects.
+- The application authenticates with Microsoft Entra ID.
+- Application inference permission is granted at the Foundry-resource scope.
+- Public network access remains enabled temporarily for local development.
+- Private networking can be introduced later without changing the canonical
+  policy or retrieval contracts.
