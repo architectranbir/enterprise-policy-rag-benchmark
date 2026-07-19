@@ -2,39 +2,36 @@
 
 ## Current phase
 
-Phase 1 — Policy domain models
+Phase 2 — Synthetic policy corpus and source loading
 
 ## Completed and verified
 
-- Repository foundation created and merged.
-- Python 3.13.14 project environment configured.
-- Dependency management configured with uv.
-- Ruff, mypy and pytest quality checks configured.
-- Pydantic added as a runtime dependency.
-- Added the canonical `PolicyDocument` model.
-- Added policy classification values.
-- Added effective-date validation and lookup behaviour.
-- Added group-based policy access checks.
-- Added the `PolicyAccessContext` model.
-- Added the platform-independent policy retrieval eligibility rule.
-- Added unit tests for policy metadata, dates, access context and retrieval eligibility.
+- Created the first fictional enterprise policy: Remote Working Policy.
+- Added machine-readable metadata and human-readable Markdown content.
+- Validated corpus metadata against the canonical `PolicyDocument` model.
+- Added `PolicySourceDocument` for validated metadata and source content.
+- Added a source loader for individual policy versions.
+- Added recursive corpus discovery with deterministic ordering.
+- Added duplicate document-version protection.
+- Added unit tests for valid and invalid source documents.
+- Added unit tests for empty and duplicate corpus scenarios.
+- Added an integration test against the committed synthetic corpus.
 - Ruff formatting and linting passed.
 - mypy strict type checking passed.
 - All current automated tests passed.
 
 ## Current branch
 
-`feature/policy-domain-models`
+`feature/synthetic-policy-corpus`
 
 ## Latest verified implementation commit
 
-`d7c5c10`
+`05ab1c7`
 
 ## Not started
 
-- Synthetic policy corpus
-- Document ingestion
-- Chunking and metadata propagation
+- Section extraction and chunk models
+- LlamaIndex ingestion
 - Embedding generation
 - Retrieval adapters
 - LangGraph workflow
@@ -45,5 +42,7 @@ Phase 1 — Policy domain models
 
 ## Known limitations
 
-The current implementation covers policy metadata and access decisions only.
-It does not yet load, split, index or retrieve policy content.
+The corpus currently contains one policy version.
+
+The loader validates and discovers source documents, but it does not yet split
+documents into sections or chunks.
