@@ -1,0 +1,13 @@
+{
+  "document_id": "POL-HR-001",
+  "title": "Remote Working Policy",
+  "version": "1.0",
+  "effective_from": "2026-01-01",
+  "effective_to": null,
+  "department": "Human Resources",
+  "classification": "internal",
+  "allowed_groups": [
+    "employees",
+    "human-resources"
+  ]
+}
