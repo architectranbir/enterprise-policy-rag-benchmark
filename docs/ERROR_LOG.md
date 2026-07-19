@@ -56,3 +56,16 @@ Each meaningful error should include:
 - **Verification:** The complete formatting, linting, type-checking and test quality gate passed.
 - **Related commit:** `05ab1c7`
 
+## ERR-004: uv prerelease policy mismatch
+
+- **Date and time:** 2026-07-19 22:28:02 IST
+- **Component:** Python dependency management
+- **Branch:** `feature/controlled-chunking`
+- **Command:** `uv run --locked python`
+- **Error:** The lockfile needed an update because the prerelease mode differed between dependency resolution and command execution.
+- **Expected behaviour:** Locked commands should run without attempting to modify `uv.lock`.
+- **Root cause:** The dependency was added with the `disallow` prerelease strategy, while a later command used uv's default prerelease strategy.
+- **Fix:** Added `prerelease = "disallow"` under `[tool.uv]`, regenerated the lockfile and verified the locked tokenizer command.
+- **Verification:** tiktoken 0.13.0 loaded successfully with `cl100k_base`, and the complete quality gate passed.
+- **Related commit:** `0edbd6e`
+

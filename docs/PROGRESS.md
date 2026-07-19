@@ -2,39 +2,42 @@
 
 ## Current phase
 
-Phase 3 — Policy section extraction and chunk foundation
+Phase 4 — Controlled token-based chunking
 
 ## Completed and verified
 
-- Added the canonical `PolicySection` model.
-- Added numbered Markdown section extraction.
-- Preserved policy version, effective-date, classification and ACL metadata.
-- Added the canonical `PolicyChunk` model.
-- Added deterministic section-to-chunk conversion.
-- Added unit tests for section and chunk validation.
-- Added parser tests for numbered and nested sections.
-- Added integration tests against the committed synthetic policy.
-- Verified that the policy produces 11 sections and 11 baseline chunks.
-- Ruff formatting and linting passed.
-- mypy strict type checking passed.
-- All current automated tests passed.
+- Added validated chunking configuration.
+- Set the initial chunk-size baseline to 512 tokens.
+- Set the initial overlap baseline to 128 tokens.
+- Added tiktoken using the explicit `cl100k_base` encoding.
+- Added an application-owned tokenizer wrapper.
+- Added deterministic overlapping token-window creation.
+- Updated section chunking to support multiple token-based chunks.
+- Preserved deterministic chunk IDs and section-level citation metadata.
+- Added unit tests for configuration, token counting, token windows and chunk creation.
+- Added an integration test against the committed synthetic policy.
+- Configured uv to reject prerelease dependencies by default.
+- Completed the repository formatting, linting, strict type-checking and test quality gate.
 
 ## Current branch
 
-`feature/policy-sections-chunks`
+`feature/controlled-chunking`
 
 ## Latest verified implementation commit
 
-`ec3498f`
+`0edbd6e`
 
 ## Current chunking baseline
 
-Each logical policy section currently produces one deterministic retrieval chunk.
+- Maximum chunk size: 512 tokens
+- Overlap: 128 tokens
+- Token encoding: `cl100k_base`
+- Section boundaries are preserved before token splitting.
 
 ## Not started
 
-- Long-section splitting
 - LlamaIndex integration
+- Canonical chunk-to-node conversion
 - Embedding generation
 - Retrieval adapters
 - LangGraph workflow
@@ -47,4 +50,5 @@ Each logical policy section currently produces one deterministic retrieval chunk
 
 The current corpus contains one policy version.
 
-The baseline does not yet split long sections according to token limits.
+The initial 512/128 configuration is a benchmark starting point and has not
+yet been tuned using retrieval evaluation results.
