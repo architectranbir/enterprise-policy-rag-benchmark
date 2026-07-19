@@ -44,3 +44,15 @@ Each meaningful error should include:
 - **Verification:** `uv sync` installed the project and the policy model imported and instantiated successfully.
 - **Related commit:** `d7c5c10`
 
+## ERR-003: Quality gate found formatting issues
+
+- **Component:** Python code quality
+- **Branch:** `feature/synthetic-policy-corpus`
+- **Command:** `uv run --locked ruff format --check .`
+- **Error:** Ruff reported unformatted ingestion files and an unsorted import block.
+- **Expected behaviour:** All source and test files should pass the configured formatting and linting checks.
+- **Root cause:** Newly created files had not yet been processed by Ruff formatting and import organisation.
+- **Fix:** Applied `ruff format` and the safe `ruff check --fix` import correction.
+- **Verification:** The complete formatting, linting, type-checking and test quality gate passed.
+- **Related commit:** `05ab1c7`
+
