@@ -2,53 +2,50 @@
 
 ## Current phase
 
-Phase 4 — Controlled token-based chunking
+Phase 5 — LlamaIndex node mapping
 
 ## Completed and verified
 
-- Added validated chunking configuration.
-- Set the initial chunk-size baseline to 512 tokens.
-- Set the initial overlap baseline to 128 tokens.
-- Added tiktoken using the explicit `cl100k_base` encoding.
-- Added an application-owned tokenizer wrapper.
-- Added deterministic overlapping token-window creation.
-- Updated section chunking to support multiple token-based chunks.
-- Preserved deterministic chunk IDs and section-level citation metadata.
-- Added unit tests for configuration, token counting, token windows and chunk creation.
-- Added an integration test against the committed synthetic policy.
-- Configured uv to reject prerelease dependencies by default.
-- Completed the repository formatting, linting, strict type-checking and test quality gate.
+- Added the stable `llama-index-core` dependency.
+- Added deterministic `PolicyChunk` to LlamaIndex `TextNode` mapping.
+- Preserved canonical chunk IDs as node IDs.
+- Added policy, version, date, classification, section and ACL metadata.
+- Excluded operational metadata from embedding input.
+- Excluded access-group metadata from LLM-visible metadata.
+- Verified 11 deterministic nodes from the committed policy.
+- Confirmed that embeddings are not generated in this phase.
+- Added unit and integration tests.
+- Added Python package boundaries for strict mypy checking.
+- Ruff, mypy and all automated tests passed.
 
 ## Current branch
 
-`feature/controlled-chunking`
+`feature/llamaindex-node-mapping`
 
 ## Latest verified implementation commit
 
-`0edbd6e`
+`3492f7f`
 
-## Current chunking baseline
+## Current ingestion flow
 
-- Maximum chunk size: 512 tokens
-- Overlap: 128 tokens
-- Token encoding: `cl100k_base`
-- Section boundaries are preserved before token splitting.
+Synthetic policy files → validated source → sections → token-based chunks → LlamaIndex TextNodes
 
 ## Not started
 
-- LlamaIndex integration
-- Canonical chunk-to-node conversion
+- Terraform remote-state bootstrap
+- Microsoft Foundry resource and project
+- Foundry embedding deployment
+- Azure AI Search
 - Embedding generation
 - Retrieval adapters
 - LangGraph workflow
 - FastAPI service
-- Terraform infrastructure
 - Azure deployment
 - Benchmark execution
 
 ## Known limitations
 
-The current corpus contains one policy version.
+The corpus currently contains one policy version.
 
-The initial 512/128 configuration is a benchmark starting point and has not
-yet been tuned using retrieval evaluation results.
+The LlamaIndex nodes do not yet contain embeddings and have not been indexed
+into a retrieval backend.

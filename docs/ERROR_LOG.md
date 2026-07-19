@@ -69,3 +69,15 @@ Each meaningful error should include:
 - **Verification:** tiktoken 0.13.0 loaded successfully with `cl100k_base`, and the complete quality gate passed.
 - **Related commit:** `0edbd6e`
 
+
+
+## ERR-005: mypy detected duplicate test modules
+
+- **Date:** 2026-07-19
+- **Component:** Python test package structure
+- **Branch:** `feature/llamaindex-node-mapping`
+- **Error:** Unit and integration test files with the same filename were treated as one module.
+- **Root cause:** Test directories did not contain `__init__.py` package-boundary files.
+- **Fix:** Added package boundaries under the unit and integration test directories.
+- **Verification:** Strict mypy checking and the complete quality gate passed.
+- **Related commit:** `3492f7f`
