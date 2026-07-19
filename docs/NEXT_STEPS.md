@@ -2,14 +2,12 @@
 
 ## Current task
 
-Complete the repository foundation and commit the initial project documentation.
+Push the policy domain-model branch and open a pull request for review.
 
 ## After that
 
-1. Set up the Python project and local virtual environment.
-2. Add formatting, linting, type checking and test tooling.
-3. Define the first synthetic policy document model.
-4. Create the initial synthetic policy document.
-5. Add the document ingestion pipeline.
-
-Application code and cloud infrastructure have not started yet.
+1. Merge the verified domain-model changes.
+2. Define the synthetic policy corpus format.
+3. Create the first synthetic policy document.
+4. Add document loading and metadata validation.
+5. Begin the controlled ingestion pipeline.

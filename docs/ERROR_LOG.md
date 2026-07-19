@@ -32,3 +32,15 @@ Each meaningful error should include:
 - **Verification:** The targeted test passed, followed by successful Ruff, mypy and pytest checks with 1 passing test.
 - **Related commit:** Not committed yet.
 
+## ERR-002: Application package was not importable
+
+- **Component:** Python packaging
+- **Branch:** `feature/policy-domain-models`
+- **Command:** `uv run python`
+- **Error:** `ModuleNotFoundError: No module named 'policy_rag'`
+- **Expected behaviour:** The application package should be importable during normal Python execution.
+- **Root cause:** The project was created with `uv init --bare` and had no build system configured. The pytest-specific `pythonpath` setting did not apply to normal Python commands.
+- **Fix:** Added the stable `uv_build` backend and configured `policy_rag` as the package module.
+- **Verification:** `uv sync` installed the project and the policy model imported and instantiated successfully.
+- **Related commit:** `d7c5c10`
+
