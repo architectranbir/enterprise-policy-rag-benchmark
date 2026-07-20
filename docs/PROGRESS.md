@@ -22,12 +22,12 @@ Phase 9 — Azure AI Search ingestion and retrieval
 
 ## Current branch
 
-`feature/azure-search-ingestion-smoke-test`
+`main` (verified handoff target)
 
 ## Latest merged base
 
-`346f5e9` — Merge pull request #14 from
-`architectranbir/feature/azure-search-ingestion`
+`83fa6ae` — Merge pull request #15 from
+`architectranbir/feature/azure-search-ingestion-smoke-test`
 
 ## Latest implementation commit
 
