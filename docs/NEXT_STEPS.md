@@ -2,16 +2,17 @@
 
 ## Current task
 
-Validate and publish the keyless Azure AI Search one-document ingestion smoke test.
+Define the smallest Azure AI Search retrieval query contract and verify exact
+metadata retrieval of the indexed synthetic chunk.
 
 ## Immediate verification
 
-1. Review the script and documentation diff for secrets and unrelated changes.
-2. Run the locked Ruff formatting and lint checks.
-3. Run strict mypy across `src`, `tests` and `scripts`.
-4. Run the complete pytest suite.
-5. Rerun the live smoke test and verify one uploaded document and 3,072 dimensions.
-6. Commit, push, open a PR and merge it only when clean.
+1. Create a feature branch from verified `main` at `83fa6ae` or later.
+2. Define the minimal provider-neutral retrieval request and result contracts.
+3. Implement only the Azure AI Search exact-metadata query path behind the agreed adapter.
+4. Add focused unit tests for result mapping and failure handling.
+5. Add a keyless live smoke test for the already indexed synthetic chunk.
+6. Run the complete quality gate and live verification before publishing.
 
 ## Exact next implementation task
 
