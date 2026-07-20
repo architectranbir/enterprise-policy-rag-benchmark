@@ -2,42 +2,37 @@
 
 ## Current phase
 
-Phase 8 — Foundry embedding integration
+Phase 9 — Azure AI Search ingestion and retrieval
 
 ## Completed and verified
 
-- Merged the Terraform state bootstrap through PR #8.
-- Created the Terraform development-environment root.
-- Configured the development state in the shared Azure Blob backend.
-- Defined shared resource naming, tags and validated environment variables.
-- Provisioned the development resource group.
-- Provisioned the user-assigned managed application identity.
-- Provisioned the Microsoft Foundry resource.
-- Provisioned the Microsoft Foundry project.
-- Deployed `text-embedding-3-large`, model version `1`.
-- Configured the embedding deployment with the `Standard` SKU, capacity `1` and `NoAutoUpgrade`.
-- Provisioned Azure AI Search with the Basic SKU, one replica and one partition.
-- Enabled the free semantic-search tier.
-- Disabled local authentication on Azure AI Search.
-- Granted the application identity `Cognitive Services OpenAI User` on the Foundry resource.
-- Granted the application identity `Search Index Data Contributor` on Azure AI Search.
-- Added Terraform outputs for application-facing resource names, endpoints and identity identifiers.
-- Verified the embedding deployment provisioning state as `Succeeded`.
-- Verified Azure AI Search as `Succeeded` and `running`.
-- Verified Terraform configuration and deployed infrastructure have no drift.
-- Added `azure-identity` for Microsoft Entra authentication.
-- Added a keyless Foundry embedding smoke test using `DefaultAzureCredential` and the stable `2024-10-21` GA REST API.
-- Verified live inference from `text-embedding-3-large` returned 3,072 dimensions and consumed 6 prompt tokens.
+- Provisioned the Terraform-managed Azure development foundation.
+- Deployed Microsoft Foundry `text-embedding-3-large` with 3,072 dimensions.
+- Provisioned keyless Azure AI Search and the canonical policy-chunk index.
+- Added typed canonical policy, section, chunk and indexed-document models.
+- Added deterministic ingestion, chunking and LlamaIndex node mapping.
+- Added the provider-neutral embedding interface and keyless Foundry provider.
+- Added the Azure AI Search schema and canonical document mapper.
+- Added the typed Azure document-ingestion adapter through merged PR #14.
+- Verified the complete gate on commit `c2b4d59`: Ruff passed, strict mypy passed and 82 tests passed.
+- Added a keyless live ingestion smoke test on `feature/azure-search-ingestion-smoke-test`.
+- Verified one synthetic chunk was embedded to 3,072 dimensions, uploaded to
+  `policy-chunks-dev-v1` and read back with chunk ID
+  `POL-HR-001:1.0:SEC-001:CHK-001`.
 
 ## Current branch
 
-`feature/foundry-embedding-smoke-test`
+`feature/azure-search-ingestion-smoke-test`
 
-## Latest verified base commit
+## Latest merged base
 
-`e4cc625`
+`346f5e9` — Merge pull request #14 from
+`architectranbir/feature/azure-search-ingestion`
 
-The Azure development foundation was merged through PR #9. The current embedding smoke-test changes have not yet been committed.
+## Latest implementation commit
+
+`0135157` — Add the keyless Azure AI Search one-document ingestion smoke test
+and align the repository handoff documentation.
 
 ## Verified development resources
 
@@ -47,31 +42,13 @@ The Azure development foundation was merged through PR #9. The current embedding
 - Foundry project: `proj-polrag-dev-001`
 - Embedding deployment: `text-embedding-3-large`
 - Azure AI Search: `srch-polrag-dev-uks-316e18`
+- Search index: `policy-chunks-dev-v1`
 - Region: `uksouth`
-
-## Remote state
-
-- Backend: Azure Blob Storage
-- Authentication: Microsoft Entra ID
-- Backend values: ignored local configuration
-- State locking: Azure Blob native locking
-- Current Terraform plan: no drift
-
-## Not started
-
-- Provider-neutral embedding interface and production embedding integration
-- Azure AI Search index schema and retrieval adapter
-- PostgreSQL with pgvector infrastructure and retrieval adapter
-- Qdrant infrastructure and retrieval adapter
-- Cross-backend retrieval benchmark execution
-- Application hosting and monitoring
 
 ## Known limitations
 
-- Public network access is enabled on Foundry and Azure AI Search for local development.
-- Azure AI Search currently has one replica and one partition and is not configured for production availability.
-- The free semantic-search tier has usage limits.
-- No hosted application currently uses the managed identity.
-- The bootstrap storage account permits public network access for local development.
-- The local developer Blob role assignment is managed through Azure CLI rather than Terraform.
-- CI/CD workload identity federation and tighter network controls will be added later.
+- Azure AI Search retrieval query behaviour is not implemented yet.
+- Only one canonical chunk has been verified through live ingestion.
+- Public network access remains enabled for local development.
+- Azure AI Search has one replica and one partition and is not configured for production availability.
+- CI/CD workload identity federation and private networking are deferred.

@@ -2,34 +2,28 @@
 
 ## Current task
 
-Validate and commit the keyless Microsoft Foundry embedding smoke test and its documentation.
+Validate and publish the keyless Azure AI Search one-document ingestion smoke test.
 
-## Immediate verification before commit
+## Immediate verification
 
-1. Review the smoke-test, dependency and documentation diff for secrets or unrelated changes.
-2. Verify `pyproject.toml` and `uv.lock` are consistent with `uv lock --check`.
-3. Run Ruff formatting and lint checks.
-4. Run strict mypy checking across `src`, `tests` and `scripts`.
-5. Run the complete pytest suite.
-6. Rerun the locked live smoke test and confirm 3,072 dimensions.
+1. Review the script and documentation diff for secrets and unrelated changes.
+2. Run the locked Ruff formatting and lint checks.
+3. Run strict mypy across `src`, `tests` and `scripts`.
+4. Run the complete pytest suite.
+5. Rerun the live smoke test and verify one uploaded document and 3,072 dimensions.
+6. Commit, push, open a PR and merge it only when clean.
 
-## After the Azure development foundation is committed
+## Exact next implementation task
 
-1. Add the smallest application-level keyless embedding smoke test.
-2. Authenticate locally with `DefaultAzureCredential`.
-3. Request one embedding from the deployed `text-embedding-3-large` model.
-4. Verify that the returned vector contains 3,072 dimensions.
-5. Define the provider-neutral embedding interface only after the smoke test succeeds.
-6. Define the shared Azure AI Search index contract from the canonical `PolicyChunk` model.
-7. Implement Azure AI Search ingestion and retrieval behind the application-owned interface.
-8. Add PostgreSQL with pgvector and Qdrant separately, preserving identical chunks and metadata.
+Define the smallest Azure AI Search retrieval query contract and add a keyless
+smoke test that retrieves the indexed synthetic chunk by its exact canonical
+metadata. Do not add hybrid or semantic ranking until the fair vector-only path
+is implemented and measured.
 
 ## Guardrails
 
 - Use stable GA APIs and supported SDK releases only.
-- Do not introduce classic Foundry Hub resources.
-- Do not use public-preview or private-preview APIs.
-- Keep canonical policy, section and chunk models application-owned.
-- Keep backend-specific retrieval behaviour visible and independently measurable.
-- Use Microsoft Entra ID authentication instead of application secrets or service keys.
+- Keep fair vector-only and platform-optimised benchmark modes separate.
+- Use Microsoft Entra ID authentication; do not add service keys or secrets.
+- Preserve canonical chunks, metadata, ACLs and citation identifiers.
 - Implement and verify one small component at a time.
