@@ -1,0 +1,89 @@
+"""Verify keyless ACL-safe exact retrieval from Azure AI Search."""
+
+import json
+import os
+from datetime import date
+from typing import cast
+
+from azure.identity import DefaultAzureCredential
+from azure.search.documents import SearchClient
+
+from policy_rag.domain.access import PolicyAccessContext
+from policy_rag.domain.policy import PolicyClassification
+from policy_rag.retrieval import PolicyRetrievalRequest
+from policy_rag.retrieval.azure_retrieval import (
+    AzureSearchQueryClient,
+    retrieve_exact_policy_chunks,
+)
+
+DEFAULT_INDEX_NAME = "policy-chunks-dev-v1"
+DOCUMENT_ID = "POL-HR-001"
+AS_OF = date(2026, 7, 20)
+
+
+def create_request(user_groups: tuple[str, ...]) -> PolicyRetrievalRequest:
+    return PolicyRetrievalRequest(
+        access=PolicyAccessContext(
+            user_id="retrieval-smoke-test",
+            user_groups=user_groups,
+            as_of=AS_OF,
+        ),
+        document_id=DOCUMENT_ID,
+        classification=PolicyClassification.INTERNAL,
+        limit=10,
+    )
+
+
+def main() -> None:
+    index_name = os.getenv(
+        "AZURE_SEARCH_INDEX_NAME",
+        DEFAULT_INDEX_NAME,
+    )
+    credential = DefaultAzureCredential()
+    search_client = SearchClient(
+        endpoint=os.environ["AZURE_SEARCH_ENDPOINT"].rstrip("/"),
+        index_name=index_name,
+        credential=credential,
+    )
+    query_client = cast(AzureSearchQueryClient, search_client)
+
+    try:
+        authorized = retrieve_exact_policy_chunks(
+            query_client,
+            create_request(("employees",)),
+        )
+        denied = retrieve_exact_policy_chunks(
+            query_client,
+            create_request(("contractors",)),
+        )
+    finally:
+        search_client.close()
+        credential.close()
+
+    if not authorized:
+        raise RuntimeError("Authorized retrieval returned no policy chunks")
+
+    if any(result.document_id != DOCUMENT_ID for result in authorized):
+        raise RuntimeError("Authorized retrieval returned an unexpected document")
+
+    if denied:
+        raise RuntimeError("Unauthorized group retrieved protected policy chunks")
+
+    print(
+        json.dumps(
+            {
+                "index": index_name,
+                "authorized_group": "employees",
+                "authorized_results": len(authorized),
+                "denied_group": "contractors",
+                "denied_results": len(denied),
+                "document_id": authorized[0].document_id,
+                "chunk_ids": [result.chunk_id for result in authorized],
+            },
+            indent=2,
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -2,29 +2,31 @@
 
 ## Current task
 
-Define the smallest Azure AI Search retrieval query contract and verify exact
-metadata retrieval of the indexed synthetic chunk.
+Align the embedding input with the canonical indexed chunk text, then implement
+the fair Azure AI Search vector-only retrieval path.
 
 ## Immediate verification
 
-1. Create a feature branch from verified `main` at `83fa6ae` or later.
-2. Define the minimal provider-neutral retrieval request and result contracts.
-3. Implement only the Azure AI Search exact-metadata query path behind the agreed adapter.
-4. Add focused unit tests for result mapping and failure handling.
-5. Add a keyless live smoke test for the already indexed synthetic chunk.
-6. Run the complete quality gate and live verification before publishing.
+1. Confirm ingestion embeds the same canonical text stored in the search index.
+2. Add a regression test that prevents embedding/indexed-text divergence.
+3. Extend the provider-neutral retrieval request for a query embedding.
+4. Implement Azure AI Search vector-only retrieval with the existing ACL,
+   effective-date and metadata filters.
+5. Add focused unit tests and a keyless live vector-retrieval smoke test.
+6. Run the complete quality gate before publishing.
 
 ## Exact next implementation task
 
-Define the smallest Azure AI Search retrieval query contract and add a keyless
-smoke test that retrieves the indexed synthetic chunk by its exact canonical
-metadata. Do not add hybrid or semantic ranking until the fair vector-only path
-is implemented and measured.
+Fix the ingestion text alignment before adding `VectorizedQuery`. Then retrieve
+nearest policy chunks using the query embedding while preserving the existing
+authorization and effective-date filters.
 
 ## Guardrails
 
 - Use stable GA APIs and supported SDK releases only.
 - Keep fair vector-only and platform-optimised benchmark modes separate.
 - Use Microsoft Entra ID authentication; do not add service keys or secrets.
+- Obtain user groups from trusted identity claims, never query text or user input.
 - Preserve canonical chunks, metadata, ACLs and citation identifiers.
+- Do not add hybrid or semantic ranking until vector-only retrieval is measured.
 - Implement and verify one small component at a time.

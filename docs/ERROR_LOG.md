@@ -145,3 +145,15 @@ Each meaningful error should include:
 - **Fix:** With explicit approval, granted the signed-in developer `Search Index Data Contributor` at the single Azure AI Search service scope. Allowed time for Azure RBAC propagation before retrying.
 - **Verification:** The live test uploaded one document, read back chunk `POL-HR-001:1.0:SEC-001:CHK-001` and verified a 3,072-dimensional embedding.
 - **Related commit:** `0135157`
+
+## ERR-011: Azure AI Search returned DateTimeOffset values as strings
+
+- **Date:** 2026-07-20
+- **Component:** Azure AI Search exact-metadata retrieval
+- **Branch:** `feature/azure-search-retrieval`
+- **Command:** `uv run --locked python scripts/smoke_test_azure_search_retrieval.py`
+- **Error:** `ValueError: effective_from must be a date or datetime`
+- **Expected behaviour:** The retrieval adapter should map Azure date values into the backend-neutral result model.
+- **Root cause:** The adapter accepted Python `date` and `datetime` values, while the live Azure AI Search response returned `Edm.DateTimeOffset` as an ISO 8601 string such as `2026-01-01T00:00:00Z`.
+- **Fix:** Extended the Azure result mapper to parse ISO 8601 date strings while retaining support for Python date and datetime values and rejecting invalid inputs.
+- **Verification:** Nine focused retrieval tests passed, the full 91-test suite passed, and the live keyless smoke test returned one authorized result for `employees` and zero results for `contractors`.
