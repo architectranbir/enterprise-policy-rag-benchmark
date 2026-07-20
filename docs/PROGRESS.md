@@ -19,15 +19,21 @@ Phase 9 — Azure AI Search ingestion and retrieval
 - Verified one synthetic chunk was embedded to 3,072 dimensions, uploaded to
   `policy-chunks-dev-v1` and read back with chunk ID
   `POL-HR-001:1.0:SEC-001:CHK-001`.
+- Added provider-neutral retrieval request and result contracts.
+- Added ACL-safe Azure AI Search exact-metadata filtering and retrieval.
+- Verified live retrieval returned the indexed chunk for the `employees` group
+  and returned zero results for the unauthorized `contractors` group.
+- Verified the retrieval implementation with Ruff, strict mypy, 9 focused tests,
+  the complete 91-test suite and a keyless live smoke test.
 
 ## Current branch
 
-`main` (verified handoff target)
+`feature/azure-search-retrieval`
 
 ## Latest merged base
 
-`83fa6ae` — Merge pull request #15 from
-`architectranbir/feature/azure-search-ingestion-smoke-test`
+`54123da` — Merge pull request #16 from
+`architectranbir/docs/post-ingestion-handoff`
 
 ## Latest implementation commit
 
@@ -47,8 +53,11 @@ and align the repository handoff documentation.
 
 ## Known limitations
 
-- Azure AI Search retrieval query behaviour is not implemented yet.
-- Only one canonical chunk has been verified through live ingestion.
+- Vector, hybrid and semantic retrieval are not implemented yet.
+- Only one canonical chunk has been verified through live ingestion and retrieval.
+- The ingestion smoke test embeds raw chunk content while the indexed document
+  stores enriched canonical chunk text; these inputs must be aligned before
+  vector-retrieval benchmarking.
 - Public network access remains enabled for local development.
 - Azure AI Search has one replica and one partition and is not configured for production availability.
 - CI/CD workload identity federation and private networking are deferred.
