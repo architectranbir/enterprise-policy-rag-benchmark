@@ -130,3 +130,18 @@ Each meaningful error should include:
 - **Root cause:** OpenAI Python 2.46.0 and 2.45.0 passed Azure credential validation but the base client rejected the internal API-key sentinel before making an Azure request.
 - **Fix:** Replaced the SDK-specific smoke-test client with the stable `2024-10-21` GA REST endpoint using a Microsoft Entra bearer token. Removed the unused `openai` dependency and retained `azure-identity`.
 - **Verification:** The SDK constructor failure is avoided by the REST implementation. The GA REST smoke test successfully generated an embedding from `text-embedding-3-large` with 3,072 dimensions and 6 prompt tokens.
+
+## ERR-010: Local Azure AI Search document upload returned 403
+
+- **Date and time:** 2026-07-20 14:10 IST
+- **Component:** Azure AI Search document ingestion smoke test
+- **Branch:** `feature/azure-search-ingestion-smoke-test`
+- **Base commit:** `346f5e9`
+- **File:** `scripts/smoke_test_azure_search_ingestion.py`
+- **Command:** `uv run --locked python scripts/smoke_test_azure_search_ingestion.py`
+- **Error:** `azure.core.exceptions.HttpResponseError: Operation returned an invalid status 'Forbidden'`
+- **Expected behaviour:** The signed-in developer should upload and read back one synthetic policy chunk through Microsoft Entra ID.
+- **Root cause:** The developer had `Search Service Contributor`, which permits index management but not document data-plane writes. Only the application managed identity had `Search Index Data Contributor`.
+- **Fix:** With explicit approval, granted the signed-in developer `Search Index Data Contributor` at the single Azure AI Search service scope. Allowed time for Azure RBAC propagation before retrying.
+- **Verification:** The live test uploaded one document, read back chunk `POL-HR-001:1.0:SEC-001:CHK-001` and verified a 3,072-dimensional embedding.
+- **Related commit:** Not committed yet.
