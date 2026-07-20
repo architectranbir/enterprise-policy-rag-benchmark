@@ -29,6 +29,11 @@ Phase 9 — Azure AI Search ingestion and retrieval
 `346f5e9` — Merge pull request #14 from
 `architectranbir/feature/azure-search-ingestion`
 
+## Latest implementation commit
+
+`0135157` — Add the keyless Azure AI Search one-document ingestion smoke test
+and align the repository handoff documentation.
+
 ## Verified development resources
 
 - Resource group: `rg-polrag-dev-uks-001`

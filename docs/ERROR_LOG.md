@@ -144,4 +144,4 @@ Each meaningful error should include:
 - **Root cause:** The developer had `Search Service Contributor`, which permits index management but not document data-plane writes. Only the application managed identity had `Search Index Data Contributor`.
 - **Fix:** With explicit approval, granted the signed-in developer `Search Index Data Contributor` at the single Azure AI Search service scope. Allowed time for Azure RBAC propagation before retrying.
 - **Verification:** The live test uploaded one document, read back chunk `POL-HR-001:1.0:SEC-001:CHK-001` and verified a 3,072-dimensional embedding.
-- **Related commit:** Not committed yet.
+- **Related commit:** `0135157`
