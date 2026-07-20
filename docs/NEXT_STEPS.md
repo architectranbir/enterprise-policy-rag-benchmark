@@ -2,14 +2,16 @@
 
 ## Current task
 
-Review and commit the verified Azure development-foundation Terraform configuration and its documentation.
+Validate and commit the keyless Microsoft Foundry embedding smoke test and its documentation.
 
 ## Immediate verification before commit
 
-1. Review the staged Terraform and documentation diff.
-2. Confirm no ignored state, plan, provider or local configuration files are staged.
-3. Run Terraform formatting and validation.
-4. Run one final no-drift Terraform plan.
+1. Review the smoke-test, dependency and documentation diff for secrets or unrelated changes.
+2. Verify `pyproject.toml` and `uv.lock` are consistent with `uv lock --check`.
+3. Run Ruff formatting and lint checks.
+4. Run strict mypy checking across `src`, `tests` and `scripts`.
+5. Run the complete pytest suite.
+6. Rerun the locked live smoke test and confirm 3,072 dimensions.
 
 ## After the Azure development foundation is committed
 
