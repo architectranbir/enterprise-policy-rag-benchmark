@@ -1,6 +1,7 @@
 from llama_index.core.schema import TextNode
 
 from policy_rag.domain.chunk import PolicyChunk
+from policy_rag.ingestion.chunk_text import policy_chunk_text
 
 
 def policy_chunk_to_text_node(chunk: PolicyChunk) -> TextNode:
@@ -26,15 +27,9 @@ def policy_chunk_to_text_node(chunk: PolicyChunk) -> TextNode:
     if policy.effective_to is not None:
         metadata["effective_to"] = policy.effective_to.isoformat()
 
-    node_text = (
-        f"{policy.title}\n"
-        f"Section {chunk.section.section_number}: {chunk.section.title}\n\n"
-        f"{chunk.content}"
-    )
-
     return TextNode(
         id_=chunk.chunk_id,
-        text=node_text,
+        text=policy_chunk_text(chunk),
         metadata=metadata,
         excluded_embed_metadata_keys=list(metadata),
         excluded_llm_metadata_keys=["allowed_groups"],
