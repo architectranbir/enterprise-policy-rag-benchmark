@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Phase 7 — Azure development foundation
+Phase 8 — Foundry embedding integration
 
 ## Completed and verified
 
@@ -25,16 +25,19 @@ Phase 7 — Azure development foundation
 - Verified the embedding deployment provisioning state as `Succeeded`.
 - Verified Azure AI Search as `Succeeded` and `running`.
 - Verified Terraform configuration and deployed infrastructure have no drift.
+- Added `azure-identity` for Microsoft Entra authentication.
+- Added a keyless Foundry embedding smoke test using `DefaultAzureCredential` and the stable `2024-10-21` GA REST API.
+- Verified live inference from `text-embedding-3-large` returned 3,072 dimensions and consumed 6 prompt tokens.
 
 ## Current branch
 
-`feature/azure-dev-foundation`
+`feature/foundry-embedding-smoke-test`
 
 ## Latest verified base commit
 
-`d81f27c`
+`e4cc625`
 
-The Azure development-foundation changes have not yet been recorded in a new commit.
+The Azure development foundation was merged through PR #9. The current embedding smoke-test changes have not yet been committed.
 
 ## Verified development resources
 
@@ -56,7 +59,7 @@ The Azure development-foundation changes have not yet been recorded in a new com
 
 ## Not started
 
-- Application integration for keyless embedding generation
+- Provider-neutral embedding interface and production embedding integration
 - Azure AI Search index schema and retrieval adapter
 - PostgreSQL with pgvector infrastructure and retrieval adapter
 - Qdrant infrastructure and retrieval adapter

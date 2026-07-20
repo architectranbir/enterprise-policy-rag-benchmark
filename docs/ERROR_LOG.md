@@ -118,3 +118,15 @@ Each meaningful error should include:
 - **Fix:** Discarded the stale plan and ran a new Terraform plan against the current remote state.
 - **Verification:** The new plan reported no changes, and `terraform output` returned the expected Foundry, embedding, Azure AI Search and managed-identity values.
 - **Infrastructure impact:** None.
+
+## ERR-009: OpenAI Python Azure client rejected Entra token provider
+
+- **Date:** 2026-07-20
+- **Component:** Microsoft Foundry embedding smoke test
+- **Branch:** `feature/foundry-embedding-smoke-test`
+- **Command:** `uv run --locked python scripts/smoke_test_foundry_embeddings.py`
+- **Error:** `AzureOpenAI` raised `OpenAIError: Missing credentials` while an `azure_ad_token_provider` was supplied.
+- **Expected behaviour:** The client should accept the documented Entra token provider and then submit the embedding request.
+- **Root cause:** OpenAI Python 2.46.0 and 2.45.0 passed Azure credential validation but the base client rejected the internal API-key sentinel before making an Azure request.
+- **Fix:** Replaced the SDK-specific smoke-test client with the stable `2024-10-21` GA REST endpoint using a Microsoft Entra bearer token. Removed the unused `openai` dependency and retained `azure-identity`.
+- **Verification:** The SDK constructor failure is avoided by the REST implementation. The GA REST smoke test successfully generated an embedding from `text-embedding-3-large` with 3,072 dimensions and 6 prompt tokens.
