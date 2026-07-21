@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enterprise Policy Intelligence</title><link rel="stylesheet" href="/styles.css"></head>
+<body><main><header><p class="eyebrow">Enterprise RAG benchmark</p><h1>Policy Intelligence</h1>
+<p>Ask a question against the policy evidence you are authorised to access.</p></header>
+<form id="ask-form"><label>Question<textarea id="question" required minlength="3" placeholder="How much can I claim for home-office equipment?"></textarea></label>
+<div class="grid"><label>User ID<input id="user-id" value="demo-user" required></label>
+<label>Groups<input id="groups" value="employees" required></label><label>As of<input id="as-of" type="date" required></label></div>
+<button>Ask policy assistant</button></form><section id="result" hidden><p id="status"></p><h2>Answer</h2><p id="answer"></p><ol id="citations"></ol></section></main>
+<script src="/app.js"></script></body></html>
