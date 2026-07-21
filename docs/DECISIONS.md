@@ -38,7 +38,7 @@ It also allows each backend to be tested independently using the same documents,
 
 ## ADR-002: Use LlamaIndex core for ingestion node mapping
 
-**Status:** Accepted  
+**Status:** Accepted
 **Date:** 19 July 2026
 
 ### Context
@@ -70,7 +70,7 @@ retrieval behaviour or changing the canonical chunk contract.
 
 ## ADR-003: Store Terraform state in Azure Blob Storage
 
-**Status:** Accepted  
+**Status:** Accepted
 **Date:** 19 July 2026
 
 ### Context
@@ -146,3 +146,46 @@ named project boundary without introducing the older hub architecture.
 - Public network access remains enabled temporarily for local development.
 - Private networking can be introduced later without changing the canonical
   policy or retrieval contracts.
+
+## ADR-005: Keep generation and retrieval application-owned
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The application owns the retrieval, embedding, answer-generation, citation and
+refusal contracts. Azure AI Search, Psycopg/pgvector and Qdrant are thin adapters.
+This prevents backend SDK models from leaking into the API and preserves identical
+fair-benchmark inputs. Grounded generation receives numbered retrieved evidence;
+empty retrieval deterministically refuses before calling the generation model.
+
+## ADR-006: Provision the application platform behind an explicit switch
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+Container Apps, Static Web Apps, ACR, PostgreSQL Flexible Server, the Qdrant demo,
+Key Vault and monitoring are declared in the development Terraform root behind
+`deploy_application_platform`. The default remains false so adding the definitions
+does not deploy or change live resources. Production applies require reviewed image
+references, secrets supplied outside source control, cost review and explicit approval.
+
+## ADR-007: Use current GA service contracts and fail-closed API identity
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The API validates Microsoft Entra access-token signatures, issuer, audience, expiry and group
+claims before creating the retrieval access context. Group overage fails closed until a trusted
+Graph-based resolver is implemented. Local demo headers are disabled by default. Foundry calls
+use the GA `/openai/v1` endpoints, Azure AI Search is explicitly pinned to data-plane API
+`2025-09-01`, and model/dependency versions remain pinned to stable supported releases.
+
+## ADR-008: Keep Qdrant demo state durable and authenticated
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The single-replica Qdrant Container App mounts a dedicated Azure Files share, requires an API
+key supplied outside source control, and remains internal-only. It is a benchmark/demo topology,
+not a production highly available Qdrant cluster. Filter fields receive payload indexes so ACL
+and effective-date filtering do not depend on unindexed scans.

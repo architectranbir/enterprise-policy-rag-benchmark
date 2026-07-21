@@ -2,24 +2,24 @@
 
 ## Current task
 
-Align the embedding input with the canonical indexed chunk text, then implement
-the fair Azure AI Search vector-only retrieval path.
+Complete the two identity-dependent production handoff items.
 
 ## Immediate verification
 
-1. Confirm ingestion embeds the same canonical text stored in the search index.
-2. Add a regression test that prevents embedding/indexed-text divergence.
-3. Extend the provider-neutral retrieval request for a query embedding.
-4. Implement Azure AI Search vector-only retrieval with the existing ACL,
-   effective-date and metadata filters.
-5. Add focused unit tests and a keyless live vector-retrieval smoke test.
-6. Run the complete quality gate before publishing.
+1. Create/review the Entra SPA/API app registration, redirect URI and delegated scope, then wire
+   MSAL into the deployed Web UI.
+2. Run a one-time VNet-scoped PostgreSQL bootstrap identity/job to create the least-privilege
+   application principal with `pgaadauth_create_principal`.
+3. Ingest identical canonical chunks into all three deployed backends.
+4. Expand the synthetic corpus and evaluation set before recording fair results.
+5. Preserve the verified no-drift Terraform plan and review every future apply.
+6. Add repeatable integration tests for the local containerised backends.
+7. Add private endpoints for remaining Azure PaaS services and CI workload federation.
 
 ## Exact next implementation task
 
-Fix the ingestion text alignment before adding `VectorizedQuery`. Then retrieve
-nearest policy chunks using the query embedding while preserving the existing
-authorization and effective-date filters.
+Obtain the reviewed Entra application registration details and run an authenticated `/ask`
+request with a real application token containing the expected audience and group claims.
 
 ## Guardrails
 

@@ -157,3 +157,54 @@ Each meaningful error should include:
 - **Root cause:** The adapter accepted Python `date` and `datetime` values, while the live Azure AI Search response returned `Edm.DateTimeOffset` as an ISO 8601 string such as `2026-01-01T00:00:00Z`.
 - **Fix:** Extended the Azure result mapper to parse ISO 8601 date strings while retaining support for Python date and datetime values and rejecting invalid inputs.
 - **Verification:** Nine focused retrieval tests passed, the full 91-test suite passed, and the live keyless smoke test returned one authorized result for `employees` and zero results for `contractors`.
+
+## ERR-012: Baseline Ruff formatting drift
+
+- **Date:** 2026-07-22
+- **Component:** Existing Azure retrieval request model
+- **Command:** `uv run --locked ruff format --check .`
+- **Error:** `src/policy_rag/retrieval/models.py` would be reformatted.
+- **Root cause:** The existing `query_embedding` field indentation was incomplete.
+- **Fix:** Applied repository-standard Ruff formatting while completing vector retrieval.
+- **Verification:** The final Ruff format and lint gates passed.
+
+## ERR-013: Qdrant payload exposed ACL metadata to result validation
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant retrieval adapter
+- **Error:** `allowed_groups: Extra inputs are not permitted` in the neutral result model.
+- **Root cause:** Qdrant returns filter-only ACL payload alongside citation fields.
+- **Fix:** Remove `allowed_groups` before validating the backend-neutral result.
+- **Verification:** The in-memory Qdrant authorised/denied ACL round-trip test passed.
+
+## ERR-014: Docker executable unavailable
+
+- **Date:** 2026-07-22
+- **Component:** Local Docker Compose validation
+- **Command:** `docker compose config --quiet`
+- **Error:** `command not found: docker`
+- **Impact:** Compose syntax and image builds are implemented but not locally verified.
+- **Next action:** Install/start Docker and rerun configuration and build checks.
+
+## ERR-015: Fresh pgvector initialization and 3,072-dimensional HNSW failed
+
+- **Date:** 2026-07-22
+- **Errors:** `vector type not found in the database`, followed by `column cannot have more than 2000 dimensions for hnsw index`.
+- **Root cause:** Type registration preceded extension creation, and HNSW limits `vector` indexes to 2,000 dimensions.
+- **Fix:** Bootstrap the extension before registration and use supported `halfvec(3072)` with `halfvec_cosine_ops`.
+- **Verification:** Live PostgreSQL/pgvector and Qdrant authorised/denied ACL round trips passed.
+
+## ERR-016: Container Apps rejected or failed the first API images
+
+- **Date:** 2026-07-22
+- **Errors:** Azure rejected `linux/arm64`; the next image raised `ModuleNotFoundError: policy_rag`.
+- **Root cause:** Apple Silicon produced the wrong target architecture, then an editable environment referenced source absent from the final stage.
+- **Fix:** Build `linux/amd64` with Buildx, pin base digests, and install with `uv sync --no-editable`.
+- **Verification:** Local and deployed `/health` and `/ready` passed using immutable digest `sha256:63fffe7f54284e187bda7337112b5209311dc0696a6a152e28c7cf5d019730c9`.
+
+## ERR-017: Initial Static Web Apps and PostgreSQL administrator operations failed
+
+- **Date:** 2026-07-22
+- **Errors:** West Europe rejected new Static Web Apps customers; the first PostgreSQL Entra administrator write returned an Azure internal error.
+- **Fix:** Use provider-advertised East US 2. Retry the administrator after PostgreSQL reached `Ready`, then import it into Terraform state.
+- **Verification:** Production UI homepage is live, the reviewed Entra administrator exists, and the final Terraform plan reports no changes.

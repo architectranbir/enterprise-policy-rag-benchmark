@@ -33,6 +33,11 @@ output "embedding_deployment_name" {
   value       = azurerm_cognitive_deployment.embedding.name
 }
 
+output "answer_deployment_name" {
+  description = "Name of the grounded answer-generation model deployment."
+  value       = try(azurerm_cognitive_deployment.answer[0].name, null)
+}
+
 output "search_service_name" {
   description = "Name of the Azure AI Search service."
   value       = azurerm_search_service.benchmark.name
@@ -41,4 +46,14 @@ output "search_service_name" {
 output "search_endpoint" {
   description = "Azure AI Search data-plane endpoint."
   value       = azurerm_search_service.benchmark.endpoint
+}
+
+output "api_fqdn" {
+  description = "Container Apps API hostname when the optional platform is enabled."
+  value       = try(azurerm_container_app.api[0].ingress[0].fqdn, null)
+}
+
+output "static_web_app_hostname" {
+  description = "Static Web App hostname when the optional platform is enabled."
+  value       = try(azurerm_static_web_app.web[0].default_host_name, null)
 }

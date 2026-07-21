@@ -105,3 +105,107 @@ variable "tags" {
     workload            = "policy-intelligence"
   }
 }
+
+variable "deploy_application_platform" {
+  description = "Whether to provision the optional application hosting and data platform."
+  type        = bool
+  default     = false
+}
+
+variable "tenant_id" {
+  description = "Microsoft Entra tenant ID for Key Vault and PostgreSQL authentication."
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition = (
+      !var.deploy_application_platform ||
+      (
+        var.tenant_id != null &&
+        can(regex("^[0-9a-fA-F-]{36}$", var.tenant_id))
+      )
+    )
+    error_message = "tenant_id must be supplied as a GUID when deploy_application_platform is true."
+  }
+}
+
+variable "entra_audience" {
+  description = "Expected audience claim for Microsoft Entra API access tokens."
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition = (
+      !var.deploy_application_platform ||
+      (var.entra_audience != null && length(trimspace(var.entra_audience)) > 0)
+    )
+    error_message = "entra_audience is required when deploy_application_platform is true."
+  }
+}
+
+variable "answer_model_name" {
+  description = "GA Foundry model used for grounded answer generation."
+  type        = string
+  default     = "gpt-5.6-sol"
+}
+
+variable "answer_model_version" {
+  description = "Pinned GA Foundry answer-model version."
+  type        = string
+  default     = "2026-07-09"
+}
+
+variable "answer_model_capacity" {
+  description = "Global Standard capacity assigned to the answer-model deployment."
+  type        = number
+  default     = 1
+
+  validation {
+    condition     = var.answer_model_capacity >= 1
+    error_message = "answer_model_capacity must be at least 1."
+  }
+}
+
+variable "postgres_entra_administrator_name" {
+  description = "Display/login name of the reviewed Microsoft Entra PostgreSQL administrator."
+  type        = string
+  default     = null
+  nullable    = true
+}
+
+variable "postgres_entra_administrator_object_id" {
+  description = "Object ID of the reviewed Microsoft Entra PostgreSQL administrator."
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition = (
+      !var.deploy_application_platform ||
+      (var.postgres_entra_administrator_object_id != null && can(regex("^[0-9a-fA-F-]{36}$", var.postgres_entra_administrator_object_id)))
+    )
+    error_message = "postgres_entra_administrator_object_id must be a GUID when the platform is deployed."
+  }
+}
+
+variable "api_container_image" {
+  description = "Immutable API container image reference."
+  type        = string
+  default     = ""
+
+  validation {
+    condition = (
+      !var.deploy_application_platform ||
+      length(trimspace(var.api_container_image)) > 0
+    )
+    error_message = "api_container_image is required when deploy_application_platform is true."
+  }
+}
+
+variable "qdrant_container_image" {
+  description = "Pinned Qdrant demo image."
+  type        = string
+  default     = "qdrant/qdrant:v1.18.2"
+}
