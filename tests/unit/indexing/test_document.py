@@ -1,9 +1,16 @@
+from collections.abc import Sequence
 from datetime import date
+
+import pytest
 
 from policy_rag.domain.chunk import PolicyChunk
 from policy_rag.domain.policy import PolicyClassification, PolicyDocument
 from policy_rag.domain.section import PolicySection
-from policy_rag.indexing import policy_chunk_to_indexed_document
+from policy_rag.embeddings import EmbeddingVector
+from policy_rag.indexing import (
+    embed_policy_chunk,
+    policy_chunk_to_indexed_document,
+)
 from policy_rag.ingestion.llamaindex_nodes import policy_chunk_to_text_node
 
 
@@ -64,3 +71,47 @@ def test_indexed_document_and_llamaindex_node_share_identical_text() -> None:
         "Section 6: Equipment and expenses\n\n"
         "Employees may claim up to GBP 250."
     )
+
+
+class RecordingEmbeddingProvider:
+    dimensions = 3
+
+    def __init__(self) -> None:
+        self.received_texts: tuple[str, ...] = ()
+
+    def embed(
+        self,
+        texts: Sequence[str],
+        /,
+    ) -> tuple[EmbeddingVector, ...]:
+        self.received_texts = tuple(texts)
+        return ((0.1, 0.2, 0.3),)
+
+
+def test_embedded_text_matches_indexed_document_text() -> None:
+    chunk = create_chunk()
+    provider = RecordingEmbeddingProvider()
+
+    document = embed_policy_chunk(chunk, provider)
+
+    assert provider.received_texts == (document.text,)
+    assert document.embedding == (0.1, 0.2, 0.3)
+
+
+class EmptyEmbeddingProvider:
+    dimensions = 3
+
+    def embed(
+        self,
+        texts: Sequence[str],
+        /,
+    ) -> tuple[EmbeddingVector, ...]:
+        return ()
+
+
+def test_rejects_missing_embedding_result() -> None:
+    with pytest.raises(
+        ValueError,
+        match="Expected one embedding for one policy chunk, received 0",
+    ):
+        embed_policy_chunk(create_chunk(), EmptyEmbeddingProvider())

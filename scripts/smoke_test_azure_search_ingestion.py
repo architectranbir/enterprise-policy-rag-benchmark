@@ -9,8 +9,8 @@ from azure.identity import DefaultAzureCredential
 from azure.search.documents import SearchClient
 
 from policy_rag.embeddings import FoundryEmbeddingProvider
+from policy_rag.indexing import embed_policy_chunk
 from policy_rag.indexing.azure_ingestion import upload_indexed_policy_chunks
-from policy_rag.indexing.document import policy_chunk_to_indexed_document
 from policy_rag.ingestion.chunks import create_section_chunks
 from policy_rag.ingestion.sections import extract_policy_sections
 from policy_rag.ingestion.source import load_policy_source
@@ -38,8 +38,7 @@ def main() -> None:
     source = load_policy_source(POLICY_VERSION_DIRECTORY)
     section = extract_policy_sections(source)[0]
     chunk = create_section_chunks(section)[0]
-    embedding = embedding_provider.embed((chunk.content,))[0]
-    document = policy_chunk_to_indexed_document(chunk, embedding)
+    document = embed_policy_chunk(chunk, embedding_provider)
 
     try:
         uploaded_keys = upload_indexed_policy_chunks(search_client, (document,))
@@ -58,7 +57,7 @@ def main() -> None:
                 "uploaded_documents": len(uploaded_keys),
                 "chunk_id": deployed["chunk_id"],
                 "document_id": deployed["document_id"],
-                "embedding_dimensions": len(embedding),
+                "embedding_dimensions": len(document.embedding),
             },
             indent=2,
         )

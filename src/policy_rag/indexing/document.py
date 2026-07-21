@@ -4,7 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from policy_rag.domain.chunk import PolicyChunk
 from policy_rag.domain.policy import PolicyClassification
-from policy_rag.embeddings import EmbeddingVector
+from policy_rag.embeddings import EmbeddingProvider, EmbeddingVector
 from policy_rag.ingestion.chunk_text import policy_chunk_text
 
 
@@ -63,3 +63,18 @@ def policy_chunk_to_indexed_document(
         section_ordinal=chunk.section.ordinal,
         chunk_ordinal=chunk.ordinal,
     )
+
+
+def embed_policy_chunk(
+    chunk: PolicyChunk,
+    provider: EmbeddingProvider,
+) -> IndexedPolicyChunk:
+    """Embed and index the same canonical text for one policy chunk."""
+
+    canonical_text = policy_chunk_text(chunk)
+    embeddings = provider.embed((canonical_text,))
+
+    if len(embeddings) != 1:
+        raise ValueError(f"Expected one embedding for one policy chunk, received {len(embeddings)}")
+
+    return policy_chunk_to_indexed_document(chunk, embeddings[0])
