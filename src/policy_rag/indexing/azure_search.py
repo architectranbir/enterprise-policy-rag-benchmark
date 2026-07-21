@@ -12,6 +12,7 @@ from azure.search.documents.indexes.models import (
 )
 
 EMBEDDING_DIMENSIONS = 3072
+AZURE_SEARCH_API_VERSION = "2025-09-01"
 VECTOR_ALGORITHM_NAME = "policy-chunks-hnsw"
 VECTOR_PROFILE_NAME = "policy-chunks-vector-profile"
 

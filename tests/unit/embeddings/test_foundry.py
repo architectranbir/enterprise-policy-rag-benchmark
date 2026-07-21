@@ -55,15 +55,16 @@ def test_embed_uses_entra_token_and_preserves_input_order() -> None:
 
     request = open_request.call_args.args[0]
     assert isinstance(request, Request)
-    assert request.full_url == (
-        "https://example.openai.azure.com/openai/deployments/"
-        "embedding%20deployment/embeddings?api-version=2024-10-21"
-    )
+    assert request.full_url == "https://example.openai.azure.com/openai/v1/embeddings"
     assert request.get_header("Authorization") == "Bearer test-token"
 
     request_body = request.data
     assert isinstance(request_body, bytes)
-    assert json.loads(request_body) == {"input": ["first", "second"]}
+    assert json.loads(request_body) == {
+        "model": "embedding deployment",
+        "input": ["first", "second"],
+        "dimensions": 3,
+    }
     assert open_request.call_args.kwargs == {"timeout": 30}
 
 

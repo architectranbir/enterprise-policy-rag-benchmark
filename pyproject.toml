@@ -5,15 +5,24 @@ requires-python = ">=3.13,<3.14"
 dependencies = [
     "azure-identity>=1.25.3,<2.0",
     "azure-search-documents>=12.0.0,<13.0",
+    "fastapi>=0.116,<1.0",
     "llama-index-core>=0.14.23,<0.15",
+    "pgvector>=0.4,<1.0",
+    "psycopg[binary,pool]>=3.2,<4.0",
     "pydantic>=2.13.4,<3.0",
+    "pydantic-settings>=2.10,<3.0",
+    "pyjwt[crypto]>=2.10,<3.0",
+    "qdrant-client>=1.15,<2.0",
     "tiktoken>=0.13.0,<1.0",
+    "uvicorn[standard]>=0.35,<1.0",
 ]
 
 [dependency-groups]
 dev = [
+    "httpx2>=2.7.0",
     "mypy>=2.3.0",
     "pytest>=9.1.1",
+    "pytest-cov>=6.2,<8.0",
     "ruff>=0.15.22",
 ]
 [tool.ruff]

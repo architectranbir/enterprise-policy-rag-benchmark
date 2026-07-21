@@ -31,9 +31,9 @@ class PolicyRetrievalRequest(BaseModel):
     )
     classification: PolicyClassification | None = None
     query_embedding: tuple[float, ...] | None = Field(
-    default=None,
-    min_length=1,
-)
+        default=None,
+        min_length=1,
+    )
     limit: int = Field(default=10, ge=1, le=100)
 
 

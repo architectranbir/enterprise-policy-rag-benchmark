@@ -1,9 +1,12 @@
-"""Retrieve exact metadata matches from Azure AI Search."""
+"""Retrieve secured policy chunks from Azure AI Search."""
 
 from collections.abc import Iterable
 from datetime import date, datetime
 from typing import Any, Protocol
 
+from azure.search.documents.models import VectorizedQuery
+
+from policy_rag.indexing.azure_search import EMBEDDING_DIMENSIONS
 from policy_rag.retrieval.azure_filter import build_azure_exact_filter
 from policy_rag.retrieval.models import (
     PolicyRetrievalRequest,
@@ -38,6 +41,7 @@ class AzureSearchQueryClient(Protocol):
         filter: str | None = None,
         select: list[str] | None = None,
         top: int | None = None,
+        vector_queries: list[VectorizedQuery] | None = None,
     ) -> Iterable[dict[str, Any]]:
         """Search indexed documents."""
 
@@ -101,6 +105,34 @@ def retrieve_exact_policy_chunks(
 
     results = client.search(
         search_text="*",
+        filter=build_azure_exact_filter(request),
+        select=list(AZURE_RETRIEVAL_FIELDS),
+        top=request.limit,
+    )
+
+    return tuple(_map_azure_result(result) for result in results)
+
+
+def retrieve_vector_policy_chunks(
+    client: AzureSearchQueryClient,
+    request: PolicyRetrievalRequest,
+) -> tuple[RetrievedPolicyChunk, ...]:
+    """Retrieve nearest chunks while enforcing effective-date and ACL filters."""
+
+    if request.query_embedding is None:
+        raise ValueError("query_embedding is required for vector retrieval")
+    if len(request.query_embedding) != EMBEDDING_DIMENSIONS:
+        raise ValueError(f"query_embedding must contain {EMBEDDING_DIMENSIONS} values")
+
+    vector_query = VectorizedQuery(
+        vector=list(request.query_embedding),
+        fields="embedding",
+        k_nearest_neighbors=request.limit,
+        exhaustive=False,
+    )
+    results = client.search(
+        search_text=None,
+        vector_queries=[vector_query],
         filter=build_azure_exact_filter(request),
         select=list(AZURE_RETRIEVAL_FIELDS),
         top=request.limit,

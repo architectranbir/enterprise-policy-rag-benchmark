@@ -2,12 +2,10 @@ import json
 from collections.abc import Sequence
 from typing import Any, Protocol, cast
 from urllib.error import HTTPError
-from urllib.parse import quote
 from urllib.request import Request, urlopen
 
 from policy_rag.embeddings.provider import EmbeddingVector
 
-API_VERSION = "2024-10-21"
 TOKEN_SCOPE = "https://cognitiveservices.azure.com/.default"
 
 
@@ -46,7 +44,7 @@ class FoundryEmbeddingProvider:
             raise ValueError("timeout_seconds must be positive")
 
         self._endpoint = endpoint.rstrip("/")
-        self._deployment = quote(deployment, safe="")
+        self._deployment = deployment
         self._credential = credential
         self._dimensions = dimensions
         self._timeout_seconds = timeout_seconds
@@ -63,13 +61,16 @@ class FoundryEmbeddingProvider:
             raise ValueError("embedding texts must not be empty")
 
         access_token = self._credential.get_token(TOKEN_SCOPE).token
-        url = (
-            f"{self._endpoint}/openai/deployments/{self._deployment}/embeddings"
-            f"?api-version={API_VERSION}"
-        )
+        url = f"{self._endpoint}/openai/v1/embeddings"
         request = Request(
             url=url,
-            data=json.dumps({"input": list(texts)}).encode(),
+            data=json.dumps(
+                {
+                    "model": self._deployment,
+                    "input": list(texts),
+                    "dimensions": self._dimensions,
+                }
+            ).encode(),
             headers={
                 "Authorization": f"Bearer {access_token}",
                 "Content-Type": "application/json",
