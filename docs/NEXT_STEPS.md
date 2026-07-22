@@ -2,13 +2,15 @@
 
 ## Current task
 
-Extend evaluation coverage after the first secured fair vector-only benchmark.
+Live-run the enterprise-controls, repeated fair and platform-optimised benchmark tracks.
 
 ## Immediate verification
 
-1. Add a separate negative ACL, effective-date and refusal evaluation set.
-2. Add configurable warm-up and repeated runs with median, p95 and confidence intervals.
-3. Automate durable result upload from the private benchmark jobs instead of log reconstruction.
+1. Review and deploy the new image only after explicit approval.
+2. Re-ingest a dedicated Qdrant dense+sparse optimised collection and update the Azure semantic
+   configuration through a reviewed deployment.
+3. Execute repeated fair, enterprise-control and platform-optimised jobs and persist schema-valid
+   JSON, CSV and Markdown artifacts in durable storage.
 4. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
    exception, and verify private-only data-plane access.
 5. Add repeatable integration tests for the local containerised backends.
@@ -18,7 +20,8 @@ Extend evaluation coverage after the first secured fair vector-only benchmark.
 
 ## Exact next implementation task
 
-Implement the separate negative ACL, effective-date and refusal evaluation dataset and runner.
+Review the complete local diff and gates, then obtain approval for live benchmark deployment and
+execution. Do not publish new comparison claims until those runs complete.
 
 ## Guardrails
 
@@ -27,5 +30,5 @@ Implement the separate negative ACL, effective-date and refusal evaluation datas
 - Use Microsoft Entra ID authentication; do not add service keys or secrets.
 - Obtain user groups from trusted identity claims, never query text or user input.
 - Preserve canonical chunks, metadata, ACLs and citation identifiers.
-- Do not add hybrid or semantic ranking until vector-only retrieval is measured.
+- Never mix platform-optimised results with the fair-vector comparison.
 - Implement and verify one small component at a time.

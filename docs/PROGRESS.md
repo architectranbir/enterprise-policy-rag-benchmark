@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Phase 11 — deployed security hardening and operational verification
+Phase 12 — enterprise evaluation and Web Benchmark Lab (local implementation)
 
 ## Completed and verified
 
@@ -112,10 +112,20 @@ Phase 11 — deployed security hardening and operational verification
 - Final verification passed Ruff formatting/lint, strict mypy, 128 tests with 80% coverage,
   Terraform formatting/validation, standalone Compose configuration and a refresh-disabled
   Terraform no-change plan; live job templates were also checked independently.
+- Locally implemented enterprise-control cases and scoring, warm-up/repeated fair measurements,
+  Precision@K and nDCG@K, p50/p95/median/standard-deviation latency, component-level answer timing,
+  strictly separated platform-optimised adapters, schema validation and Entra-only durable upload.
+- Added the Web Benchmark Lab with honest empty state, history, comparison cards/charts,
+  per-question evidence and JSON/CSV export. These current-branch changes are not deployed.
+- Final current-branch local verification: Ruff format/lint and strict mypy passed; 137 tests passed
+  with 84% coverage; Web lint, one unit test, production build and production dependency audit
+  passed; both Terraform roots validated; Compose configuration passed and API/Web images built;
+  committed benchmark schemas and deterministic comparison regeneration passed; the secret-pattern
+  scan found only the typed `SecretStr` configuration field and no credential value.
 
 ## Current branch
 
-`feature/fair-benchmark-corpus-v1`
+`feature/enterprise-benchmark-lab`
 
 ## Verified development resources
 
@@ -130,9 +140,8 @@ Phase 11 — deployed security hardening and operational verification
 
 ## Known limitations
 
-- Platform-optimised hybrid and semantic retrieval are not implemented yet.
-- The 52-case fair dataset contains positive relevance judgments. Negative ACL, expiry and refusal
-  evaluation will be recorded separately so retrieval metrics remain well-defined.
+- Platform-optimised adapters and enterprise-control schemas are locally implemented but have not
+  been live-run or deployed.
 - The published fair-vector latency values are from one development run per backend, include the
   first retrieval/connection cost, and have no warm-up exclusion, repetitions or confidence interval.
 - The development environment retains one reviewed operator IP allowlist. Set it empty and run
@@ -145,3 +154,7 @@ Phase 11 — deployed security hardening and operational verification
 - Full Terraform refresh is unavailable to the human operator after its temporary Key Vault data
   role was removed; deployment plans were reviewed with `-refresh=false` and live resources were
   independently checked. Use a federated VNet deployment identity for authoritative refresh plans.
+- Repeated and enterprise-control evidence does not exist yet; the Lab must show only schema-valid
+  committed runs and “No benchmark completed” when none exist.
+- API-triggered asynchronous benchmark execution is not configured. `POST /benchmarks/runs` fails
+  closed and execution remains an operator-controlled Container Apps Job.
