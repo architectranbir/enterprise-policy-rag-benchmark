@@ -51,5 +51,7 @@ qdrant_storage/
 # Generated results
 benchmark_results/*
 !benchmark_results/.gitkeep
+data/generated/*
+!data/generated/.gitkeep
 # Local Terraform backend configuration
 backend.local.hcl

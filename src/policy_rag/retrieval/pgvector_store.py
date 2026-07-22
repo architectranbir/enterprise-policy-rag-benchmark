@@ -60,10 +60,13 @@ class PgVectorStore:
         query = """INSERT INTO policy_chunks VALUES (
         %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
         ON CONFLICT (chunk_id) DO UPDATE SET text=EXCLUDED.text, embedding=EXCLUDED.embedding,
-        document_title=EXCLUDED.document_title, effective_from=EXCLUDED.effective_from,
+        document_id=EXCLUDED.document_id, document_title=EXCLUDED.document_title,
+        version=EXCLUDED.version, effective_from=EXCLUDED.effective_from,
         effective_to=EXCLUDED.effective_to, department=EXCLUDED.department,
         classification=EXCLUDED.classification, allowed_groups=EXCLUDED.allowed_groups,
-        section_title=EXCLUDED.section_title"""
+        section_id=EXCLUDED.section_id, section_number=EXCLUDED.section_number,
+        section_title=EXCLUDED.section_title, section_ordinal=EXCLUDED.section_ordinal,
+        chunk_ordinal=EXCLUDED.chunk_ordinal"""
         values = [
             (
                 d.chunk_id,

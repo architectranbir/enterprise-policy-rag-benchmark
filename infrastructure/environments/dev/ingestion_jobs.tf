@@ -46,7 +46,7 @@ resource "azurerm_container_app_job" "ingestion" {
       image   = var.api_container_image
       cpu     = 1
       memory  = "2Gi"
-      command = ["python", "scripts/ingest_corpus.py"]
+      command = ["python", "scripts/ingest_fair_artifact.py"]
 
       env {
         name  = "VECTOR_BACKEND"
