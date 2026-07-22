@@ -41,6 +41,7 @@ def main() -> None:
             "mean_reciprocal_rank": run.mean_reciprocal_rank,
             "mean_latency_ms": run.mean_latency_ms,
             "case_count": run.case_count,
+            "created_at": run.created_at.isoformat(),
         }
         for run in runs
     ]
@@ -48,10 +49,13 @@ def main() -> None:
         "Development-scale results are workload-specific and do not establish a universal winner.",
         "Latency includes one client-side retrieval call but excludes query embedding generation.",
         "Platform-optimised hybrid, sparse and semantic features are outside this comparison.",
+        "Each backend has one measured run; latency has no warm-up exclusion or confidence interval.",
     )
     comparison = {
         "mode": "fair-vector-only",
         "dataset": runs[0].dataset_name,
+        "environment": "development",
+        "runs_per_backend": 1,
         "artifact_sha256": runs[0].artifact_sha256,
         "source_sha256": runs[0].source_sha256,
         "top_k": runs[0].top_k,
@@ -68,6 +72,8 @@ def main() -> None:
         "# Fair vector-only retrieval comparison",
         "",
         f"Dataset: `{runs[0].dataset_name}` · Cases: {runs[0].case_count} · Top k: {runs[0].top_k}",
+        "",
+        "Environment: development · Measured runs per backend: 1",
         "",
         f"| Backend | {metric} | MRR | Mean retrieval latency (ms) |",
         "|---|---:|---:|---:|",

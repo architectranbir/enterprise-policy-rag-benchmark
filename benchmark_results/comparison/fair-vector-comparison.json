@@ -1,0 +1,41 @@
+{
+  "mode": "fair-vector-only",
+  "dataset": "synthetic-policy-fair-vector-v1",
+  "environment": "development",
+  "runs_per_backend": 1,
+  "artifact_sha256": "e6ca927bf3b2df180a2a0893c2d8d3764098dcd5d4f3ff7d264a37e53dcc759c",
+  "source_sha256": "fe69d136074d41c31c1cd8dcd91fe3175b26755f73a5c5d016ca2f17f05c0cfd",
+  "top_k": 5,
+  "limitations": [
+    "Development-scale results are workload-specific and do not establish a universal winner.",
+    "Latency includes one client-side retrieval call but excludes query embedding generation.",
+    "Platform-optimised hybrid, sparse and semantic features are outside this comparison.",
+    "Each backend has one measured run; latency has no warm-up exclusion or confidence interval."
+  ],
+  "results": [
+    {
+      "backend": "azure_ai_search",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 0.9903846153846154,
+      "mean_latency_ms": 48.63072701922332,
+      "case_count": 52,
+      "created_at": "2026-07-22T11:57:20.346048+00:00"
+    },
+    {
+      "backend": "pgvector",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 0.9903846153846154,
+      "mean_latency_ms": 114.97106326922992,
+      "case_count": 52,
+      "created_at": "2026-07-22T11:57:29.956437+00:00"
+    },
+    {
+      "backend": "qdrant",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 0.9903846153846154,
+      "mean_latency_ms": 45.784235346153295,
+      "case_count": 52,
+      "created_at": "2026-07-22T11:57:29.056417+00:00"
+    }
+  ]
+}

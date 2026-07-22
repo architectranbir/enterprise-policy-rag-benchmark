@@ -97,7 +97,21 @@ Phase 11 — deployed security hardening and operational verification
 - Added dataset integrity validation for unique cases, canonical chunk references, effective dates
   and ACL access.
 - Locally verified the expanded corpus and dataset with Ruff, strict mypy and the full 122-test
-  suite. No expanded-corpus cloud ingestion or benchmark run has been performed yet.
+  suite before cloud execution.
+- Generated one compressed fair-vector artifact containing 67 document vectors and 52 query
+  vectors from the configured 3,072-dimensional Foundry embedding deployment.
+- Live-ingested that exact artifact into Azure AI Search, pgvector and Qdrant; all three Container
+  Apps Job executions succeeded and independently logged 67 ingested chunks.
+- Executed one 52-case fair-vector run per backend from the same artifact. All three produced
+  Recall@5 1.0000 and MRR 0.9904; mean retrieval latency was 48.63 ms for Azure AI Search,
+  114.97 ms for pgvector and 45.78 ms for Qdrant.
+- Reconstructed and schema-validated complete raw rankings from numbered log-safe records, saved
+  the three raw JSON runs and generated publish-ready JSON and Markdown comparisons.
+- Pinned the ingestion jobs independently from the API image and applied a reviewed targeted
+  Terraform plan with 0 additions, 3 in-place job updates and 0 deletions. The API was unchanged.
+- Final verification passed Ruff formatting/lint, strict mypy, 128 tests with 80% coverage,
+  Terraform formatting/validation, standalone Compose configuration and a refresh-disabled
+  Terraform no-change plan; live job templates were also checked independently.
 
 ## Current branch
 
@@ -117,11 +131,10 @@ Phase 11 — deployed security hardening and operational verification
 ## Known limitations
 
 - Platform-optimised hybrid and semantic retrieval are not implemented yet.
-- The deployed indexes still contain the original 11 chunks. The expanded 67-chunk corpus must be
-  embedded once and re-ingested identically before benchmark execution.
 - The 52-case fair dataset contains positive relevance judgments. Negative ACL, expiry and refusal
   evaluation will be recorded separately so retrieval metrics remain well-defined.
-- The fair dataset has not produced benchmark results.
+- The published fair-vector latency values are from one development run per backend, include the
+  first retrieval/connection cost, and have no warm-up exclusion, repetitions or confidence interval.
 - The development environment retains one reviewed operator IP allowlist. Set it empty and run
   Terraform from a VNet-connected runner to make the Azure data planes private-only.
 - Azure AI Search has one replica and one partition and is not configured for production availability.

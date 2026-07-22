@@ -363,3 +363,41 @@ Each meaningful error should include:
 - **Verification:** The subsequent fail-fast quality gate passed Ruff formatting and lint, strict
   mypy and pytest with coverage: 122 tests passed with one expected local Qdrant payload-index
   warning.
+
+## ERR-032: Container Apps execution override dropped inherited settings
+
+- **Date:** 2026-07-22
+- **Component:** Fair-vector ingestion jobs
+- **Error:** All first artifact-ingestion executions failed `Settings` validation because required
+  environment values were empty.
+- **Root cause:** Starting a job with an image/command execution override replaced the container
+  execution definition instead of inheriting its environment block.
+- **Fix:** Updated the existing job templates while preserving their managed identity, environment
+  and Qdrant Key Vault secret reference, then started normal executions.
+- **Verification:** All three corrected jobs succeeded and Log Analytics recorded 67 pre-embedded
+  chunks ingested by each backend.
+
+## ERR-033: Non-root benchmark jobs could not persist under `/app`
+
+- **Date:** 2026-07-22
+- **Component:** Fair-vector benchmark result capture
+- **Error:** Retrieval completed, then each job raised `PermissionError` while creating
+  `/app/benchmark_results` as the non-root application user.
+- **Root cause:** Log-emission mode still attempted the local-development default file write.
+- **Fix:** Made disk output optional in log-emission mode and encoded complete raw runs as
+  deterministic gzip/base64 numbered records below the Log Analytics line-size limit.
+- **Verification:** Final benchmark executions succeeded for all three backends; numbered records
+  reconstructed into three schema-valid 52-case raw JSON files with identical artifact and source
+  hashes.
+
+## ERR-034: Legacy Docker builder could not complete the cross-platform image
+
+- **Date:** 2026-07-22
+- **Component:** Benchmark container build
+- **Error:** The legacy builder failed the multi-stage `linux/amd64` build on the ARM64 host because
+  an intermediate image did not provide the requested platform.
+- **Root cause:** Homebrew buildx was installed but not discovered as a Docker CLI plugin.
+- **Fix:** Invoked the installed stable buildx binary directly with BuildKit.
+- **Verification:** The final immutable benchmark image was pushed at manifest digest
+  `sha256:fcfdb50f573629994ed41ee8c10379f629171e768bf21ee7ee447f55761f9c1d`, and all three final
+  benchmark executions succeeded from that image.

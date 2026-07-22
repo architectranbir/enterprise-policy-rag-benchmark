@@ -78,12 +78,20 @@ artifacts have been captured.
 
 Fair-vector dataset v1 contains 8 synthetic policies across 9 effective-dated versions,
 67 deterministic canonical chunks and 52 positive retrieval cases. Integrity tests verify every
-ground-truth chunk ID, ACL and effective date. These committed inputs have not yet been ingested
-into the deployed backends.
+ground-truth chunk ID, ACL and effective date.
 
-The deployed development indexes currently contain the same 11 canonical chunks. Live smoke tests
-passed for Azure AI Search, pgvector and Qdrant; these smoke results are functional verification,
-not benchmark rankings.
+The deployed development indexes contain the same 67 pre-embedded canonical chunks. A verified
+single-run fair vector-only evaluation produced the following evidence:
+
+| Backend | Recall@5 | MRR | Mean retrieval latency |
+|---|---:|---:|---:|
+| Azure AI Search | 1.0000 | 0.9904 | 48.63 ms |
+| PostgreSQL/pgvector | 1.0000 | 0.9904 | 114.97 ms |
+| Qdrant | 1.0000 | 0.9904 | 45.78 ms |
+
+These development-scale results are workload-specific, use one measured run per backend and do
+not establish a universal winner. Query embedding time is excluded. Raw rankings and the
+publish-ready comparison are in `benchmark_results`.
 
 For an existing Terraform-managed environment, build the Web UI from authoritative state outputs
 instead of copying Entra IDs manually:
