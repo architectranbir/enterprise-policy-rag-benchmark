@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-FIN-001",
+  "title": "Travel and Expenses Policy",
+  "version": "1.0",
+  "effective_from": "2025-01-01",
+  "effective_to": "2025-12-31",
+  "department": "Finance",
+  "classification": "internal",
+  "allowed_groups": ["employees", "finance"]
+}

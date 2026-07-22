@@ -10,11 +10,21 @@ def test_committed_synthetic_policy_corpus_is_valid() -> None:
 
     corpus = load_policy_corpus(CORPUS_ROOT)
 
-    assert len(corpus) == 1
+    assert len(corpus) == 9
+    assert len({source.metadata.document_id for source in corpus}) == 8
 
-    source = corpus[0]
+    source = next(
+        source
+        for source in corpus
+        if source.metadata.document_id == "POL-HR-001" and source.metadata.version == "1.0"
+    )
 
     assert source.metadata.document_id == "POL-HR-001"
     assert source.metadata.version == "1.0"
     assert source.metadata.title == "Remote Working Policy"
     assert source.content.startswith("# Remote Working Policy")
+
+    travel_versions = {
+        source.metadata.version for source in corpus if source.metadata.document_id == "POL-FIN-001"
+    }
+    assert travel_versions == {"1.0", "2.0"}

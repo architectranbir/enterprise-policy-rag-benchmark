@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-PROC-001",
+  "title": "Supplier Purchasing Policy",
+  "version": "1.0",
+  "effective_from": "2026-01-15",
+  "effective_to": null,
+  "department": "Procurement",
+  "classification": "internal",
+  "allowed_groups": ["employees", "procurement", "finance"]
+}

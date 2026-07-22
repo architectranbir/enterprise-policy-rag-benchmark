@@ -1,3 +1,5 @@
+from datetime import date
+
 from pydantic import BaseModel, ConfigDict, Field
 
 
@@ -6,6 +8,7 @@ class EvaluationCase(BaseModel):
     case_id: str
     question: str = Field(min_length=3)
     user_groups: tuple[str, ...]
+    as_of: date
     relevant_chunk_ids: tuple[str, ...] = Field(min_length=1)
 
 

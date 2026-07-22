@@ -232,3 +232,19 @@ PostgreSQL role creation is a controlled one-time bootstrap operation. Its tempo
 administrator identity, job and ACR role are removed after the application and ingestion roles are
 created. Extension installation remains an administrator responsibility rather than a runtime
 store action.
+
+## ADR-011: Freeze fair-vector dataset v1 before cloud re-ingestion
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+Fair-vector dataset v1 contains eight synthetic policies across nine versions, producing 67
+deterministic canonical chunks and 52 positive retrieval cases. Every relevance judgement points
+to a real chunk that is effective on the case's `as_of` date and accessible to its synthetic user
+groups. Version-sensitive cases deliberately distinguish the two travel-policy versions.
+
+Negative ACL, expiry and unsupported-question cases remain in a separate evaluation track because
+they test filtering and refusal behaviour rather than positive Recall@k or MRR. For a fair backend
+comparison, chunk text, metadata and embeddings will be generated once into a versioned canonical
+artifact. Azure AI Search, PostgreSQL/pgvector and Qdrant must ingest those exact vectors rather
+than embedding independently.

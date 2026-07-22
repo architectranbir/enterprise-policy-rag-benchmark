@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-LEG-001",
+  "title": "Records Retention and Disposal Policy",
+  "version": "1.0",
+  "effective_from": "2026-04-01",
+  "effective_to": null,
+  "department": "Legal",
+  "classification": "internal",
+  "allowed_groups": ["employees", "legal", "records-management"]
+}

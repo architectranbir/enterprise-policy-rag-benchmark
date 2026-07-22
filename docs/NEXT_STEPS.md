@@ -2,13 +2,13 @@
 
 ## Current task
 
-Expand and execute the fair vector-only benchmark after the secured live baseline.
+Extend evaluation coverage after the first secured fair vector-only benchmark.
 
 ## Immediate verification
 
-1. Validate interactive Microsoft sign-in and `Policy.Read` consent in a normal user browser.
-2. Expand the synthetic corpus and evaluation set before recording fair results.
-3. Run repeatable fair vector-only evaluation across the populated backends and retain raw artifacts.
+1. Add a separate negative ACL, effective-date and refusal evaluation set.
+2. Add configurable warm-up and repeated runs with median, p95 and confidence intervals.
+3. Automate durable result upload from the private benchmark jobs instead of log reconstruction.
 4. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
    exception, and verify private-only data-plane access.
 5. Add repeatable integration tests for the local containerised backends.
@@ -18,8 +18,7 @@ Expand and execute the fair vector-only benchmark after the secured live baselin
 
 ## Exact next implementation task
 
-Use the deployed UI to complete interactive Microsoft consent, then run and capture the expanded
-fair-vector evaluation without mixing it with platform-optimised results.
+Implement the separate negative ACL, effective-date and refusal evaluation dataset and runner.
 
 ## Guardrails
 

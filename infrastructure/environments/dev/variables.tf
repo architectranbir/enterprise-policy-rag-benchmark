@@ -241,6 +241,21 @@ variable "api_container_image" {
   }
 }
 
+variable "ingestion_container_image" {
+  description = "Optional immutable ingestion and benchmark job image; defaults to the API image."
+  type        = string
+  default     = null
+  nullable    = true
+
+  validation {
+    condition = (
+      var.ingestion_container_image == null ||
+      can(regex("@sha256:[0-9a-f]{64}$", var.ingestion_container_image))
+    )
+    error_message = "ingestion_container_image must be an immutable sha256 image reference."
+  }
+}
+
 variable "qdrant_container_image" {
   description = "Pinned Qdrant demo image."
   type        = string

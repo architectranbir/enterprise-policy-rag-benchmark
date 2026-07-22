@@ -1,3 +1,5 @@
+from datetime import date
+
 from policy_rag.evaluation.models import EvaluationCase
 from policy_rag.evaluation.runner import evaluate_retrieval
 
@@ -8,6 +10,7 @@ def test_calculates_recall_and_mrr_without_inventing_results() -> None:
             case_id="one",
             question="Where is it?",
             user_groups=("employees",),
+            as_of=date(2026, 7, 22),
             relevant_chunk_ids=("a", "b"),
         ),
     )
