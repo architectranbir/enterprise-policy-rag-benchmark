@@ -9,7 +9,12 @@ from typing import cast
 from policy_rag.config import Settings
 from policy_rag.domain.access import PolicyAccessContext
 from policy_rag.evaluation.artifact import artifact_digest, load_artifact
-from policy_rag.evaluation.results import BackendName, CaseRetrievalResult, FairVectorRun
+from policy_rag.evaluation.results import (
+    BackendName,
+    CaseRetrievalResult,
+    FairVectorRun,
+    encode_run_chunks,
+)
 from policy_rag.retrieval.models import PolicyRetrievalRequest
 from policy_rag.runtime import build_runtime
 
@@ -104,7 +109,9 @@ def main() -> None:
         f"mrr={run.mean_reciprocal_rank:.4f} mean_latency_ms={run.mean_latency_ms:.2f}"
     )
     if args.emit_json:
-        print(f"FAIR_VECTOR_RUN_JSON={run.model_dump_json()}")
+        chunks = encode_run_chunks(run)
+        for index, chunk in enumerate(chunks, 1):
+            print(f"FAIR_VECTOR_RUN_PART={index}/{len(chunks)}:{chunk}")
 
 
 if __name__ == "__main__":
