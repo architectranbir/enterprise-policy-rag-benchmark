@@ -2,7 +2,7 @@
 
 ## Current task
 
-Complete the two identity-dependent production handoff items.
+Complete the identity-dependent production-readiness items.
 
 ## Immediate verification
 
@@ -12,9 +12,12 @@ Complete the two identity-dependent production handoff items.
    application principal with `pgaadauth_create_principal`.
 3. Ingest identical canonical chunks into all three deployed backends.
 4. Expand the synthetic corpus and evaluation set before recording fair results.
-5. Preserve the verified no-drift Terraform plan and review every future apply.
+5. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
+   exception, and verify private-only data-plane access.
 6. Add repeatable integration tests for the local containerised backends.
-7. Add private endpoints for remaining Azure PaaS services and CI workload federation.
+7. Add CI workload identity federation and enforce the security posture with Azure Policy.
+8. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
+   JWT RBAC with a trusted token issuer and rotation lifecycle.
 
 ## Exact next implementation task
 

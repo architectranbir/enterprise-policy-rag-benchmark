@@ -189,3 +189,30 @@ The single-replica Qdrant Container App mounts a dedicated Azure Files share, re
 key supplied outside source control, and remains internal-only. It is a benchmark/demo topology,
 not a production highly available Qdrant cluster. Filter fields receive payload indexes so ACL
 and effective-date filtering do not depend on unindexed scans.
+
+## ADR-009: Use managed identity, Key Vault references and private data planes
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The API and Qdrant Container Apps use separate user-assigned managed identities. Qdrant
+administrator and read-only credentials are generated ephemerally, stored as write-only Key
+Vault secret values and referenced from Container Apps with versionless secret URLs. The API
+receives only the read-only credential and only when Qdrant is selected. The administrator key
+is reserved for ingestion and administration.
+
+Foundry, Search, Key Vault, ACR and Qdrant Azure Files storage use private endpoints, private
+DNS and deny-by-default firewalls. A reviewed operator CIDR remains an explicit development
+option; an empty allowlist produces private-only access. Anonymous blob access is disabled.
+
+Application Insights local authentication is disabled. The API publishes telemetry using its
+managed identity and a resource-scoped Monitoring Metrics Publisher assignment.
+
+Azure Files is the documented exception to keyless access: the Container Apps environment
+storage mount requires a storage account key. The key remains in infrastructure configuration,
+is never injected into an application container and is rotated with the two-key procedure.
+
+The stable `azure-monitor-opentelemetry` distribution currently depends on Microsoft-published
+packages whose versions are labelled beta. Those exact bridge/exporter versions are pinned as
+an unavoidable transitive compatibility exception; arbitrary prerelease packages remain
+disallowed unless explicitly pinned and documented.

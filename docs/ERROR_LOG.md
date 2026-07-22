@@ -208,3 +208,47 @@ Each meaningful error should include:
 - **Errors:** West Europe rejected new Static Web Apps customers; the first PostgreSQL Entra administrator write returned an Azure internal error.
 - **Fix:** Use provider-advertised East US 2. Retry the administrator after PostgreSQL reached `Ready`, then import it into Terraform state.
 - **Verification:** Production UI homepage is live, the reviewed Entra administrator exists, and the final Terraform plan reports no changes.
+
+## ERR-018: Key Vault rejected Terraform secret creation
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant Key Vault migration
+- **Error:** The signed-in operator lacked Key Vault secret data-plane permission.
+- **Root cause:** Azure control-plane access does not grant secret write access when Key Vault RBAC is enabled.
+- **Fix:** Temporarily assigned Key Vault Secrets Officer to the operator at the single vault scope for the migration. The application identities retain only secret-scoped reader roles.
+- **Verification:** Terraform created separate write-only administrator and read-only secret versions and Container Apps resolved both versionless references. After the migration and final refresh plan, the temporary human role assignment was deleted and a scoped role query returned zero assignments.
+
+## ERR-019: Azure services rejected single-host CIDR syntax
+
+- **Date:** 2026-07-22
+- **Component:** Foundry and Azure Storage firewalls
+- **Error:** The services rejected an IPv4 address expressed with a `/32` suffix.
+- **Root cause:** These resource APIs accept a single host as a plain address even though the project input is normalized as CIDR.
+- **Fix:** Normalize `/32` operator entries to plain IP addresses only for service APIs requiring that representation.
+- **Verification:** The deny-by-default firewall changes and private endpoints applied successfully.
+
+## ERR-020: API readiness failed immediately after Search private endpoint creation
+
+- **Date:** 2026-07-22
+- **Component:** Container Apps DNS resolution
+- **Error:** `/ready` failed after Azure AI Search was moved behind Private Link.
+- **Root cause:** The running API revision retained the pre-Private-Link DNS result.
+- **Fix:** Restarted the API revision after private DNS and endpoint provisioning completed.
+- **Verification:** `/health` and `/ready` both returned HTTP 200 through the deployed endpoint.
+
+## ERR-021: Docker did not discover the installed Buildx plugin
+
+- **Date:** 2026-07-22
+- **Component:** Production container build
+- **Error:** Docker could not perform the required `linux/amd64` Buildx build from Apple Silicon.
+- **Root cause:** The Homebrew Buildx plugin directory was not in Docker's plugin discovery path.
+- **Fix:** Used a scoped temporary Docker configuration pointing at the installed plugin and the Colima socket.
+- **Verification:** The image built as `linux/amd64`, passed a bootstrap smoke test, pushed to ACR and ran in the healthy API revision.
+
+## ERR-022: Qdrant reports an Azure Files filesystem warning
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant demo persistence
+- **Warning:** Qdrant cannot guarantee data safety for the unrecognised mounted filesystem.
+- **Impact:** The single-node Azure Files deployment is suitable only for this benchmark/demo and is not a production HA Qdrant topology.
+- **Verification:** After both storage-key remounts Qdrant loaded its persisted Raft state, started REST and gRPC, and reported a ready container with zero restart failures.

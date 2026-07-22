@@ -18,6 +18,26 @@ uv run --locked pytest
 Set the Azure Foundry endpoint and deployment names in `.env`. Authentication uses
 `DefaultAzureCredential`; credentials and service keys must not be committed.
 
+## Security model
+
+- Foundry and Azure AI Search use Microsoft Entra ID; local/key authentication is disabled.
+- The deployed API uses a user-assigned managed identity for Azure access and telemetry.
+- Qdrant administrator and read-only keys are generated as write-only Terraform values,
+  stored in Key Vault, and consumed through versionless Container Apps Key Vault references.
+- The query API receives only the Qdrant read-only key, and only when
+  `VECTOR_BACKEND=qdrant`. The administrator key is reserved for Qdrant administration and
+  ingestion operations.
+- Foundry, Search, Key Vault, ACR and Qdrant file storage support private endpoints with
+  private DNS. Set `operator_ip_ranges = []` for private-only data-plane access.
+- Qdrant storage denies anonymous blob access. Azure Files currently requires a storage
+  account key for the Container Apps environment mount; rotate it with the documented
+  primary/secondary-key procedure and never expose it to an application container.
+- Application Insights accepts Microsoft Entra-authenticated telemetry only; its local
+  authentication is disabled.
+
+See [Security](docs/SECURITY.md) for trust boundaries, credential ownership, rotation and
+remaining production controls.
+
 ## Run
 
 ```bash

@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Phase 10 — multi-backend application foundation and local verification
+Phase 11 — deployed security hardening and operational verification
 
 ## Completed and verified
 
@@ -52,6 +52,22 @@ Phase 10 — multi-backend application foundation and local verification
   Key Vault, monitoring and Static Web Apps. API `/health` and `/ready` are live and passing.
 - Deployed the static UI files and verified the production homepage.
 - Verified a final full Terraform refresh plan with no changes.
+- Replaced inline Qdrant credentials with separate administrator and read-only Key Vault
+  secrets, write-only Terraform values and versionless Container Apps references.
+- Verified the Azure Search API revision has no Qdrant secret or `QDRANT_API_KEY` environment
+  variable; Terraform injects the read-only key only when `VECTOR_BACKEND=qdrant`.
+- Added private endpoints and private DNS for Foundry, Search, Key Vault, ACR and Qdrant Azure
+  Files storage, with deny-by-default service firewalls and an explicit development operator
+  allowlist.
+- Disabled anonymous blob access and storage local users; retained shared-key support only for
+  the Container Apps Azure Files mount.
+- Disabled Application Insights local authentication and live-verified managed-identity
+  telemetry for API health/readiness requests.
+- Rotated both Qdrant credentials during the Key Vault migration and completed a controlled
+  primary/secondary Azure Files key rotation without printing key material. Qdrant returned to
+  `ready=true` with no container restart failures.
+- Rebuilt and pushed the production API image as `linux/amd64`, deployed it by immutable digest,
+  and live-verified `/health` and `/ready`.
 
 ## Current branch
 
@@ -77,7 +93,10 @@ Phase 10 — multi-backend application foundation and local verification
 - The static UI Ask flow requires an Entra SPA/API app registration and consent before it can
   securely call the protected API; insecure demo identity remains disabled in Azure.
 - The fair dataset is intentionally small and has not produced benchmark results.
-- Public network access remains enabled for local development.
+- The development environment retains one reviewed operator IP allowlist. Set it empty and run
+  Terraform from a VNet-connected runner to make the Azure data planes private-only.
 - Azure AI Search has one replica and one partition and is not configured for production availability.
-- CI/CD workload identity federation and private endpoints for Search, Foundry, Key Vault and
-  Storage are deferred; PostgreSQL is VNet-private and Qdrant ingress is internal.
+- CI/CD workload identity federation and a VNet-connected deployment runner remain pending;
+  PostgreSQL is VNet-private and Qdrant ingress is internal.
+- Qdrant is a single-node demo deployment on Azure Files. Its filesystem warning means this
+  topology must not be represented as production-high-availability storage.
