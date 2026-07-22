@@ -2,27 +2,24 @@
 
 ## Current task
 
-Complete the identity-dependent production-readiness items.
+Expand and execute the fair vector-only benchmark after the secured live baseline.
 
 ## Immediate verification
 
-1. Create/review the Entra SPA/API app registration, redirect URI and delegated scope, then wire
-   MSAL into the deployed Web UI.
-2. Run a one-time VNet-scoped PostgreSQL bootstrap identity/job to create the least-privilege
-   application principal with `pgaadauth_create_principal`.
-3. Ingest identical canonical chunks into all three deployed backends.
-4. Expand the synthetic corpus and evaluation set before recording fair results.
-5. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
+1. Validate interactive Microsoft sign-in and `Policy.Read` consent in a normal user browser.
+2. Expand the synthetic corpus and evaluation set before recording fair results.
+3. Run repeatable fair vector-only evaluation across the populated backends and retain raw artifacts.
+4. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
    exception, and verify private-only data-plane access.
-6. Add repeatable integration tests for the local containerised backends.
-7. Add CI workload identity federation and enforce the security posture with Azure Policy.
-8. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
+5. Add repeatable integration tests for the local containerised backends.
+6. Add CI workload identity federation and enforce the security posture with Azure Policy.
+7. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
    JWT RBAC with a trusted token issuer and rotation lifecycle.
 
 ## Exact next implementation task
 
-Obtain the reviewed Entra application registration details and run an authenticated `/ask`
-request with a real application token containing the expected audience and group claims.
+Use the deployed UI to complete interactive Microsoft consent, then run and capture the expanded
+fair-vector evaluation without mixing it with platform-optimised results.
 
 ## Guardrails
 

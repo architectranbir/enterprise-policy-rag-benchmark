@@ -70,8 +70,8 @@ telemetry destination; Microsoft Entra authorisation is still required for inges
 
 - Remove the development operator IP allowlist after a private CI/deployment runner or VPN is
   available.
-- Add a trusted VNet-scoped PostgreSQL bootstrap job for the least-privilege application role.
-- Complete the Entra SPA/API registration and consent before enabling the Web UI Ask flow.
+- Validate the already-deployed Entra SPA/API consent flow in a normal user browser and document
+  tenant-admin consent requirements for production tenants.
 - Replace the single-node Qdrant demo topology with a supported highly available service for a
   production workload.
 - If collection-scoped Qdrant access is required, design and validate JWT RBAC token issuance,

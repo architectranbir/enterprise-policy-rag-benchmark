@@ -68,6 +68,23 @@ Phase 11 — deployed security hardening and operational verification
   `ready=true` with no container restart failures.
 - Rebuilt and pushed the production API image as `linux/amd64`, deployed it by immutable digest,
   and live-verified `/health` and `/ready`.
+- Provisioned separate Entra API and SPA registrations, a delegated `Policy.Read` scope and an
+  allowlisted security-group mapping. The Web UI now uses MSAL authorization code + PKCE and sends
+  a bearer token directly to the exact-origin CORS-protected API.
+- Bootstrapped least-privilege PostgreSQL application and ingestion Entra roles from a temporary
+  VNet-scoped managed identity, verified success, and removed the temporary administrator/job.
+- Deployed three manual managed-identity ingestion jobs and populated Azure AI Search, pgvector and
+  Qdrant with the same 11 canonical chunks and 3,072-dimensional embeddings.
+- Added bounded Foundry 429/5xx retry handling, quota-safe ingestion batches, grounded-answer
+  retries, and a backend-neutral live answer smoke test.
+- Live-verified the same supported question against all three backends. Each returned the GBP 250
+  policy answer with citation `POL-HR-001:1.0:SEC-006:CHK-001`.
+- Verified Qdrant query access with only its Key Vault-backed read-only key. Restoring the Azure AI
+  Search default removed the Qdrant API secret reference and secret-scoped role.
+- Reduced the query API's Azure AI Search permission to `Search Index Data Reader`; the separate
+  ingestion identity alone retains `Search Index Data Contributor`.
+- Locally verified the full 120-test unit suite, Ruff, strict mypy, Compose configuration and
+  production `linux/amd64` image build/push.
 
 ## Current branch
 
@@ -87,11 +104,10 @@ Phase 11 — deployed security hardening and operational verification
 ## Known limitations
 
 - Platform-optimised hybrid and semantic retrieval are not implemented yet.
-- Only one canonical chunk has been verified through live ingestion and retrieval.
-- The deployed PostgreSQL Entra administrator exists, but a least-privilege application database
-  role still requires a controlled bootstrap runner inside the VNet.
-- The static UI Ask flow requires an Entra SPA/API app registration and consent before it can
-  securely call the protected API; insecure demo identity remains disabled in Azure.
+- The synthetic corpus currently contains one versioned policy and 11 canonical chunks; expand it
+  before publishing statistically meaningful benchmark results.
+- Interactive Web UI sign-in/consent still requires a user browser validation. Automated in-app
+  browser navigation was blocked by the enterprise browser policy, while API-side live tests passed.
 - The fair dataset is intentionally small and has not produced benchmark results.
 - The development environment retains one reviewed operator IP allowlist. Set it empty and run
   Terraform from a VNet-connected runner to make the Azure data planes private-only.
@@ -100,3 +116,6 @@ Phase 11 — deployed security hardening and operational verification
   PostgreSQL is VNet-private and Qdrant ingress is internal.
 - Qdrant is a single-node demo deployment on Azure Files. Its filesystem warning means this
   topology must not be represented as production-high-availability storage.
+- Full Terraform refresh is unavailable to the human operator after its temporary Key Vault data
+  role was removed; deployment plans were reviewed with `-refresh=false` and live resources were
+  independently checked. Use a federated VNet deployment identity for authoritative refresh plans.

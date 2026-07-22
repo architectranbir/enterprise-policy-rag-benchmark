@@ -1,7 +1,5 @@
 # Error Log
 
-No application or infrastructure errors have been recorded yet.
-
 ## Entry format
 
 Each meaningful error should include:
@@ -252,3 +250,48 @@ Each meaningful error should include:
 - **Warning:** Qdrant cannot guarantee data safety for the unrecognised mounted filesystem.
 - **Impact:** The single-node Azure Files deployment is suitable only for this benchmark/demo and is not a production HA Qdrant topology.
 - **Verification:** After both storage-key remounts Qdrant loaded its persisted Raft state, started REST and gRPC, and reported a ready container with zero restart failures.
+
+## ERR-023: Foundry embedding ingestion was throttled
+
+- **Date:** 2026-07-22
+- **Error:** `HTTP 429 RateLimitReached`, with a 59-second retry interval.
+- **Root cause:** The development deployment has 1 request per 10 seconds and 1,000 tokens per
+  minute; ingestion made unbounded calls and did not honour `Retry-After`.
+- **Fix:** Added bounded transient retries and quota-safe configurable embedding batches.
+- **Verification:** Azure AI Search, pgvector and Qdrant each ingested 11 canonical chunks.
+
+## ERR-024: pgvector ingestion attempted an administrator-only extension command
+
+- **Date:** 2026-07-22
+- **Error:** `InsufficientPrivilege: only members of azure_pg_admin are allowed to use CREATE EXTENSION vector`.
+- **Root cause:** Runtime schema initialization repeated `CREATE EXTENSION` after the controlled
+  administrator bootstrap had already installed it.
+- **Fix:** Kept extension installation in the one-time bootstrap and limited runtime initialization
+  to tables and indexes. Local Compose installs the extension through an init SQL mount.
+- **Verification:** The managed-identity pgvector job ingested 11 chunks and the read-only API
+  returned a grounded answer with the expected citation.
+
+## ERR-025: Qdrant client used the wrong internal ingress port and timed out
+
+- **Date:** 2026-07-22
+- **Errors:** `httpx.ConnectTimeout`, followed by a 5-second payload-index `ReadTimeout`.
+- **Root cause:** `QdrantClient` appends its default REST port 6333 when an HTTPS URL omits a port,
+  while Container Apps terminates HTTPS on 443. Azure Files-backed index creation also exceeded the
+  client's default read timeout.
+- **Fix:** Set the internal Qdrant URL to explicit `:443` and added a typed configurable 60-second
+  client timeout.
+- **Verification:** The standard Qdrant ingestion job succeeded and the API, using only the
+  read-only Key Vault credential, returned the expected grounded answer and citation.
+
+## ERR-026: Query API retained an Azure AI Search write role
+
+- **Date:** 2026-07-22
+- **Component:** Azure AI Search RBAC
+- **Issue:** The query API still held `Search Index Data Contributor` after ingestion moved to a
+  separate managed identity.
+- **Root cause:** The original combined runtime identity needed document-write access before the
+  ingestion/query responsibility split.
+- **Fix:** Replaced the query API assignment with `Search Index Data Reader`; only the ingestion
+  identity retains `Search Index Data Contributor`.
+- **Verification:** The scoped Terraform apply completed with one role added and one removed, and
+  the deployed Azure AI Search readiness check remained successful.

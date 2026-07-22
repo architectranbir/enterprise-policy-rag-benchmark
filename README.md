@@ -49,9 +49,15 @@ The API exposes `POST /ask`, `GET /health`, and `GET /ready`. With Docker availa
 `docker compose up --build` starts the API, UI, PostgreSQL/pgvector, and Qdrant; the
 UI is served at `http://localhost:8080`.
 
-`/ask` validates Microsoft Entra bearer tokens and obtains the user ID and groups only
-from signed token claims. The bundled UI can use `X-Demo-User-*` headers only when
-`ALLOW_INSECURE_DEMO_IDENTITY=true`; this flag must remain false in deployed environments.
+`/ask` validates Microsoft Entra bearer tokens, the delegated `Policy.Read` scope and mapped
+security-group claims. The bundled Vite UI uses MSAL authorization code + PKCE and calls the API
+with a bearer token. `X-Demo-User-*` headers exist only for explicit local development with
+`ALLOW_INSECURE_DEMO_IDENTITY=true`; this flag remains false in Azure.
+
+Azure ingestion runs as three manual Container Apps Jobs with a dedicated managed identity. Azure
+AI Search uses RBAC, pgvector uses a least-privilege Entra database role, and only the Qdrant job
+receives the Key Vault-backed administrator key. The normal API receives Qdrant's read-only key
+only while `VECTOR_BACKEND=qdrant`.
 
 ## Quality gate
 
@@ -69,3 +75,7 @@ terraform -chdir=infrastructure/environments/dev validate
 The versioned fair evaluation dataset is in `data/evaluation`. Do not report results
 until every backend has been populated from identical canonical chunks and the run
 artifacts have been captured.
+
+The deployed development indexes currently contain the same 11 canonical chunks. Live smoke tests
+passed for Azure AI Search, pgvector and Qdrant; these smoke results are functional verification,
+not benchmark rankings.

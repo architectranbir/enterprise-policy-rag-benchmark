@@ -216,3 +216,19 @@ The stable `azure-monitor-opentelemetry` distribution currently depends on Micro
 packages whose versions are labelled beta. Those exact bridge/exporter versions are pinned as
 an unavoidable transitive compatibility exception; arbitrary prerelease packages remain
 disallowed unless explicitly pinned and documented.
+
+## ADR-010: Separate interactive identity, query and ingestion privileges
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The Web UI uses a dedicated Entra SPA registration and delegated `Policy.Read` scope. The API maps
+only configured Entra security-group object IDs to canonical ACL groups. A separate ingestion
+managed identity owns Search write permission, the PostgreSQL ingestion role and Qdrant's
+administrator secret. The query API never receives ingestion credentials; Qdrant read access and
+its secret-scoped Key Vault role exist only while Qdrant is the selected backend.
+
+PostgreSQL role creation is a controlled one-time bootstrap operation. Its temporary Entra
+administrator identity, job and ACR role are removed after the application and ingestion roles are
+created. Extension installation remains an administrator responsibility rather than a runtime
+store action.
