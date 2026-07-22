@@ -422,4 +422,5 @@ benchmark executions succeeded from that image.
   create one before validating the Compose model.
 - **Fix:** Create the ephemeral CI `.env` from the committed synthetic `.env.example` before
   configuration validation and image builds. No credentials are introduced.
-- **Verification:** Pending the updated GitHub Actions run.
+- **Verification:** PR #22 run `29941354037` passed containers, quality, Terraform and Web jobs;
+  the container job completed Compose configuration and both image builds.
