@@ -322,3 +322,16 @@ Each meaningful error should include:
 - **Verification:** Azure CLI and the ignored environment tfvars report the same tenant; the
   production bundle contains that tenant and excludes the incorrect ID; Vite build and npm audit
   passed; Static Web Apps CLI confirmed the production deployment.
+
+## ERR-029: Monitoring unit tests depended on a developer `.env`
+
+- **Date:** 2026-07-22
+- **Component:** GitHub Actions quality gate
+- **Error:** Three monitoring tests failed while constructing `Settings`; the remaining 117 tests
+  passed.
+- **Root cause:** The tests relied on required Foundry and Entra values from the ignored local
+  `.env`, which is correctly absent on clean CI runners.
+- **Fix:** Added explicit synthetic required settings to the monitoring-test fixture while retaining
+  strict production configuration validation.
+- **Verification:** Ruff formatting/lint, strict mypy and the exact pytest-with-coverage CI command
+  passed locally with all 120 tests. PR CI rerun is pending.
