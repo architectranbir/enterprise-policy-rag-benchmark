@@ -93,9 +93,12 @@ def main() -> None:
         ),
         cases=tuple(case_results),
     )
-    output = args.output or ROOT / "benchmark_results" / "raw" / f"{backend}.json"
-    output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(run.model_dump_json(indent=2) + "\n", encoding="utf-8")
+    output = args.output
+    if output is None and not args.emit_json:
+        output = ROOT / "benchmark_results" / "raw" / f"{backend}.json"
+    if output is not None:
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(run.model_dump_json(indent=2) + "\n", encoding="utf-8")
     print(
         f"{backend}: cases={count} recall@{artifact.top_k}={run.recall_at_k:.4f} "
         f"mrr={run.mean_reciprocal_rank:.4f} mean_latency_ms={run.mean_latency_ms:.2f}"
