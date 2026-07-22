@@ -1,0 +1,22 @@
+{
+  "name": "synthetic-policy-fair-vector-v1",
+  "mode": "fair-vector-only",
+  "embedding_model": "text-embedding-3-large",
+  "embedding_dimensions": 3072,
+  "similarity_metric": "cosine",
+  "top_k": 5,
+  "cases": [
+    {
+      "case_id": "EQ-001",
+      "question": "How much may an employee claim for approved home-office equipment?",
+      "user_groups": ["employees"],
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-002",
+      "question": "May an employee work from another country without approval?",
+      "user_groups": ["employees"],
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-008:CHK-001"]
+    }
+  ]
+}

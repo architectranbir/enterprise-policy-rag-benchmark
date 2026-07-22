@@ -1,0 +1,36 @@
+services:
+  api:
+    build: .
+    env_file: [.env]
+    depends_on:
+      postgres: {condition: service_healthy}
+      qdrant: {condition: service_started}
+    ports: ["8000:8000"]
+  web:
+    build:
+      context: ./web
+      args:
+        VITE_ENTRA_TENANT_ID: ${ENTRA_TENANT_ID:-local-development}
+        VITE_ENTRA_WEB_CLIENT_ID: ${ENTRA_WEB_CLIENT_ID:-local-development}
+        VITE_ENTRA_API_SCOPE: ${ENTRA_API_SCOPE:-api://local-development/Policy.Read}
+        VITE_API_BASE_URL: ${API_BASE_URL:-http://localhost:8000}
+    depends_on: [api]
+    ports: ["8080:80"]
+  postgres:
+    image: pgvector/pgvector:pg18-trixie
+    environment:
+      POSTGRES_DB: policy_rag
+      POSTGRES_USER: policy_rag
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U policy_rag"], interval: 5s, timeout: 3s, retries: 10}
+    ports: ["5432:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/10-vector.sql:ro
+  qdrant:
+    image: qdrant/qdrant:v1.18.2
+    environment:
+      QDRANT__SERVICE__API_KEY: ${QDRANT_API_KEY:-local-development-qdrant-key-32chars}
+    ports: ["6333:6333", "6334:6334"]
+    volumes: [qdrantdata:/qdrant/storage]
+volumes: {pgdata: {}, qdrantdata: {}}

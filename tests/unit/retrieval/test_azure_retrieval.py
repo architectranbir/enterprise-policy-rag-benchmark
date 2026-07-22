@@ -3,6 +3,7 @@ from datetime import date
 from typing import Any
 
 import pytest
+from azure.search.documents.models import VectorizedQuery
 
 from policy_rag.domain.access import PolicyAccessContext
 from policy_rag.domain.policy import PolicyClassification
@@ -10,6 +11,7 @@ from policy_rag.retrieval import PolicyRetrievalRequest
 from policy_rag.retrieval.azure_retrieval import (
     AZURE_RETRIEVAL_FIELDS,
     retrieve_exact_policy_chunks,
+    retrieve_vector_policy_chunks,
 )
 
 
@@ -28,11 +30,13 @@ class FakeSearchClient:
         filter: str | None = None,
         select: list[str] | None = None,
         top: int | None = None,
+        vector_queries: list[VectorizedQuery] | None = None,
     ) -> Iterable[dict[str, Any]]:
         self.search_text = search_text
         self.filter = filter
         self.select = select
         self.top = top
+        self.vector_queries = vector_queries
         return self.results
 
 
@@ -46,6 +50,10 @@ def create_request() -> PolicyRetrievalRequest:
         document_id="POL-HR-001",
         limit=5,
     )
+
+
+def create_vector_request() -> PolicyRetrievalRequest:
+    return create_request().model_copy(update={"query_embedding": (0.1,) * 3072})
 
 
 def create_azure_result() -> dict[str, Any]:
@@ -105,3 +113,25 @@ def test_rejects_invalid_azure_date_value() -> None:
         match="effective_from must be a date or datetime",
     ):
         retrieve_exact_policy_chunks(client, create_request())
+
+
+def test_vector_retrieval_uses_embedding_and_secured_filter() -> None:
+    client = FakeSearchClient([create_azure_result()])
+
+    results = retrieve_vector_policy_chunks(client, create_vector_request())
+
+    assert len(results) == 1
+    assert client.search_text is None
+    assert client.filter is not None
+    assert "allowed_groups/any" in client.filter
+    assert client.vector_queries is not None
+    query = client.vector_queries[0]
+    assert query.vector == [0.1] * 3072
+    assert query.fields == "embedding"
+    assert query.k_nearest_neighbors == 5
+    assert query.exhaustive is False
+
+
+def test_vector_retrieval_requires_query_embedding() -> None:
+    with pytest.raises(ValueError, match="query_embedding is required"):
+        retrieve_vector_policy_chunks(FakeSearchClient([]), create_request())

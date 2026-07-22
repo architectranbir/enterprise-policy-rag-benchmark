@@ -1,0 +1,14 @@
+.git
+.github
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.terraform
+.venv
+**/__pycache__
+*.tfplan
+.env
+docs
+infrastructure
+tests
+web

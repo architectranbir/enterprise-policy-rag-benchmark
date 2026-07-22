@@ -1,7 +1,5 @@
 # Error Log
 
-No application or infrastructure errors have been recorded yet.
-
 ## Entry format
 
 Each meaningful error should include:
@@ -157,3 +155,183 @@ Each meaningful error should include:
 - **Root cause:** The adapter accepted Python `date` and `datetime` values, while the live Azure AI Search response returned `Edm.DateTimeOffset` as an ISO 8601 string such as `2026-01-01T00:00:00Z`.
 - **Fix:** Extended the Azure result mapper to parse ISO 8601 date strings while retaining support for Python date and datetime values and rejecting invalid inputs.
 - **Verification:** Nine focused retrieval tests passed, the full 91-test suite passed, and the live keyless smoke test returned one authorized result for `employees` and zero results for `contractors`.
+
+## ERR-012: Baseline Ruff formatting drift
+
+- **Date:** 2026-07-22
+- **Component:** Existing Azure retrieval request model
+- **Command:** `uv run --locked ruff format --check .`
+- **Error:** `src/policy_rag/retrieval/models.py` would be reformatted.
+- **Root cause:** The existing `query_embedding` field indentation was incomplete.
+- **Fix:** Applied repository-standard Ruff formatting while completing vector retrieval.
+- **Verification:** The final Ruff format and lint gates passed.
+
+## ERR-013: Qdrant payload exposed ACL metadata to result validation
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant retrieval adapter
+- **Error:** `allowed_groups: Extra inputs are not permitted` in the neutral result model.
+- **Root cause:** Qdrant returns filter-only ACL payload alongside citation fields.
+- **Fix:** Remove `allowed_groups` before validating the backend-neutral result.
+- **Verification:** The in-memory Qdrant authorised/denied ACL round-trip test passed.
+
+## ERR-014: Docker executable unavailable
+
+- **Date:** 2026-07-22
+- **Component:** Local Docker Compose validation
+- **Command:** `docker compose config --quiet`
+- **Error:** `command not found: docker`
+- **Impact:** Compose syntax and image builds are implemented but not locally verified.
+- **Next action:** Install/start Docker and rerun configuration and build checks.
+
+## ERR-015: Fresh pgvector initialization and 3,072-dimensional HNSW failed
+
+- **Date:** 2026-07-22
+- **Errors:** `vector type not found in the database`, followed by `column cannot have more than 2000 dimensions for hnsw index`.
+- **Root cause:** Type registration preceded extension creation, and HNSW limits `vector` indexes to 2,000 dimensions.
+- **Fix:** Bootstrap the extension before registration and use supported `halfvec(3072)` with `halfvec_cosine_ops`.
+- **Verification:** Live PostgreSQL/pgvector and Qdrant authorised/denied ACL round trips passed.
+
+## ERR-016: Container Apps rejected or failed the first API images
+
+- **Date:** 2026-07-22
+- **Errors:** Azure rejected `linux/arm64`; the next image raised `ModuleNotFoundError: policy_rag`.
+- **Root cause:** Apple Silicon produced the wrong target architecture, then an editable environment referenced source absent from the final stage.
+- **Fix:** Build `linux/amd64` with Buildx, pin base digests, and install with `uv sync --no-editable`.
+- **Verification:** Local and deployed `/health` and `/ready` passed using immutable digest `sha256:63fffe7f54284e187bda7337112b5209311dc0696a6a152e28c7cf5d019730c9`.
+
+## ERR-017: Initial Static Web Apps and PostgreSQL administrator operations failed
+
+- **Date:** 2026-07-22
+- **Errors:** West Europe rejected new Static Web Apps customers; the first PostgreSQL Entra administrator write returned an Azure internal error.
+- **Fix:** Use provider-advertised East US 2. Retry the administrator after PostgreSQL reached `Ready`, then import it into Terraform state.
+- **Verification:** Production UI homepage is live, the reviewed Entra administrator exists, and the final Terraform plan reports no changes.
+
+## ERR-018: Key Vault rejected Terraform secret creation
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant Key Vault migration
+- **Error:** The signed-in operator lacked Key Vault secret data-plane permission.
+- **Root cause:** Azure control-plane access does not grant secret write access when Key Vault RBAC is enabled.
+- **Fix:** Temporarily assigned Key Vault Secrets Officer to the operator at the single vault scope for the migration. The application identities retain only secret-scoped reader roles.
+- **Verification:** Terraform created separate write-only administrator and read-only secret versions and Container Apps resolved both versionless references. After the migration and final refresh plan, the temporary human role assignment was deleted and a scoped role query returned zero assignments.
+
+## ERR-019: Azure services rejected single-host CIDR syntax
+
+- **Date:** 2026-07-22
+- **Component:** Foundry and Azure Storage firewalls
+- **Error:** The services rejected an IPv4 address expressed with a `/32` suffix.
+- **Root cause:** These resource APIs accept a single host as a plain address even though the project input is normalized as CIDR.
+- **Fix:** Normalize `/32` operator entries to plain IP addresses only for service APIs requiring that representation.
+- **Verification:** The deny-by-default firewall changes and private endpoints applied successfully.
+
+## ERR-020: API readiness failed immediately after Search private endpoint creation
+
+- **Date:** 2026-07-22
+- **Component:** Container Apps DNS resolution
+- **Error:** `/ready` failed after Azure AI Search was moved behind Private Link.
+- **Root cause:** The running API revision retained the pre-Private-Link DNS result.
+- **Fix:** Restarted the API revision after private DNS and endpoint provisioning completed.
+- **Verification:** `/health` and `/ready` both returned HTTP 200 through the deployed endpoint.
+
+## ERR-021: Docker did not discover the installed Buildx plugin
+
+- **Date:** 2026-07-22
+- **Component:** Production container build
+- **Error:** Docker could not perform the required `linux/amd64` Buildx build from Apple Silicon.
+- **Root cause:** The Homebrew Buildx plugin directory was not in Docker's plugin discovery path.
+- **Fix:** Used a scoped temporary Docker configuration pointing at the installed plugin and the Colima socket.
+- **Verification:** The image built as `linux/amd64`, passed a bootstrap smoke test, pushed to ACR and ran in the healthy API revision.
+
+## ERR-022: Qdrant reports an Azure Files filesystem warning
+
+- **Date:** 2026-07-22
+- **Component:** Qdrant demo persistence
+- **Warning:** Qdrant cannot guarantee data safety for the unrecognised mounted filesystem.
+- **Impact:** The single-node Azure Files deployment is suitable only for this benchmark/demo and is not a production HA Qdrant topology.
+- **Verification:** After both storage-key remounts Qdrant loaded its persisted Raft state, started REST and gRPC, and reported a ready container with zero restart failures.
+
+## ERR-023: Foundry embedding ingestion was throttled
+
+- **Date:** 2026-07-22
+- **Error:** `HTTP 429 RateLimitReached`, with a 59-second retry interval.
+- **Root cause:** The development deployment has 1 request per 10 seconds and 1,000 tokens per
+  minute; ingestion made unbounded calls and did not honour `Retry-After`.
+- **Fix:** Added bounded transient retries and quota-safe configurable embedding batches.
+- **Verification:** Azure AI Search, pgvector and Qdrant each ingested 11 canonical chunks.
+
+## ERR-024: pgvector ingestion attempted an administrator-only extension command
+
+- **Date:** 2026-07-22
+- **Error:** `InsufficientPrivilege: only members of azure_pg_admin are allowed to use CREATE EXTENSION vector`.
+- **Root cause:** Runtime schema initialization repeated `CREATE EXTENSION` after the controlled
+  administrator bootstrap had already installed it.
+- **Fix:** Kept extension installation in the one-time bootstrap and limited runtime initialization
+  to tables and indexes. Local Compose installs the extension through an init SQL mount.
+- **Verification:** The managed-identity pgvector job ingested 11 chunks and the read-only API
+  returned a grounded answer with the expected citation.
+
+## ERR-025: Qdrant client used the wrong internal ingress port and timed out
+
+- **Date:** 2026-07-22
+- **Errors:** `httpx.ConnectTimeout`, followed by a 5-second payload-index `ReadTimeout`.
+- **Root cause:** `QdrantClient` appends its default REST port 6333 when an HTTPS URL omits a port,
+  while Container Apps terminates HTTPS on 443. Azure Files-backed index creation also exceeded the
+  client's default read timeout.
+- **Fix:** Set the internal Qdrant URL to explicit `:443` and added a typed configurable 60-second
+  client timeout.
+- **Verification:** The standard Qdrant ingestion job succeeded and the API, using only the
+  read-only Key Vault credential, returned the expected grounded answer and citation.
+
+## ERR-026: Query API retained an Azure AI Search write role
+
+- **Date:** 2026-07-22
+- **Component:** Azure AI Search RBAC
+- **Issue:** The query API still held `Search Index Data Contributor` after ingestion moved to a
+  separate managed identity.
+- **Root cause:** The original combined runtime identity needed document-write access before the
+  ingestion/query responsibility split.
+- **Fix:** Replaced the query API assignment with `Search Index Data Reader`; only the ingestion
+  identity retains `Search Index Data Contributor`.
+- **Verification:** The scoped Terraform apply completed with one role added and one removed, and
+  the deployed Azure AI Search readiness check remained successful.
+
+## ERR-027: MSAL blocked nested authentication popups
+
+- **Date:** 2026-07-22
+- **Component:** Web UI authentication
+- **Error:** `block_nested_popups`
+- **Root cause:** The SPA used MSAL popup APIs while the UI itself was open in a popup-style browser
+  surface, so MSAL correctly refused to open a second nested popup.
+- **Fix:** Replaced login, interactive token acquisition and logout popups with MSAL redirect APIs;
+  retained `handleRedirectPromise()` and aligned the redirect URI exactly with the registered root.
+- **Verification:** The production Vite build passed, npm reported zero vulnerabilities, and Azure
+  Static Web Apps CLI confirmed the production deployment. Interactive sign-in remains pending
+  user confirmation because automated browser access is blocked by enterprise network policy.
+
+## ERR-028: Web deployment used the Azure CLI client ID as the tenant ID
+
+- **Date:** 2026-07-22
+- **Component:** Web UI deployment configuration
+- **Error:** `AADSTS90002: Tenant '04b07795-8ddb-461a-bbee-02f9e1bf7b46' not found.`
+- **Root cause:** The AzureAD client-config composite state ID was parsed manually and its Azure CLI
+  client ID segment was mistaken for the directory tenant ID.
+- **Fix:** Rebuilt and deployed the SPA with the Azure-verified tenant
+  `f674bff7-64c3-490b-a170-764ee5ade42d`. Added a Terraform tenant output and a state-driven Web
+  build script so all public deployment settings come from authoritative outputs.
+- **Verification:** Azure CLI and the ignored environment tfvars report the same tenant; the
+  production bundle contains that tenant and excludes the incorrect ID; Vite build and npm audit
+  passed; Static Web Apps CLI confirmed the production deployment.
+
+## ERR-029: Monitoring unit tests depended on a developer `.env`
+
+- **Date:** 2026-07-22
+- **Component:** GitHub Actions quality gate
+- **Error:** Three monitoring tests failed while constructing `Settings`; the remaining 117 tests
+  passed.
+- **Root cause:** The tests relied on required Foundry and Entra values from the ignored local
+  `.env`, which is correctly absent on clean CI runners.
+- **Fix:** Added explicit synthetic required settings to the monitoring-test fixture while retaining
+  strict production configuration validation.
+- **Verification:** Ruff formatting/lint, strict mypy and the exact pytest-with-coverage CI command
+  passed locally with all 120 tests. PR CI rerun is pending.

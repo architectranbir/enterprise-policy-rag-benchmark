@@ -2,24 +2,24 @@
 
 ## Current task
 
-Align the embedding input with the canonical indexed chunk text, then implement
-the fair Azure AI Search vector-only retrieval path.
+Expand and execute the fair vector-only benchmark after the secured live baseline.
 
 ## Immediate verification
 
-1. Confirm ingestion embeds the same canonical text stored in the search index.
-2. Add a regression test that prevents embedding/indexed-text divergence.
-3. Extend the provider-neutral retrieval request for a query embedding.
-4. Implement Azure AI Search vector-only retrieval with the existing ACL,
-   effective-date and metadata filters.
-5. Add focused unit tests and a keyless live vector-retrieval smoke test.
-6. Run the complete quality gate before publishing.
+1. Validate interactive Microsoft sign-in and `Policy.Read` consent in a normal user browser.
+2. Expand the synthetic corpus and evaluation set before recording fair results.
+3. Run repeatable fair vector-only evaluation across the populated backends and retain raw artifacts.
+4. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
+   exception, and verify private-only data-plane access.
+5. Add repeatable integration tests for the local containerised backends.
+6. Add CI workload identity federation and enforce the security posture with Azure Policy.
+7. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
+   JWT RBAC with a trusted token issuer and rotation lifecycle.
 
 ## Exact next implementation task
 
-Fix the ingestion text alignment before adding `VectorizedQuery`. Then retrieve
-nearest policy chunks using the query embedding while preserving the existing
-authorization and effective-date filters.
+Use the deployed UI to complete interactive Microsoft consent, then run and capture the expanded
+fair-vector evaluation without mixing it with platform-optimised results.
 
 ## Guardrails
 

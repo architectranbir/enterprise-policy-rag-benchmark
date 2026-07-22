@@ -7,6 +7,7 @@ from azure.identity import DefaultAzureCredential
 from azure.search.documents.indexes import SearchIndexClient
 
 from policy_rag.indexing.azure_search import (
+    AZURE_SEARCH_API_VERSION,
     EMBEDDING_DIMENSIONS,
     create_policy_chunk_search_index,
 )
@@ -22,6 +23,7 @@ def main() -> None:
     client = SearchIndexClient(
         endpoint=endpoint,
         credential=credential,
+        api_version=AZURE_SEARCH_API_VERSION,
     )
 
     try:

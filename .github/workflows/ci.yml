@@ -1,0 +1,31 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with: {enable-cache: true}
+      - run: uv sync --locked
+      - run: uv run --locked ruff format --check .
+      - run: uv run --locked ruff check .
+      - run: uv run --locked mypy src tests scripts
+      - run: uv run --locked pytest --cov=policy_rag --cov-report=term-missing
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with: {terraform_version: 1.15.7}
+      - run: terraform -chdir=infrastructure/bootstrap fmt -check -recursive
+      - run: terraform -chdir=infrastructure/environments/dev fmt -check -recursive
+      - run: terraform -chdir=infrastructure/bootstrap init -backend=false
+      - run: terraform -chdir=infrastructure/bootstrap validate
+      - run: terraform -chdir=infrastructure/environments/dev init -backend=false
+      - run: terraform -chdir=infrastructure/environments/dev validate

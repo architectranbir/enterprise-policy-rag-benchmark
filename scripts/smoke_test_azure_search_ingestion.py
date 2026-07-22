@@ -11,6 +11,7 @@ from azure.search.documents import SearchClient
 from policy_rag.embeddings import FoundryEmbeddingProvider
 from policy_rag.indexing import embed_policy_chunk
 from policy_rag.indexing.azure_ingestion import upload_indexed_policy_chunks
+from policy_rag.indexing.azure_search import AZURE_SEARCH_API_VERSION
 from policy_rag.ingestion.chunks import create_section_chunks
 from policy_rag.ingestion.sections import extract_policy_sections
 from policy_rag.ingestion.source import load_policy_source
@@ -33,6 +34,7 @@ def main() -> None:
         endpoint=os.environ["AZURE_SEARCH_ENDPOINT"].rstrip("/"),
         index_name=index_name,
         credential=credential,
+        api_version=AZURE_SEARCH_API_VERSION,
     )
 
     source = load_policy_source(POLICY_VERSION_DIRECTORY)
