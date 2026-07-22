@@ -79,3 +79,10 @@ artifacts have been captured.
 The deployed development indexes currently contain the same 11 canonical chunks. Live smoke tests
 passed for Azure AI Search, pgvector and Qdrant; these smoke results are functional verification,
 not benchmark rankings.
+
+For an existing Terraform-managed environment, build the Web UI from authoritative state outputs
+instead of copying Entra IDs manually:
+
+```bash
+./scripts/build_web_from_terraform.sh
+```

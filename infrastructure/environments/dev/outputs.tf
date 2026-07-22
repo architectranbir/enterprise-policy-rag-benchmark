@@ -63,6 +63,11 @@ output "entra_api_client_id" {
   value       = try(azuread_application.api[0].client_id, null)
 }
 
+output "entra_tenant_id" {
+  description = "Microsoft Entra tenant ID used by the application registrations."
+  value       = var.tenant_id
+}
+
 output "entra_web_client_id" {
   description = "Public client ID of the Web SPA application registration."
   value       = try(azuread_application.web[0].client_id, null)

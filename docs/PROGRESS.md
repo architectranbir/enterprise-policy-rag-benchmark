@@ -85,6 +85,8 @@ Phase 11 — deployed security hardening and operational verification
   ingestion identity alone retains `Search Index Data Contributor`.
 - Replaced MSAL popup authentication with redirect-based login, token acquisition and logout after
   reproducing `block_nested_popups`; rebuilt and deployed the corrected production Web UI.
+- Corrected the deployed Entra tenant ID and added a Terraform-output-driven Web build script to
+  prevent manual tenant/client ID transposition.
 - Locally verified the full 120-test unit suite, Ruff, strict mypy, Compose configuration and
   production `linux/amd64` image build/push.
 

@@ -308,3 +308,17 @@ Each meaningful error should include:
 - **Verification:** The production Vite build passed, npm reported zero vulnerabilities, and Azure
   Static Web Apps CLI confirmed the production deployment. Interactive sign-in remains pending
   user confirmation because automated browser access is blocked by enterprise network policy.
+
+## ERR-028: Web deployment used the Azure CLI client ID as the tenant ID
+
+- **Date:** 2026-07-22
+- **Component:** Web UI deployment configuration
+- **Error:** `AADSTS90002: Tenant '04b07795-8ddb-461a-bbee-02f9e1bf7b46' not found.`
+- **Root cause:** The AzureAD client-config composite state ID was parsed manually and its Azure CLI
+  client ID segment was mistaken for the directory tenant ID.
+- **Fix:** Rebuilt and deployed the SPA with the Azure-verified tenant
+  `f674bff7-64c3-490b-a170-764ee5ade42d`. Added a Terraform tenant output and a state-driven Web
+  build script so all public deployment settings come from authoritative outputs.
+- **Verification:** Azure CLI and the ignored environment tfvars report the same tenant; the
+  production bundle contains that tenant and excludes the incorrect ID; Vite build and npm audit
+  passed; Static Web Apps CLI confirmed the production deployment.
