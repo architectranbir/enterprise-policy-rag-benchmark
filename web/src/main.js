@@ -14,7 +14,8 @@ const auth = new PublicClientApplication({
   auth: {
     clientId: deployment.clientId,
     authority: `https://login.microsoftonline.com/${deployment.tenantId}`,
-    redirectUri: window.location.origin,
+    redirectUri: `${window.location.origin}/`,
+    postLogoutRedirectUri: `${window.location.origin}/`,
   },
   cache: { cacheLocation: "sessionStorage" },
 });
@@ -29,6 +30,7 @@ const result = document.querySelector("#result");
 await auth.initialize();
 const redirectResult = await auth.handleRedirectPromise();
 let account = redirectResult?.account ?? auth.getAllAccounts()[0] ?? null;
+if (account) auth.setActiveAccount(account);
 
 function renderIdentity() {
   identityStatus.textContent = account ? `Signed in as ${account.username}` : "Not signed in";
@@ -37,21 +39,22 @@ function renderIdentity() {
 }
 
 async function signIn() {
-  const response = await auth.loginPopup({ scopes: [deployment.apiScope] });
-  account = response.account;
-  auth.setActiveAccount(account);
-  renderIdentity();
-  return account;
+  identityStatus.textContent = "Redirecting to Microsoft sign-in…";
+  await auth.loginRedirect({ scopes: [deployment.apiScope] });
 }
 
 async function accessToken() {
   account ??= auth.getActiveAccount() ?? auth.getAllAccounts()[0] ?? null;
-  if (!account) await signIn();
+  if (!account) {
+    await signIn();
+    return null;
+  }
   try {
     return (await auth.acquireTokenSilent({ account, scopes: [deployment.apiScope] })).accessToken;
   } catch (error) {
     if (!(error instanceof InteractionRequiredAuthError)) throw error;
-    return (await auth.acquireTokenPopup({ account, scopes: [deployment.apiScope] })).accessToken;
+    await auth.acquireTokenRedirect({ account, scopes: [deployment.apiScope] });
+    return null;
   }
 }
 
@@ -59,9 +62,7 @@ signInButton.addEventListener("click", async () => {
   try { await signIn(); } catch (error) { identityStatus.textContent = `Sign-in failed: ${error.message}`; }
 });
 signOutButton.addEventListener("click", async () => {
-  await auth.logoutPopup({ account });
-  account = null;
-  renderIdentity();
+  await auth.logoutRedirect({ account });
 });
 
 document.querySelector("#as-of").value = new Date().toISOString().slice(0, 10);
@@ -75,9 +76,11 @@ form.addEventListener("submit", async (event) => {
   document.querySelector("#answer").textContent = "";
   document.querySelector("#citations").replaceChildren();
   try {
+    const token = await accessToken();
+    if (!token) return;
     const response = await fetch(`${deployment.apiBaseUrl}/ask`, {
       method: "POST",
-      headers: { Authorization: `Bearer ${await accessToken()}`, "Content-Type": "application/json" },
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify({
         question: document.querySelector("#question").value,
         as_of: document.querySelector("#as-of").value,

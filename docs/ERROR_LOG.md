@@ -295,3 +295,16 @@ Each meaningful error should include:
   identity retains `Search Index Data Contributor`.
 - **Verification:** The scoped Terraform apply completed with one role added and one removed, and
   the deployed Azure AI Search readiness check remained successful.
+
+## ERR-027: MSAL blocked nested authentication popups
+
+- **Date:** 2026-07-22
+- **Component:** Web UI authentication
+- **Error:** `block_nested_popups`
+- **Root cause:** The SPA used MSAL popup APIs while the UI itself was open in a popup-style browser
+  surface, so MSAL correctly refused to open a second nested popup.
+- **Fix:** Replaced login, interactive token acquisition and logout popups with MSAL redirect APIs;
+  retained `handleRedirectPromise()` and aligned the redirect URI exactly with the registered root.
+- **Verification:** The production Vite build passed, npm reported zero vulnerabilities, and Azure
+  Static Web Apps CLI confirmed the production deployment. Interactive sign-in remains pending
+  user confirmation because automated browser access is blocked by enterprise network policy.
