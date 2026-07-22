@@ -33,7 +33,10 @@ def main() -> None:
     }
     if len(signatures) != 1:
         raise ValueError("raw runs are not comparable: artifact or dataset signatures differ")
+    if any(run.mode != "fair-vector-only" for run in runs):
+        raise ValueError("platform-optimized runs must not enter the fair comparison")
 
+    strong = all(run.measurement_count > 0 for run in runs)
     rows = [
         {
             "backend": run.backend,
@@ -42,6 +45,18 @@ def main() -> None:
             "mean_latency_ms": run.mean_latency_ms,
             "case_count": run.case_count,
             "created_at": run.created_at.isoformat(),
+            **(
+                {
+                    f"precision_at_{run.top_k}": run.precision_at_k,
+                    f"ndcg_at_{run.top_k}": run.ndcg_at_k,
+                    "p50_latency_ms": run.p50_latency_ms,
+                    "p95_latency_ms": run.p95_latency_ms,
+                    "latency_stddev_ms": run.latency_stddev_ms,
+                    "measurement_count": run.measurement_count,
+                }
+                if strong
+                else {}
+            ),
         }
         for run in runs
     ]
@@ -49,13 +64,19 @@ def main() -> None:
         "Development-scale results are workload-specific and do not establish a universal winner.",
         "Latency includes one client-side retrieval call but excludes query embedding generation.",
         "Platform-optimised hybrid, sparse and semantic features are outside this comparison.",
-        "Each backend has one measured run; latency has no warm-up exclusion or confidence interval.",
+        *(
+            ()
+            if strong
+            else (
+                "Each backend has one measured run; latency has no warm-up exclusion or confidence interval.",
+            )
+        ),
     )
     comparison = {
         "mode": "fair-vector-only",
         "dataset": runs[0].dataset_name,
         "environment": "development",
-        "runs_per_backend": 1,
+        "runs_per_backend": runs[0].measured_repetitions,
         "artifact_sha256": runs[0].artifact_sha256,
         "source_sha256": runs[0].source_sha256,
         "top_k": runs[0].top_k,
@@ -73,13 +94,28 @@ def main() -> None:
         "",
         f"Dataset: `{runs[0].dataset_name}` · Cases: {runs[0].case_count} · Top k: {runs[0].top_k}",
         "",
-        "Environment: development · Measured runs per backend: 1",
+        (
+            f"Environment: development · Measured repetitions per backend: {runs[0].measured_repetitions}"
+            if strong
+            else "Environment: development · Measured runs per backend: 1"
+        ),
         "",
-        f"| Backend | {metric} | MRR | Mean retrieval latency (ms) |",
-        "|---|---:|---:|---:|",
+        (
+            f"| Backend | {metric} | Precision@{runs[0].top_k} | MRR | "
+            f"nDCG@{runs[0].top_k} | p50 (ms) | p95 (ms) |"
+            if strong
+            else f"| Backend | {metric} | MRR | Mean retrieval latency (ms) |"
+        ),
+        ("|---|---:|---:|---:|---:|---:|---:|" if strong else "|---|---:|---:|---:|"),
         *(
-            f"| {run.backend} | {run.recall_at_k:.4f} | "
-            f"{run.mean_reciprocal_rank:.4f} | {run.mean_latency_ms:.2f} |"
+            (
+                f"| {run.backend} | {run.recall_at_k:.4f} | {run.precision_at_k:.4f} | "
+                f"{run.mean_reciprocal_rank:.4f} | {run.ndcg_at_k:.4f} | "
+                f"{run.p50_latency_ms:.2f} | {run.p95_latency_ms:.2f} |"
+                if strong
+                else f"| {run.backend} | {run.recall_at_k:.4f} | "
+                f"{run.mean_reciprocal_rank:.4f} | {run.mean_latency_ms:.2f} |"
+            )
             for run in runs
         ),
         "",

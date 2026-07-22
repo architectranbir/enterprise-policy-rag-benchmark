@@ -6,7 +6,7 @@ from typing import Any, Protocol
 
 from azure.search.documents.models import VectorizedQuery
 
-from policy_rag.indexing.azure_search import EMBEDDING_DIMENSIONS
+from policy_rag.indexing.azure_search import EMBEDDING_DIMENSIONS, SEMANTIC_CONFIGURATION_NAME
 from policy_rag.retrieval.azure_filter import build_azure_exact_filter
 from policy_rag.retrieval.models import (
     PolicyRetrievalRequest,
@@ -42,6 +42,8 @@ class AzureSearchQueryClient(Protocol):
         select: list[str] | None = None,
         top: int | None = None,
         vector_queries: list[VectorizedQuery] | None = None,
+        query_type: str | None = None,
+        semantic_configuration_name: str | None = None,
     ) -> Iterable[dict[str, Any]]:
         """Search indexed documents."""
 
@@ -138,4 +140,30 @@ def retrieve_vector_policy_chunks(
         top=request.limit,
     )
 
+    return tuple(_map_azure_result(result) for result in results)
+
+
+def retrieve_optimized_policy_chunks(
+    client: AzureSearchQueryClient,
+    request: PolicyRetrievalRequest,
+) -> tuple[RetrievedPolicyChunk, ...]:
+    """Use Azure hybrid fusion and semantic ranking; never used by fair mode."""
+
+    if request.query_embedding is None or request.query_text is None:
+        raise ValueError("query_embedding and query_text are required for optimized retrieval")
+    vector_query = VectorizedQuery(
+        vector=list(request.query_embedding),
+        fields="embedding",
+        k_nearest_neighbors=max(request.limit, 50),
+        exhaustive=False,
+    )
+    results = client.search(
+        search_text=request.query_text,
+        vector_queries=[vector_query],
+        query_type="semantic",
+        semantic_configuration_name=SEMANTIC_CONFIGURATION_NAME,
+        filter=build_azure_exact_filter(request),
+        select=list(AZURE_RETRIEVAL_FIELDS),
+        top=request.limit,
+    )
     return tuple(_map_azure_result(result) for result in results)

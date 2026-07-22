@@ -86,6 +86,16 @@ def test_generates_grounded_answer_and_structured_citation() -> None:
     assert store.request is not None and store.request.query_embedding == (0.1, 0.2)
 
 
+def test_reports_embedding_retrieval_generation_and_end_to_end_timings() -> None:
+    timed = PolicyAnswerService(Store((result(),)), Embeddings(), Answers()).ask_with_timings(
+        "What can I claim?", request()
+    )
+    assert timed.answer.refused is False
+    assert timed.timings.end_to_end_ms >= (
+        timed.timings.embedding_ms + timed.timings.retrieval_ms + timed.timings.generation_ms
+    )
+
+
 def test_refuses_without_evidence_and_does_not_generate() -> None:
     answer = PolicyAnswerService(Store(()), Embeddings(), Answers()).ask("Unknown?", request())
     assert answer.refused is True

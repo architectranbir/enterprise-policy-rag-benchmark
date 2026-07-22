@@ -9,9 +9,10 @@ from policy_rag.indexing.azure_ingestion import (
 )
 from policy_rag.retrieval.azure_retrieval import (
     AzureSearchQueryClient,
+    retrieve_optimized_policy_chunks,
     retrieve_vector_policy_chunks,
 )
-from policy_rag.retrieval.models import PolicyRetrievalRequest, RetrievedPolicyChunk
+from policy_rag.retrieval.models import PolicyRetrievalRequest, RetrievalMode, RetrievedPolicyChunk
 
 
 class AzureSearchClient(AzureSearchQueryClient, AzureSearchUploadClient, Protocol):
@@ -35,6 +36,8 @@ class AzureAISearchStore:
         upload_indexed_policy_chunks(self._client, documents)
 
     def retrieve(self, request: PolicyRetrievalRequest) -> tuple[RetrievedPolicyChunk, ...]:
+        if request.mode is RetrievalMode.PLATFORM_OPTIMIZED:
+            return retrieve_optimized_policy_chunks(self._client, request)
         return retrieve_vector_policy_chunks(self._client, request)
 
     def ready(self) -> bool:

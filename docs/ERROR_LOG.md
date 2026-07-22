@@ -400,4 +400,27 @@ Each meaningful error should include:
 - **Fix:** Invoked the installed stable buildx binary directly with BuildKit.
 - **Verification:** The final immutable benchmark image was pushed at manifest digest
   `sha256:fcfdb50f573629994ed41ee8c10379f629171e768bf21ee7ee447f55761f9c1d`, and all three final
-  benchmark executions succeeded from that image.
+benchmark executions succeeded from that image.
+
+## ERR-035: Local validation tools were hidden by sandbox/plugin discovery
+
+- **Date:** 2026-07-22
+- **Component:** Local Terraform and Docker verification
+- **Errors:** Terraform providers could not execute inside the filesystem sandbox; the Docker CLI
+  did not discover the installed Compose plugin.
+- **Fix:** Ran read-only Terraform validation with scoped approval and used the installed standalone
+  `docker-compose` executable. No plan, apply, deployment or remote mutation was performed.
+- **Verification:** Both Terraform roots validated successfully; Compose configuration passed and
+  both API and Web images built successfully.
+
+## ERR-036: Container CI lacked the ignored Compose environment file
+
+- **Date:** 2026-07-22
+- **Component:** GitHub Actions container validation
+- **Error:** `env file .../.env not found` during `docker compose config --quiet` on PR #22.
+- **Root cause:** Local Compose correctly uses an ignored `.env`, but the clean CI checkout did not
+  create one before validating the Compose model.
+- **Fix:** Create the ephemeral CI `.env` from the committed synthetic `.env.example` before
+  configuration validation and image builds. No credentials are introduced.
+- **Verification:** PR #22 run `29941354037` passed containers, quality, Terraform and Web jobs;
+  the container job completed Compose configuration and both image builds.

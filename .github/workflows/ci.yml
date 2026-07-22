@@ -17,6 +17,36 @@ jobs:
       - run: uv run --locked ruff check .
       - run: uv run --locked mypy src tests scripts
       - run: uv run --locked pytest --cov=policy_rag --cov-report=term-missing
+      - run: uv run --locked python scripts/validate_benchmark_artifacts.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: validated-benchmark-evidence
+          path: benchmark_results/
+          if-no-files-found: error
+          retention-days: 30
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - run: docker compose config --quiet
+      - run: docker compose build api web
   terraform:
     runs-on: ubuntu-latest
     steps:

@@ -46,6 +46,16 @@ Each backend may use its own search capabilities:
 
 Results from the two modes are reported separately.
 
+### Enterprise controls
+
+ACL isolation, group access, effective dates, policy versions, refusals, citations, groundedness
+and answer correctness are evaluated separately from positive retrieval relevance metrics.
+
+## Presentation scope
+
+The Web UI provides the Benchmark Lab and comparison dashboard. Power BI reports, templates,
+connectors, embedding, documentation and infrastructure are explicitly out of scope.
+
 ## Data
 
 All organisations, users, groups and policy documents in this repository are fictional.

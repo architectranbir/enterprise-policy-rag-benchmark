@@ -18,6 +18,11 @@
           <button id="sign-out" class="secondary" type="button" hidden>Sign out</button>
         </div>
       </header>
+      <nav class="tabs" aria-label="Workspace">
+        <button class="tab active" data-panel="assistant-panel" type="button">Policy assistant</button>
+        <button class="tab" data-panel="benchmark-panel" type="button">Benchmark Lab</button>
+      </nav>
+      <section id="assistant-panel" class="panel active">
       <form id="ask-form">
         <label>
           Question
@@ -31,6 +36,30 @@
         <h2>Answer</h2>
         <p id="answer"></p>
         <ol id="citations"></ol>
+      </section>
+      </section>
+      <section id="benchmark-panel" class="panel" hidden>
+        <div class="lab-heading">
+          <div><p class="eyebrow">Evidence, not estimates</p><h2>Benchmark Lab</h2></div>
+          <button id="refresh-runs" class="secondary" type="button">Refresh history</button>
+        </div>
+        <form id="benchmark-form" class="benchmark-form">
+          <label>Mode<select id="benchmark-mode"><option value="fair-vector-only">Fair vector-only</option><option value="platform-optimized">Platform-optimised</option><option value="enterprise-controls">Enterprise controls</option></select></label>
+          <label>Backend<select id="benchmark-backend"><option value="all">All three</option><option value="azure_ai_search">Azure AI Search</option><option value="pgvector">pgvector</option><option value="qdrant">Qdrant</option></select></label>
+          <label>Dataset<input id="benchmark-dataset" value="synthetic-policy-fair-vector-v1" readonly /></label>
+          <label>Top K<input id="benchmark-top-k" type="number" min="1" max="100" value="5" /></label>
+          <button id="start-benchmark" type="submit">Start secured benchmark job</button>
+        </form>
+        <p id="benchmark-progress" class="muted">Run initiation is available only when a secured benchmark job is configured.</p>
+        <div id="benchmark-empty" class="empty-state"><h3>No benchmark completed</h3><p>Run history will appear after schema-valid artifacts are available.</p></div>
+        <div id="benchmark-content" hidden>
+          <div id="comparison-cards" class="cards"></div>
+          <div class="chart-card"><h3>Retrieval quality</h3><div id="quality-chart"></div></div>
+          <div class="chart-card"><h3>Retrieval latency</h3><div id="latency-chart"></div></div>
+          <h3>Run history</h3>
+          <div class="table-wrap"><table><thead><tr><th>Backend</th><th>Mode</th><th>Dataset</th><th>Recall</th><th>MRR</th><th>nDCG</th><th>p50</th><th>p95</th><th>Evidence</th></tr></thead><tbody id="run-history"></tbody></table></div>
+          <section id="run-detail" hidden><div class="detail-heading"><h3>Per-question evidence</h3><button id="export-json" class="secondary" type="button">Export JSON</button><button id="export-csv" class="secondary" type="button">Export CSV</button></div><div class="table-wrap"><table><thead><tr><th>Case</th><th>Repetition</th><th>Retrieved chunks</th><th>Recall</th><th>MRR</th><th>nDCG</th><th>Latency</th></tr></thead><tbody id="case-history"></tbody></table></div></section>
+        </div>
       </section>
     </main>
     <script type="module" src="/src/main.js"></script>

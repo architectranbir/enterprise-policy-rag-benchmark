@@ -5,6 +5,8 @@ PostgreSQL/pgvector, and Qdrant behind one retrieval contract. Normal requests u
 exactly one backend selected by `VECTOR_BACKEND`. Fair vector-only and future
 platform-optimised measurements are kept separate.
 
+The Web UI contains the Policy Assistant and Benchmark Lab. Power BI is intentionally out of scope.
+
 ## Local setup
 
 Requirements: Python 3.13, `uv`, Terraform 1.15.7, and optionally Docker.
@@ -49,6 +51,10 @@ The API exposes `POST /ask`, `GET /health`, and `GET /ready`. With Docker availa
 `docker compose up --build` starts the API, UI, PostgreSQL/pgvector, and Qdrant; the
 UI is served at `http://localhost:8080`.
 
+Benchmark history is exposed by `GET /benchmarks/runs`, with raw evidence at
+`GET /benchmarks/runs/{run_id}`. `POST /benchmarks/runs` fails closed until a secured server-side
+benchmark job is configured. The UI never substitutes sample metrics for missing artifacts.
+
 `/ask` validates Microsoft Entra bearer tokens, the delegated `Policy.Read` scope and mapped
 security-group claims. The bundled Vite UI uses MSAL authorization code + PKCE and calls the API
 with a bearer token. `X-Demo-User-*` headers exist only for explicit local development with
@@ -66,15 +72,21 @@ uv run --locked ruff format --check .
 uv run --locked ruff check .
 uv run --locked mypy src tests scripts
 uv run --locked pytest
+uv run --locked python scripts/validate_benchmark_artifacts.py
 terraform -chdir=infrastructure/bootstrap fmt -check -recursive
 terraform -chdir=infrastructure/bootstrap validate
 terraform -chdir=infrastructure/environments/dev fmt -check -recursive
 terraform -chdir=infrastructure/environments/dev validate
+cd web && npm ci && npm run lint && npm test && npm run build
 ```
 
 The versioned fair evaluation dataset is in `data/evaluation`. Do not report results
 until every backend has been populated from identical canonical chunks and the run
 artifacts have been captured.
+
+After validation, an authorised workload identity can durably publish immutable evidence with
+`scripts/publish_benchmark_artifacts.sh <storage-account> <container> <run-id>`. It uses Microsoft
+Entra `--auth-mode login`, never storage keys, and refuses to overwrite an existing run path.
 
 Fair-vector dataset v1 contains 8 synthetic policies across 9 effective-dated versions,
 67 deterministic canonical chunks and 52 positive retrieval cases. Integrity tests verify every

@@ -46,7 +46,9 @@ roles required to create the development index and run document-ingestion smoke 
 - Use only synthetic or permitted public data.
 - Do not use secrets, client data, preview APIs or classic Foundry Hub resources.
 
-## Current verified boundary
+## Current scope boundary
 
-Azure AI Search can accept and return one canonical synthetic policy chunk through
-the keyless ingestion adapter. Retrieval query behaviour is not implemented yet.
+The Web UI is the only comparison dashboard. Power BI is not a deliverable. LangGraph is not
+implemented because the current workflow is linear. All three retrieval adapters, the secured
+application and the first fair-vector evidence are implemented; see `PROGRESS.md` for the exact
+local and live verification boundary.

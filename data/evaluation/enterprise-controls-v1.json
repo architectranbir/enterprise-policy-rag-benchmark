@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "name": "synthetic-policy-enterprise-controls-v1",
+  "mode": "enterprise-controls",
+  "cases": [
+    {
+      "case_id": "CTRL-ACL-001", "control": "acl_isolation",
+      "question": "What are the information classification levels?",
+      "user_groups": ["contractors"], "as_of": "2026-07-22", "expected_refusal": true,
+      "forbidden_chunk_ids": ["POL-SEC-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "CTRL-GROUP-001", "control": "department_group_access",
+      "question": "What are the information classification levels?",
+      "user_groups": ["information-security"], "as_of": "2026-07-22", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-SEC-001:1.0:SEC-002:CHK-001"],
+      "required_answer_terms": ["classification"]
+    },
+    {
+      "case_id": "CTRL-EXPIRED-001", "control": "effective_date",
+      "question": "What was the hotel limit in June 2025?",
+      "user_groups": ["employees"], "as_of": "2025-06-01", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-FIN-001:1.0:SEC-004:CHK-001"],
+      "forbidden_chunk_ids": ["POL-FIN-001:2.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "CTRL-FUTURE-001", "control": "effective_date",
+      "question": "What was the hotel limit in June 2025?",
+      "user_groups": ["employees"], "as_of": "2025-06-01", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-FIN-001:1.0:SEC-004:CHK-001"],
+      "forbidden_chunk_ids": ["POL-FIN-001:2.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "CTRL-VERSION-001", "control": "policy_version",
+      "question": "What is the current maximum reimbursable hotel room rate?",
+      "user_groups": ["employees"], "as_of": "2026-07-22", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-FIN-001:2.0:SEC-004:CHK-001"],
+      "forbidden_chunk_ids": ["POL-FIN-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "CTRL-REFUSAL-001", "control": "unsupported_refusal",
+      "question": "What is the fictional company share price tomorrow?",
+      "user_groups": ["employees"], "as_of": "2026-07-22", "expected_refusal": true
+    },
+    {
+      "case_id": "CTRL-CITATION-001", "control": "citation_correctness",
+      "question": "How much may an employee claim for approved home-office equipment?",
+      "user_groups": ["employees"], "as_of": "2026-07-22", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-HR-001:1.0:SEC-006:CHK-001"],
+      "required_answer_terms": ["250"]
+    },
+    {
+      "case_id": "CTRL-GROUND-001", "control": "grounded_answer",
+      "question": "How much may an employee claim for approved home-office equipment?",
+      "user_groups": ["employees"], "as_of": "2026-07-22", "expected_refusal": false,
+      "expected_chunk_ids": ["POL-HR-001:1.0:SEC-006:CHK-001"],
+      "required_answer_terms": ["250", "three years"]
+    }
+  ]
+}

@@ -27,3 +27,4 @@ class Settings(BaseSettings):
     qdrant_api_key: SecretStr | None = None
     qdrant_collection: str = "policy_chunks"
     qdrant_timeout_seconds: int = Field(default=60, gt=0, le=300)
+    benchmark_results_dir: str = "benchmark_results"

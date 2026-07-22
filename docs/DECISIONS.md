@@ -248,3 +248,29 @@ they test filtering and refusal behaviour rather than positive Recall@k or MRR. 
 comparison, chunk text, metadata and embeddings will be generated once into a versioned canonical
 artifact. Azure AI Search, PostgreSQL/pgvector and Qdrant must ingest those exact vectors rather
 than embedding independently.
+
+## ADR-012: Use the Web UI as the only benchmark dashboard
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+Power BI is removed from scope. No report, template, connector, embedding, documentation or
+infrastructure for Power BI will be built. The Web application owns benchmark history,
+comparisons, per-question evidence and exports.
+
+## ADR-013: Keep three benchmark tracks and artifacts separate
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+Fair vector-only, platform-optimised and enterprise-control evaluations are separate modes with
+separate outputs. Controls score security and answer behaviour rather than contaminating positive
+Recall@K. A mode guard prevents optimised runs from entering the fair comparison.
+
+## ADR-014: Do not add LangGraph to a linear workflow
+
+**Status:** Accepted
+**Date:** 22 July 2026
+
+The flow is embed, retrieve, generate, validate citations and return or refuse. It does not require
+graph state or branching orchestration, so LangGraph is not implemented.

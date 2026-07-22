@@ -1,5 +1,6 @@
 import { InteractionRequiredAuthError, PublicClientApplication } from "@azure/msal-browser";
 import "../styles.css";
+import { casesToCsv, download, metric, milliseconds } from "./benchmark.js";
 
 const deployment = {
   tenantId: import.meta.env.VITE_ENTRA_TENANT_ID,
@@ -67,6 +68,56 @@ signOutButton.addEventListener("click", async () => {
 
 document.querySelector("#as-of").value = new Date().toISOString().slice(0, 10);
 renderIdentity();
+
+for (const tab of document.querySelectorAll(".tab")) {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((item) => item.classList.toggle("active", item === tab));
+    document.querySelectorAll(".panel").forEach((panel) => { panel.hidden = panel.id !== tab.dataset.panel; });
+    if (tab.dataset.panel === "benchmark-panel") loadRuns();
+  });
+}
+
+let selectedRun = null;
+function bar(label, value, maximum = 1) {
+  const percent = value == null ? 0 : (maximum ? Math.min(100, (value / maximum) * 100) : 0);
+  return `<div class="bar-row"><span>${label}</span><div class="bar-track"><div class="bar" style="width:${percent}%"></div></div><strong>${maximum === 1 ? metric(value) : milliseconds(value)}</strong></div>`;
+}
+function renderRuns(runs) {
+  document.querySelector("#benchmark-empty").hidden = runs.length > 0;
+  document.querySelector("#benchmark-content").hidden = runs.length === 0;
+  if (!runs.length) return;
+  document.querySelector("#comparison-cards").innerHTML = runs.map((run) => `<article class="metric-card"><h3>${run.backend}</h3><p class="metric">Recall ${metric(run.recall_at_k)}</p><p>MRR ${metric(run.mrr)} · nDCG ${metric(run.ndcg_at_k)}</p><p>p50 ${milliseconds(run.p50_latency_ms)} · p95 ${milliseconds(run.p95_latency_ms)}</p></article>`).join("");
+  document.querySelector("#quality-chart").innerHTML = runs.map((run) => bar(run.backend, run.recall_at_k)).join("");
+  const maximum = Math.max(...runs.map((run) => run.p95_latency_ms ?? 0), 1);
+  document.querySelector("#latency-chart").innerHTML = runs.map((run) => bar(run.backend, run.p95_latency_ms, maximum)).join("");
+  document.querySelector("#run-history").innerHTML = runs.map((run) => `<tr><td>${run.backend}</td><td>${run.mode}</td><td>${run.dataset}</td><td>${metric(run.recall_at_k)}</td><td>${metric(run.mrr)}</td><td>${metric(run.ndcg_at_k)}</td><td>${milliseconds(run.p50_latency_ms)}</td><td>${milliseconds(run.p95_latency_ms)}</td><td><button type="button" data-run-id="${run.run_id}">View</button></td></tr>`).join("");
+  document.querySelectorAll("[data-run-id]").forEach((button) => button.addEventListener("click", () => loadRun(button.dataset.runId)));
+}
+async function loadRuns() {
+  try {
+    const response = await fetch(`${deployment.apiBaseUrl}/benchmarks/runs`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    renderRuns(await response.json());
+  } catch (error) { document.querySelector("#benchmark-progress").textContent = `History unavailable: ${error.message}`; renderRuns([]); }
+}
+async function loadRun(runId) {
+  const response = await fetch(`${deployment.apiBaseUrl}/benchmarks/runs/${encodeURIComponent(runId)}`);
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  selectedRun = await response.json();
+  document.querySelector("#run-detail").hidden = false;
+  document.querySelector("#case-history").innerHTML = selectedRun.cases.map((item) => `<tr><td>${item.case_id}</td><td>${item.repetition || 1}</td><td>${item.retrieved_chunk_ids.join("<br>")}</td><td>${metric(item.recall_at_k)}</td><td>${metric(item.reciprocal_rank)}</td><td>${metric(item.ndcg_at_k)}</td><td>${milliseconds(item.latency_ms)}</td></tr>`).join("");
+}
+document.querySelector("#refresh-runs").addEventListener("click", loadRuns);
+document.querySelector("#benchmark-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const status = document.querySelector("#benchmark-progress");
+  status.textContent = "Requesting secured benchmark job…";
+  const response = await fetch(`${deployment.apiBaseUrl}/benchmarks/runs`, { method: "POST" });
+  const data = await response.json().catch(() => ({}));
+  status.textContent = response.ok ? "Benchmark accepted. Refresh history to monitor progress." : (data.detail || "Benchmark job is not configured.");
+});
+document.querySelector("#export-json").addEventListener("click", () => selectedRun && download(`${selectedRun.backend}.json`, JSON.stringify(selectedRun, null, 2), "application/json"));
+document.querySelector("#export-csv").addEventListener("click", () => selectedRun && download(`${selectedRun.backend}.csv`, casesToCsv(selectedRun.cases), "text/csv"));
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
