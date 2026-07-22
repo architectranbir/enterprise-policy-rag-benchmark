@@ -4,8 +4,10 @@ from typing import TYPE_CHECKING
 from uuid import uuid4
 
 from fastapi import FastAPI, Header, HTTPException, Request
+from fastapi.responses import JSONResponse
 
 from policy_rag.answering import PolicyAnswerService
+from policy_rag.api.benchmark_lab import BenchmarkLabRepository, BenchmarkRunSummary
 from policy_rag.api.models import AskRequest, AskResponse, HealthResponse
 from policy_rag.auth import (
     AuthenticatedIdentity,
@@ -29,6 +31,7 @@ def create_app(
     close_runtime: Callable[[], None] | None = None,
     *,
     allow_insecure_demo_identity: bool = False,
+    benchmark_repository: BenchmarkLabRepository | None = None,
 ) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
@@ -43,6 +46,7 @@ def create_app(
     )
     app.state.answer_service = service
     app.state.vector_store = store
+    app.state.benchmark_repository = benchmark_repository
 
     @app.get("/health", response_model=HealthResponse)
     def health() -> HealthResponse:
@@ -99,10 +103,35 @@ def create_app(
         result = active_service.ask(payload.question, retrieval)
         return AskResponse(**result.model_dump(), correlation_id=correlation_id)
 
+    @app.get("/benchmarks/runs", response_model=tuple[BenchmarkRunSummary, ...])
+    def benchmark_runs() -> tuple[BenchmarkRunSummary, ...]:
+        if benchmark_repository is None:
+            return ()
+        return benchmark_repository.list_runs()
+
+    @app.get("/benchmarks/runs/{run_id}")
+    def benchmark_run(run_id: str) -> JSONResponse:
+        if benchmark_repository is None:
+            raise HTTPException(status_code=404, detail="benchmark run not found")
+        try:
+            return JSONResponse(benchmark_repository.raw_run(run_id))
+        except (FileNotFoundError, ValueError) as error:
+            raise HTTPException(status_code=404, detail="benchmark run not found") from error
+
+    @app.post("/benchmarks/runs", status_code=503)
+    def start_benchmark_run() -> None:
+        raise HTTPException(
+            status_code=503,
+            detail="benchmark execution is not configured on this API; use the secured benchmark job",
+        )
+
     return app
 
 
 def create_configured_app(settings: "Settings | None" = None) -> FastAPI:
+    from pathlib import Path
+
+    from policy_rag.api.benchmark_lab import BenchmarkLabRepository
     from policy_rag.config import Settings
     from policy_rag.runtime import build_runtime
 
@@ -122,6 +151,7 @@ def create_configured_app(settings: "Settings | None" = None) -> FastAPI:
         validator,
         runtime.close,
         allow_insecure_demo_identity=settings.allow_insecure_demo_identity,
+        benchmark_repository=BenchmarkLabRepository(Path(settings.benchmark_results_dir)),
     )
 
 

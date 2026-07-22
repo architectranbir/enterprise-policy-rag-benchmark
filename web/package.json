@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "scripts": { "build": "vite build", "dev": "vite --host 0.0.0.0" },
+  "scripts": { "build": "vite build", "dev": "vite --host 0.0.0.0", "lint": "node --check src/main.js && node --check src/benchmark.js", "test": "node --test src/benchmark.test.js" },
   "dependencies": { "@azure/msal-browser": "5.17.1" },
   "devDependencies": { "vite": "8.1.5" }
 }
