@@ -47,6 +47,17 @@ def test_validates_signature_contract_and_extracts_identity() -> None:
     assert decode.call_args.kwargs["algorithms"] == ["RS256"]
 
 
+def test_uses_tenant_jwks_endpoint_from_entra_metadata() -> None:
+    with patch("policy_rag.auth.jwt.PyJWKClient") as jwks_client:
+        EntraTokenValidator(tenant_id="tenant-id", audience="api://policy-rag")
+
+    jwks_client.assert_called_once_with(
+        "https://login.microsoftonline.com/tenant-id/discovery/v2.0/keys",
+        cache_keys=True,
+        lifespan=3600,
+    )
+
+
 def test_rejects_group_overage_instead_of_bypassing_acl_resolution() -> None:
     overage = claims(_claim_names={"groups": "src1"})
     with patch("policy_rag.auth.jwt.decode", return_value=overage):

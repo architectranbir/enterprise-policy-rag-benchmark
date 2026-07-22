@@ -47,7 +47,7 @@ class EntraTokenValidator:
         if any(not key.strip() or not value.strip() for key, value in self._group_mapping.items()):
             raise ValueError("group_mapping keys and values must not be empty")
         self._signing_keys = signing_keys or jwt.PyJWKClient(
-            f"{self._issuer}/discovery/v2.0/keys",
+            f"https://login.microsoftonline.com/{tenant_id}/discovery/v2.0/keys",
             cache_keys=True,
             lifespan=3600,
         )

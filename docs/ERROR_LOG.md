@@ -334,4 +334,19 @@ Each meaningful error should include:
 - **Fix:** Added explicit synthetic required settings to the monitoring-test fixture while retaining
   strict production configuration validation.
 - **Verification:** Ruff formatting/lint, strict mypy and the exact pytest-with-coverage CI command
-  passed locally with all 120 tests. PR CI rerun is pending.
+  passed locally with all 120 tests. PR and post-merge `main` CI both passed.
+
+## ERR-030: Entra signing-key discovery used an invalid URL
+
+- **Date:** 2026-07-22
+- **Component:** API bearer-token validation
+- **Error:** A correctly authenticated Web user received `bearer token validation failed`.
+- **Root cause:** The validator appended `/discovery/v2.0/keys` to an issuer already ending in
+  `/v2.0`, producing an invalid JWKS URL. Tenant, audience, delegated scope and group mapping were
+  independently verified as correct.
+- **Fix:** Use the tenant-specific Microsoft Entra JWKS endpoint published by the v2 OpenID metadata
+  document and protect it with a focused construction test.
+- **Verification:** The focused 12-test auth suite and complete quality gate passed with 121 tests;
+  the immutable `linux/amd64` image was pushed and deployed; `/health` and `/ready` passed; and the
+  final Terraform plan reported no changes. Authenticated Web confirmation remains user-driven
+  because the Azure CLI public client lacks delegated consent for this custom API.
