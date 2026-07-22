@@ -43,7 +43,7 @@ resource "azurerm_container_app_job" "ingestion" {
   template {
     container {
       name    = "ingest"
-      image   = var.api_container_image
+      image   = coalesce(var.ingestion_container_image, var.api_container_image)
       cpu     = 1
       memory  = "2Gi"
       command = ["python", "scripts/ingest_fair_artifact.py"]
