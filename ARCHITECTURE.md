@@ -33,7 +33,8 @@ flowchart LR
 
 The Azure development deployment includes the Web UI, API, Foundry, all three retrieval services,
 managed identities, ACR, Key Vault, private endpoints and monitoring. The authenticated Web flow
-and one fair vector-only run per backend were verified. `docs/PROGRESS.md` is the evidence boundary.
+and one fair vector-only run per backend were verified. Versioned benchmark artifacts under
+`benchmark_results/` are the evidence boundary.
 
 ## Implemented but not live-verified
 

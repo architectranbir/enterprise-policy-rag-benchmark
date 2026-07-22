@@ -76,6 +76,7 @@ def build_runtime(settings: Settings) -> RuntimeComponents:
                 timeout=settings.qdrant_timeout_seconds,
             ),
             settings.qdrant_collection,
+            optimized_schema=settings.qdrant_optimized_schema,
         )
     store = create_vector_store(settings.vector_backend, {settings.vector_backend: selected})
     embeddings = FoundryEmbeddingProvider(
