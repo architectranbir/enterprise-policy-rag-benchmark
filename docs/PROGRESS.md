@@ -87,7 +87,9 @@ Phase 11 — deployed security hardening and operational verification
   reproducing `block_nested_popups`; rebuilt and deployed the corrected production Web UI.
 - Corrected the deployed Entra tenant ID and added a Terraform-output-driven Web build script to
   prevent manual tenant/client ID transposition.
-- Locally verified the full 120-test unit suite, Ruff, strict mypy, Compose configuration and
+- Corrected Entra JWKS discovery, deployed the immutable API revision, and verified health,
+  readiness and no Terraform drift.
+- Locally verified the full 121-test unit suite, Ruff, strict mypy, Compose configuration and
   production `linux/amd64` image build/push.
 
 ## Current branch
