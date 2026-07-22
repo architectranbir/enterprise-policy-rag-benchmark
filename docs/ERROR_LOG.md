@@ -412,3 +412,14 @@ benchmark executions succeeded from that image.
   `docker-compose` executable. No plan, apply, deployment or remote mutation was performed.
 - **Verification:** Both Terraform roots validated successfully; Compose configuration passed and
   both API and Web images built successfully.
+
+## ERR-036: Container CI lacked the ignored Compose environment file
+
+- **Date:** 2026-07-22
+- **Component:** GitHub Actions container validation
+- **Error:** `env file .../.env not found` during `docker compose config --quiet` on PR #22.
+- **Root cause:** Local Compose correctly uses an ignored `.env`, but the clean CI checkout did not
+  create one before validating the Compose model.
+- **Fix:** Create the ephemeral CI `.env` from the committed synthetic `.env.example` before
+  configuration validation and image builds. No credentials are introduced.
+- **Verification:** Pending the updated GitHub Actions run.
