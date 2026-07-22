@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     entra_tenant_id: str = Field(default="", min_length=1)
     entra_audience: str = Field(default="", min_length=1)
     allow_insecure_demo_identity: bool = False
+    azure_client_id: str | None = None
+    azure_monitor_enabled: bool = False
+    applicationinsights_connection_string: SecretStr | None = None
     postgres_dsn: str = "postgresql://policy_rag:policy_rag@postgres:5432/policy_rag"
     postgres_use_entra: bool = False
     qdrant_url: str = "http://qdrant:6333"

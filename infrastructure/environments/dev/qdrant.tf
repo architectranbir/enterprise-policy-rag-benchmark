@@ -1,14 +1,25 @@
 resource "azurerm_storage_account" "qdrant" {
-  count                         = var.deploy_application_platform ? 1 : 0
-  name                          = local.qdrant_storage_name
-  resource_group_name           = azurerm_resource_group.main.name
-  location                      = azurerm_resource_group.main.location
-  account_tier                  = "Standard"
-  account_replication_type      = "LRS"
-  min_tls_version               = "TLS1_2"
-  public_network_access_enabled = true
-  shared_access_key_enabled     = true
-  tags                          = local.common_tags
+  count                           = var.deploy_application_platform ? 1 : 0
+  name                            = local.qdrant_storage_name
+  resource_group_name             = azurerm_resource_group.main.name
+  location                        = azurerm_resource_group.main.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
+  min_tls_version                 = "TLS1_2"
+  public_network_access_enabled   = local.restricted_public_access
+  shared_access_key_enabled       = true
+  allow_nested_items_to_be_public = false
+  local_user_enabled              = false
+
+  dynamic "network_rules" {
+    for_each = var.enable_private_endpoints ? [1] : []
+    content {
+      default_action = "Deny"
+      bypass         = ["AzureServices"]
+      ip_rules       = local.single_ip_operator_rules
+    }
+  }
+  tags = local.common_tags
 }
 
 resource "azurerm_storage_share" "qdrant" {
@@ -36,9 +47,21 @@ resource "azurerm_container_app" "qdrant_demo" {
   revision_mode                = "Single"
   workload_profile_name        = "Consumption"
 
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.qdrant[0].id]
+  }
+
   secret {
-    name  = "api-key"
-    value = random_password.qdrant_api_key[0].result
+    name                = "admin-api-key"
+    key_vault_secret_id = azurerm_key_vault_secret.qdrant_admin_api_key[0].versionless_id
+    identity            = azurerm_user_assigned_identity.qdrant[0].id
+  }
+
+  secret {
+    name                = "read-only-api-key"
+    key_vault_secret_id = azurerm_key_vault_secret.qdrant_read_only_api_key[0].versionless_id
+    identity            = azurerm_user_assigned_identity.qdrant[0].id
   }
 
   template {
@@ -53,7 +76,12 @@ resource "azurerm_container_app" "qdrant_demo" {
 
       env {
         name        = "QDRANT__SERVICE__API_KEY"
-        secret_name = "api-key"
+        secret_name = "admin-api-key"
+      }
+
+      env {
+        name        = "QDRANT__SERVICE__READ_ONLY_API_KEY"
+        secret_name = "read-only-api-key"
       }
 
       volume_mounts {
@@ -81,9 +109,9 @@ resource "azurerm_container_app" "qdrant_demo" {
   }
 
   tags = local.common_tags
-}
-resource "random_password" "qdrant_api_key" {
-  count   = var.deploy_application_platform ? 1 : 0
-  length  = 48
-  special = false
+
+  depends_on = [
+    azurerm_role_assignment.qdrant_admin_secret_reader,
+    azurerm_role_assignment.qdrant_read_only_secret_reader,
+  ]
 }

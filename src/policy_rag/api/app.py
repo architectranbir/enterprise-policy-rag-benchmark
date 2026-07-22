@@ -1,5 +1,6 @@
 from collections.abc import AsyncIterator, Callable
 from contextlib import asynccontextmanager
+from typing import TYPE_CHECKING
 from uuid import uuid4
 
 from fastapi import FastAPI, Header, HTTPException, Request
@@ -16,6 +17,9 @@ from policy_rag.auth import (
 from policy_rag.domain.access import PolicyAccessContext
 from policy_rag.retrieval.base import PolicyVectorStore
 from policy_rag.retrieval.models import PolicyRetrievalRequest
+
+if TYPE_CHECKING:
+    from policy_rag.config import Settings
 
 
 def create_app(
@@ -98,11 +102,11 @@ def create_app(
     return app
 
 
-def create_configured_app() -> FastAPI:
+def create_configured_app(settings: "Settings | None" = None) -> FastAPI:
     from policy_rag.config import Settings
     from policy_rag.runtime import build_runtime
 
-    settings = Settings()
+    settings = settings or Settings()
     runtime = build_runtime(settings)
     validator = None
     if not settings.allow_insecure_demo_identity:

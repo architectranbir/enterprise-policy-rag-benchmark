@@ -33,9 +33,13 @@ resource "azurerm_container_app" "api" {
     identity = azurerm_user_assigned_identity.application.id
   }
 
-  secret {
-    name  = "qdrant-api-key"
-    value = random_password.qdrant_api_key[0].result
+  dynamic "secret" {
+    for_each = var.vector_backend == "qdrant" ? [1] : []
+    content {
+      name                = "qdrant-read-only-api-key"
+      key_vault_secret_id = azurerm_key_vault_secret.qdrant_read_only_api_key[0].versionless_id
+      identity            = azurerm_user_assigned_identity.application.id
+    }
   }
 
   template {
@@ -50,7 +54,7 @@ resource "azurerm_container_app" "api" {
 
       env {
         name  = "VECTOR_BACKEND"
-        value = "azure_ai_search"
+        value = var.vector_backend
       }
 
       env {
@@ -104,6 +108,16 @@ resource "azurerm_container_app" "api" {
       }
 
       env {
+        name  = "AZURE_MONITOR_ENABLED"
+        value = "true"
+      }
+
+      env {
+        name  = "APPLICATIONINSIGHTS_AUTHENTICATION_STRING"
+        value = "Authorization=AAD;ClientId=${azurerm_user_assigned_identity.application.client_id}"
+      }
+
+      env {
         name  = "POSTGRES_DSN"
         value = "postgresql://${azurerm_user_assigned_identity.application.name}@${azurerm_postgresql_flexible_server.application[0].fqdn}:5432/policy_rag?sslmode=require"
       }
@@ -118,9 +132,12 @@ resource "azurerm_container_app" "api" {
         value = "https://${azurerm_container_app.qdrant_demo[0].ingress[0].fqdn}"
       }
 
-      env {
-        name        = "QDRANT_API_KEY"
-        secret_name = "qdrant-api-key"
+      dynamic "env" {
+        for_each = var.vector_backend == "qdrant" ? [1] : []
+        content {
+          name        = "QDRANT_API_KEY"
+          secret_name = "qdrant-read-only-api-key"
+        }
       }
 
       startup_probe {
@@ -165,5 +182,9 @@ resource "azurerm_container_app" "api" {
 
   tags = local.common_tags
 
-  depends_on = [azurerm_role_assignment.application_acr_pull]
+  depends_on = [
+    azurerm_role_assignment.application_acr_pull,
+    azurerm_role_assignment.application_monitoring_metrics_publisher,
+    azurerm_role_assignment.application_qdrant_read_only_secret_reader,
+  ]
 }

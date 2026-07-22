@@ -9,7 +9,8 @@ resource "azurerm_search_service" "benchmark" {
 
   semantic_search_sku           = "free"
   local_authentication_enabled  = false
-  public_network_access_enabled = true
+  public_network_access_enabled = local.restricted_public_access
+  allowed_ips                   = var.enable_private_endpoints ? var.operator_ip_ranges : null
 
   tags = local.common_tags
 }

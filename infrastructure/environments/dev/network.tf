@@ -40,6 +40,16 @@ resource "azurerm_subnet" "postgresql" {
   }
 }
 
+resource "azurerm_subnet" "private_endpoints" {
+  count                = var.deploy_application_platform && var.enable_private_endpoints ? 1 : 0
+  name                 = "snet-private-endpoints"
+  resource_group_name  = azurerm_resource_group.main.name
+  virtual_network_name = azurerm_virtual_network.application[0].name
+  address_prefixes     = ["10.42.3.0/24"]
+
+  private_endpoint_network_policies = "Disabled"
+}
+
 resource "azurerm_private_dns_zone" "postgresql" {
   count               = var.deploy_application_platform ? 1 : 0
   name                = "private.postgres.database.azure.com"

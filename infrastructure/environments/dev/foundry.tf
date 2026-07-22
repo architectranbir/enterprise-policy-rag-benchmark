@@ -10,7 +10,16 @@ resource "azurerm_cognitive_account" "foundry" {
   project_management_enabled = true
 
   local_auth_enabled            = false
-  public_network_access_enabled = true
+  public_network_access_enabled = local.restricted_public_access
+
+  dynamic "network_acls" {
+    for_each = var.enable_private_endpoints ? [1] : []
+    content {
+      default_action = "Deny"
+      bypass         = "AzureServices"
+      ip_rules       = local.single_ip_operator_rules
+    }
+  }
 
   identity {
     type = "SystemAssigned"

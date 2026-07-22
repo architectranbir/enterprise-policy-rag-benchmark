@@ -20,6 +20,10 @@ locals {
   qdrant_storage_name        = "st${var.workload_name}${var.environment}${var.unique_suffix}"
   virtual_network_name       = "vnet-${local.name_prefix}-${var.instance_number}"
   postgres_private_dns_name  = "${local.postgres_server_name}.postgres.database.azure.com"
+  restricted_public_access   = !var.enable_private_endpoints || length(var.operator_ip_ranges) > 0
+  single_ip_operator_rules = toset([
+    for cidr in var.operator_ip_ranges : endswith(cidr, "/32") ? split("/", cidr)[0] : cidr
+  ])
 
   common_tags = merge(
     var.tags,
