@@ -7,16 +7,368 @@
   "top_k": 5,
   "cases": [
     {
-      "case_id": "EQ-001",
+      "case_id": "EQ-HR-001",
+      "question": "When does an employee become eligible to request regular remote working?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-HR-002",
+      "question": "How many days per week must a hybrid employee normally attend the office?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-HR-003",
+      "question": "How often must an approved remote-working arrangement be reviewed?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-HR-004",
       "question": "How much may an employee claim for approved home-office equipment?",
       "user_groups": ["employees"],
+      "as_of": "2026-07-22",
       "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-006:CHK-001"]
     },
     {
-      "case_id": "EQ-002",
+      "case_id": "EQ-HR-005",
+      "question": "May confidential information be printed at a remote location?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-HR-006",
       "question": "May an employee work from another country without approval?",
       "user_groups": ["employees"],
+      "as_of": "2026-07-22",
       "relevant_chunk_ids": ["POL-HR-001:1.0:SEC-008:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-001",
+      "question": "Are fixed-term employees covered by the leave policy from their first day?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-002",
+      "question": "What is the annual leave entitlement for a full-time employee?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-003",
+      "question": "How many annual-leave days can be carried into the next year and when do they expire?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-004",
+      "question": "When must sickness be reported and from which day is a medical certificate required?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-005",
+      "question": "How much paid leave is available for an unexpected dependant emergency?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEAVE-006",
+      "question": "How far in advance should planned leave be submitted?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-HR-002:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-001",
+      "question": "In June 2025, how early should business travel normally be booked?",
+      "user_groups": ["employees"],
+      "as_of": "2025-06-01",
+      "relevant_chunk_ids": ["POL-FIN-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-002",
+      "question": "What was the maximum reimbursable hotel rate in June 2025?",
+      "user_groups": ["employees"],
+      "as_of": "2025-06-01",
+      "relevant_chunk_ids": ["POL-FIN-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-003",
+      "question": "What daily meal limit applied to approved overnight travel in 2025?",
+      "user_groups": ["employees"],
+      "as_of": "2025-06-01",
+      "relevant_chunk_ids": ["POL-FIN-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-004",
+      "question": "In 2025, which expenses required itemised receipts and when were claims due?",
+      "user_groups": ["employees"],
+      "as_of": "2025-06-01",
+      "relevant_chunk_ids": ["POL-FIN-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-001",
+      "question": "When may business class be approved under the current travel policy?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-002",
+      "question": "How many days before departure should current business travel normally be booked?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-003",
+      "question": "What is the current maximum reimbursable hotel room rate?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-004",
+      "question": "What is the current daily meal allowance for overnight travel?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-005",
+      "question": "What is the current receipt threshold and expense submission deadline?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-006",
+      "question": "How quickly must an emergency travel exception be documented?",
+      "user_groups": ["employees"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-FIN-001:2.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-001",
+      "question": "What are the four information classification levels?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-002",
+      "question": "When is multi-factor authentication mandatory?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-003",
+      "question": "Where may confidential and restricted information be stored?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-004",
+      "question": "How quickly must a suspected security incident be reported?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-005",
+      "question": "Under what conditions may removable media be used?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-SEC-006",
+      "question": "What controls are required for third-party access and how long may it last?",
+      "user_groups": ["information-security"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-SEC-001:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-001",
+      "question": "When is limited personal use of organisation technology permitted?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-002",
+      "question": "May employees install an unapproved browser extension?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-003",
+      "question": "What information must not be entered into a public generative-AI service?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-004",
+      "question": "How must administrator privileges be used?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-005",
+      "question": "Why may the organisation monitor use of its technology?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-IT-006",
+      "question": "When must technology assets be returned after employment ends?",
+      "user_groups": ["information-technology"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-IT-001:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-001",
+      "question": "Which approvals apply at the purchasing thresholds?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-002",
+      "question": "When are three written supplier quotations required?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-003",
+      "question": "Which due-diligence checks must a new supplier complete?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-004",
+      "question": "What must an employee do when related to a prospective supplier?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-005",
+      "question": "Must a purchase order exist before ordering goods or services?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-PROC-006",
+      "question": "What follow-up is required after an emergency purchase?",
+      "user_groups": ["procurement"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-PROC-001:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-001",
+      "question": "How should a record owner determine the applicable retention period?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-002",
+      "question": "How long are core employment records retained after employment ends?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-003",
+      "question": "How many financial years must invoices and expense evidence be retained?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-004",
+      "question": "What happens to normal deletion when a legal hold is issued?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-005",
+      "question": "How must expired electronic and paper records be disposed of?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-LEGAL-006",
+      "question": "Do backups extend the business retention period?",
+      "user_groups": ["legal"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-LEG-001:1.0:SEC-007:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-001",
+      "question": "What is the annual gifts and hospitality value limit from one source?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-002:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-002",
+      "question": "Which gifts or benefits are prohibited regardless of value?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-003:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-003",
+      "question": "Is prior approval required for a low-value gift to a public official?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-004:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-004",
+      "question": "When must a gift be entered in the register?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-005:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-005",
+      "question": "When must an employee disclose a conflict of interest?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-006:CHK-001"]
+    },
+    {
+      "case_id": "EQ-COMP-006",
+      "question": "Where should a suspected gifts-policy breach be reported?",
+      "user_groups": ["compliance"],
+      "as_of": "2026-07-22",
+      "relevant_chunk_ids": ["POL-COMP-001:1.0:SEC-007:CHK-001"]
     }
   ]
 }

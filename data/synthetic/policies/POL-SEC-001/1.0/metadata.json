@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-SEC-001",
+  "title": "Information Security Policy",
+  "version": "1.0",
+  "effective_from": "2026-02-01",
+  "effective_to": null,
+  "department": "Information Security",
+  "classification": "confidential",
+  "allowed_groups": ["employees", "information-security"]
+}

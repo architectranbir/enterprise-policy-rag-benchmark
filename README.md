@@ -76,6 +76,11 @@ The versioned fair evaluation dataset is in `data/evaluation`. Do not report res
 until every backend has been populated from identical canonical chunks and the run
 artifacts have been captured.
 
+Fair-vector dataset v1 contains 8 synthetic policies across 9 effective-dated versions,
+67 deterministic canonical chunks and 52 positive retrieval cases. Integrity tests verify every
+ground-truth chunk ID, ACL and effective date. These committed inputs have not yet been ingested
+into the deployed backends.
+
 The deployed development indexes currently contain the same 11 canonical chunks. Live smoke tests
 passed for Azure AI Search, pgvector and Qdrant; these smoke results are functional verification,
 not benchmark rankings.

@@ -6,20 +6,21 @@ Expand and execute the fair vector-only benchmark after the secured live baselin
 
 ## Immediate verification
 
-1. Validate interactive Microsoft sign-in and `Policy.Read` consent in a normal user browser.
-2. Expand the synthetic corpus and evaluation set before recording fair results.
+1. Generate one versioned canonical chunk-and-embedding artifact for the expanded corpus.
+2. Ingest that identical artifact into Azure AI Search, pgvector and Qdrant.
 3. Run repeatable fair vector-only evaluation across the populated backends and retain raw artifacts.
-4. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
+4. Add a separate negative ACL, effective-date and refusal evaluation set.
+5. Run Terraform from a VNet-connected federated deployment identity, remove the operator IP
    exception, and verify private-only data-plane access.
-5. Add repeatable integration tests for the local containerised backends.
-6. Add CI workload identity federation and enforce the security posture with Azure Policy.
-7. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
+6. Add repeatable integration tests for the local containerised backends.
+7. Add CI workload identity federation and enforce the security posture with Azure Policy.
+8. Decide whether global Qdrant read-only access is sufficient or implement collection-scoped
    JWT RBAC with a trusted token issuer and rotation lifecycle.
 
 ## Exact next implementation task
 
-Use the deployed UI to complete interactive Microsoft consent, then run and capture the expanded
-fair-vector evaluation without mixing it with platform-optimised results.
+Implement a canonical artifact pipeline that generates the 67 chunks and their embeddings once,
+then lets all three ingestion adapters consume those exact vectors.
 
 ## Guardrails
 

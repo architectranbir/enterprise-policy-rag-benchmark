@@ -348,5 +348,18 @@ Each meaningful error should include:
   document and protect it with a focused construction test.
 - **Verification:** The focused 12-test auth suite and complete quality gate passed with 121 tests;
   the immutable `linux/amd64` image was pushed and deployed; `/health` and `/ready` passed; and the
-  final Terraform plan reported no changes. Authenticated Web confirmation remains user-driven
-  because the Azure CLI public client lacks delegated consent for this custom API.
+  final Terraform plan reported no changes. The user subsequently confirmed the signed-in Web flow
+  returned a grounded Azure AI Search answer with the expected policy citation.
+
+## ERR-031: Expanded-corpus integration test had formatting drift
+
+- **Date:** 2026-07-22
+- **Component:** Fair-vector benchmark dataset validation
+- **Error:** Ruff's format check reported one unformatted integration-test file during the first
+  complete quality run.
+- **Root cause:** The new multi-version corpus assertion did not match the repository formatter's
+  wrapping.
+- **Fix:** Applied the pinned Ruff formatter to the affected test.
+- **Verification:** The subsequent fail-fast quality gate passed Ruff formatting and lint, strict
+  mypy and pytest with coverage: 122 tests passed with one expected local Qdrant payload-index
+  warning.

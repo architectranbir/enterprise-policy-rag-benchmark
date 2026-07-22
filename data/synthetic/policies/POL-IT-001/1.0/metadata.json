@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-IT-001",
+  "title": "Acceptable Technology Use Policy",
+  "version": "1.0",
+  "effective_from": "2026-03-01",
+  "effective_to": null,
+  "department": "Information Technology",
+  "classification": "internal",
+  "allowed_groups": ["employees", "information-technology"]
+}

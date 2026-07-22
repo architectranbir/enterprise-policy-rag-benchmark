@@ -89,12 +89,19 @@ Phase 11 — deployed security hardening and operational verification
   prevent manual tenant/client ID transposition.
 - Corrected Entra JWKS discovery, deployed the immutable API revision, and verified health,
   readiness and no Terraform drift.
-- Locally verified the full 121-test unit suite, Ruff, strict mypy, Compose configuration and
-  production `linux/amd64` image build/push.
+- Live-verified the authenticated Web flow through Azure AI Search with the expected grounded answer
+  and citation.
+- Expanded fair-vector dataset v1 to 8 synthetic policies, 9 effective-dated versions, 67
+  deterministic chunks and 52 positive ground-truth cases across HR, Finance, Security, IT,
+  Procurement, Legal and Compliance.
+- Added dataset integrity validation for unique cases, canonical chunk references, effective dates
+  and ACL access.
+- Locally verified the expanded corpus and dataset with Ruff, strict mypy and the full 122-test
+  suite. No expanded-corpus cloud ingestion or benchmark run has been performed yet.
 
 ## Current branch
 
-`feature/azure-search-vector-retrieval`
+`feature/fair-benchmark-corpus-v1`
 
 ## Verified development resources
 
@@ -110,11 +117,11 @@ Phase 11 — deployed security hardening and operational verification
 ## Known limitations
 
 - Platform-optimised hybrid and semantic retrieval are not implemented yet.
-- The synthetic corpus currently contains one versioned policy and 11 canonical chunks; expand it
-  before publishing statistically meaningful benchmark results.
-- Interactive Web UI sign-in/consent still requires a user browser validation. Automated in-app
-  browser navigation was blocked by the enterprise browser policy, while API-side live tests passed.
-- The fair dataset is intentionally small and has not produced benchmark results.
+- The deployed indexes still contain the original 11 chunks. The expanded 67-chunk corpus must be
+  embedded once and re-ingested identically before benchmark execution.
+- The 52-case fair dataset contains positive relevance judgments. Negative ACL, expiry and refusal
+  evaluation will be recorded separately so retrieval metrics remain well-defined.
+- The fair dataset has not produced benchmark results.
 - The development environment retains one reviewed operator IP allowlist. Set it empty and run
   Terraform from a VNet-connected runner to make the Azure data planes private-only.
 - Azure AI Search has one replica and one partition and is not configured for production availability.

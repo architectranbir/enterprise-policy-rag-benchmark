@@ -1,0 +1,10 @@
+{
+  "document_id": "POL-COMP-001",
+  "title": "Gifts and Conflicts of Interest Policy",
+  "version": "1.0",
+  "effective_from": "2026-05-01",
+  "effective_to": null,
+  "department": "Compliance",
+  "classification": "internal",
+  "allowed_groups": ["employees", "compliance"]
+}
