@@ -5,6 +5,10 @@ from azure.search.documents.indexes.models import (
     HnswParameters,
     SearchField,
     SearchIndex,
+    SemanticConfiguration,
+    SemanticField,
+    SemanticPrioritizedFields,
+    SemanticSearch,
     SimpleField,
     VectorSearch,
     VectorSearchAlgorithmMetric,
@@ -15,6 +19,7 @@ EMBEDDING_DIMENSIONS = 3072
 AZURE_SEARCH_API_VERSION = "2025-09-01"
 VECTOR_ALGORITHM_NAME = "policy-chunks-hnsw"
 VECTOR_PROFILE_NAME = "policy-chunks-vector-profile"
+SEMANTIC_CONFIGURATION_NAME = "policy-semantic-config"
 
 
 def create_policy_chunk_search_index(name: str) -> SearchIndex:
@@ -137,4 +142,16 @@ def create_policy_chunk_search_index(name: str) -> SearchIndex:
         name=name,
         fields=fields,
         vector_search=vector_search,
+        semantic_search=SemanticSearch(
+            configurations=[
+                SemanticConfiguration(
+                    name=SEMANTIC_CONFIGURATION_NAME,
+                    prioritized_fields=SemanticPrioritizedFields(
+                        title_field=SemanticField(field_name="document_title"),
+                        content_fields=[SemanticField(field_name="text")],
+                        keywords_fields=[SemanticField(field_name="section_title")],
+                    ),
+                )
+            ]
+        ),
     )

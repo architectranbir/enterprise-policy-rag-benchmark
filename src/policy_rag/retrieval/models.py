@@ -1,11 +1,17 @@
 """Backend-neutral policy retrieval contracts."""
 
 from datetime import date
+from enum import StrEnum
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from policy_rag.domain.access import PolicyAccessContext
 from policy_rag.domain.policy import PolicyClassification
+
+
+class RetrievalMode(StrEnum):
+    FAIR_VECTOR = "fair_vector"
+    PLATFORM_OPTIMIZED = "platform_optimized"
 
 
 class PolicyRetrievalRequest(BaseModel):
@@ -30,6 +36,8 @@ class PolicyRetrievalRequest(BaseModel):
         max_length=100,
     )
     classification: PolicyClassification | None = None
+    mode: RetrievalMode = RetrievalMode.FAIR_VECTOR
+    query_text: str | None = Field(default=None, min_length=3, max_length=2000)
     query_embedding: tuple[float, ...] | None = Field(
         default=None,
         min_length=1,

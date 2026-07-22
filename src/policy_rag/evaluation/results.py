@@ -5,6 +5,7 @@ import gzip
 import re
 from collections.abc import Iterable
 from datetime import datetime
+from statistics import mean, median, pstdev
 from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -21,12 +22,18 @@ class CaseRetrievalResult(BaseModel):
     retrieved_chunk_ids: tuple[str, ...]
     scores: tuple[float | None, ...]
     latency_ms: float = Field(ge=0)
+    repetition: int = Field(default=1, ge=1)
+    precision_at_k: float = Field(default=0, ge=0, le=1)
+    recall_at_k: float = Field(default=0, ge=0, le=1)
+    reciprocal_rank: float = Field(default=0, ge=0, le=1)
+    ndcg_at_k: float = Field(default=0, ge=0, le=1)
 
 
 class FairVectorRun(BaseModel):
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     schema_version: Literal["1.0"] = "1.0"
+    mode: Literal["fair-vector-only", "platform-optimized"] = "fair-vector-only"
     created_at: datetime
     backend: BackendName
     artifact_sha256: str = Field(pattern=r"^[0-9a-f]{64}$")
@@ -34,10 +41,44 @@ class FairVectorRun(BaseModel):
     dataset_name: str
     top_k: int = Field(gt=0)
     case_count: int = Field(ge=0)
+    measurement_count: int = Field(default=0, ge=0)
     recall_at_k: float = Field(ge=0, le=1)
     mean_reciprocal_rank: float = Field(ge=0, le=1)
     mean_latency_ms: float = Field(ge=0)
+    precision_at_k: float = Field(default=0, ge=0, le=1)
+    ndcg_at_k: float = Field(default=0, ge=0, le=1)
+    warmup_requests: int = Field(default=0, ge=0)
+    measured_repetitions: int = Field(default=1, ge=1)
+    median_latency_ms: float = Field(default=0, ge=0)
+    p50_latency_ms: float = Field(default=0, ge=0)
+    p95_latency_ms: float = Field(default=0, ge=0)
+    latency_stddev_ms: float = Field(default=0, ge=0)
     cases: tuple[CaseRetrievalResult, ...]
+
+
+def percentile(values: tuple[float, ...], percentile_value: float) -> float:
+    """Return a linearly interpolated percentile for a non-empty sample."""
+
+    if not values:
+        return 0.0
+    ordered = sorted(values)
+    position = (len(ordered) - 1) * percentile_value
+    lower = int(position)
+    upper = min(lower + 1, len(ordered) - 1)
+    weight = position - lower
+    return ordered[lower] * (1 - weight) + ordered[upper] * weight
+
+
+def latency_summary(values: tuple[float, ...]) -> dict[str, float]:
+    if not values:
+        return {"mean": 0.0, "median": 0.0, "p50": 0.0, "p95": 0.0, "stddev": 0.0}
+    return {
+        "mean": mean(values),
+        "median": median(values),
+        "p50": percentile(values, 0.5),
+        "p95": percentile(values, 0.95),
+        "stddev": pstdev(values),
+    }
 
 
 def encode_run_chunks(run: FairVectorRun, chunk_size: int = 3000) -> tuple[str, ...]:

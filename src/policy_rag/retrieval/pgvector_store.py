@@ -7,7 +7,7 @@ from typing import Any, Protocol
 from pgvector import HalfVector
 
 from policy_rag.indexing import IndexedPolicyChunk
-from policy_rag.retrieval.models import PolicyRetrievalRequest, RetrievedPolicyChunk
+from policy_rag.retrieval.models import PolicyRetrievalRequest, RetrievalMode, RetrievedPolicyChunk
 
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS policy_chunks (
@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS policy_chunks (
 );
 CREATE INDEX IF NOT EXISTS policy_chunks_embedding_hnsw
 ON policy_chunks USING hnsw (embedding halfvec_cosine_ops);
+CREATE INDEX IF NOT EXISTS policy_chunks_text_fts
+ON policy_chunks USING gin (to_tsvector('english', text));
 """
 
 
@@ -103,8 +105,7 @@ class PgVectorStore:
             "allowed_groups && %s",
         ]
         query_vector = HalfVector(list(request.query_embedding))
-        params: list[Any] = [
-            query_vector,
+        filter_params: list[Any] = [
             request.access.as_of,
             request.access.as_of,
             list(request.access.user_groups),
@@ -116,9 +117,20 @@ class PgVectorStore:
         ):
             if value is not None:
                 clauses.append(f"{column} = %s")
-                params.append(value)
-        params.extend([query_vector, request.limit])
-        query = f"""SELECT chunk_id,text,document_id,document_title,version,effective_from,
+                filter_params.append(value)
+        if request.mode is RetrievalMode.PLATFORM_OPTIMIZED:
+            if request.query_text is None:
+                raise ValueError("query_text is required for optimized retrieval")
+            params = [request.query_text, query_vector, *filter_params, request.limit]
+            ranking = """0.5 * ts_rank_cd(to_tsvector('english', text),
+              websearch_to_tsquery('english', %s)) + 0.5 * (1-(embedding <=> %s))"""
+            query = f"""SELECT chunk_id,text,document_id,document_title,version,effective_from,
+            effective_to,department,classification,section_id,section_number,section_title,
+            section_ordinal,chunk_ordinal,{ranking} AS score FROM policy_chunks
+            WHERE {" AND ".join(clauses)} ORDER BY score DESC LIMIT %s"""
+        else:
+            params = [query_vector, *filter_params, query_vector, request.limit]
+            query = f"""SELECT chunk_id,text,document_id,document_title,version,effective_from,
         effective_to,department,classification,section_id,section_number,section_title,
         section_ordinal,chunk_ordinal,1-(embedding <=> %s) AS score FROM policy_chunks
         WHERE {" AND ".join(clauses)} ORDER BY embedding <=> %s LIMIT %s"""

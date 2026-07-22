@@ -11,6 +11,7 @@ from policy_rag.retrieval import PolicyRetrievalRequest
 from policy_rag.retrieval.azure_retrieval import (
     AZURE_RETRIEVAL_FIELDS,
     retrieve_exact_policy_chunks,
+    retrieve_optimized_policy_chunks,
     retrieve_vector_policy_chunks,
 )
 
@@ -22,6 +23,8 @@ class FakeSearchClient:
         self.filter: str | None = None
         self.select: list[str] | None = None
         self.top: int | None = None
+        self.query_type: str | None = None
+        self.semantic_configuration_name: str | None = None
 
     def search(
         self,
@@ -31,12 +34,16 @@ class FakeSearchClient:
         select: list[str] | None = None,
         top: int | None = None,
         vector_queries: list[VectorizedQuery] | None = None,
+        query_type: str | None = None,
+        semantic_configuration_name: str | None = None,
     ) -> Iterable[dict[str, Any]]:
         self.search_text = search_text
         self.filter = filter
         self.select = select
         self.top = top
         self.vector_queries = vector_queries
+        self.query_type = query_type
+        self.semantic_configuration_name = semantic_configuration_name
         return self.results
 
 
@@ -135,3 +142,14 @@ def test_vector_retrieval_uses_embedding_and_secured_filter() -> None:
 def test_vector_retrieval_requires_query_embedding() -> None:
     with pytest.raises(ValueError, match="query_embedding is required"):
         retrieve_vector_policy_chunks(FakeSearchClient([]), create_request())
+
+
+def test_optimized_retrieval_is_explicit_hybrid_semantic_query() -> None:
+    client = FakeSearchClient([create_azure_result()])
+    request = create_vector_request().model_copy(update={"query_text": "home office equipment"})
+    assert retrieve_optimized_policy_chunks(client, request)
+    assert client.search_text == "home office equipment"
+    assert client.query_type == "semantic"
+    assert client.semantic_configuration_name == "policy-semantic-config"
+    assert client.vector_queries is not None
+    assert client.vector_queries[0].k_nearest_neighbors == 50
