@@ -20,6 +20,7 @@ def validator() -> EntraTokenValidator:
     return EntraTokenValidator(
         tenant_id="tenant-id",
         audience="api://policy-rag",
+        required_scope="Policy.Read",
         signing_keys=SigningKeys(),
     )
 
@@ -29,6 +30,7 @@ def claims(**updates: Any) -> dict[str, Any]:
         "sub": "subject-id",
         "oid": "object-id",
         "groups": ["employees", "human-resources"],
+        "scp": "Policy.Read",
     }
     values.update(updates)
     return values
@@ -56,6 +58,45 @@ def test_rejects_token_without_groups() -> None:
     with patch("policy_rag.auth.jwt.decode", return_value=claims(groups=None)):
         with pytest.raises(TokenValidationError, match="group claims"):
             validator().validate("signed-token")
+
+
+def test_rejects_token_without_required_scope() -> None:
+    with patch("policy_rag.auth.jwt.decode", return_value=claims(scp="Other.Scope")):
+        with pytest.raises(TokenValidationError, match="required delegated scope"):
+            validator().validate("signed-token")
+
+
+def test_maps_entra_group_ids_to_canonical_acl_groups() -> None:
+    mapped_validator = EntraTokenValidator(
+        tenant_id="tenant-id",
+        audience="api://policy-rag",
+        required_scope="Policy.Read",
+        group_mapping={"entra-employees-id": "employees"},
+        signing_keys=SigningKeys(),
+    )
+    with patch(
+        "policy_rag.auth.jwt.decode",
+        return_value=claims(groups=["entra-employees-id", "unrelated-group-id"]),
+    ):
+        identity = mapped_validator.validate("signed-token")
+
+    assert identity.user_groups == ("employees",)
+
+
+def test_rejects_identity_without_a_mapped_policy_group() -> None:
+    mapped_validator = EntraTokenValidator(
+        tenant_id="tenant-id",
+        audience="api://policy-rag",
+        required_scope="Policy.Read",
+        group_mapping={"entra-employees-id": "employees"},
+        signing_keys=SigningKeys(),
+    )
+    with patch(
+        "policy_rag.auth.jwt.decode",
+        return_value=claims(groups=["unrelated-group-id"]),
+    ):
+        with pytest.raises(TokenValidationError, match="authorised policy group"):
+            mapped_validator.validate("signed-token")
 
 
 def test_rejects_malformed_claim_metadata() -> None:

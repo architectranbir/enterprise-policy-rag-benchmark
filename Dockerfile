@@ -4,12 +4,16 @@ WORKDIR /app
 COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-dev --no-install-project
 COPY src ./src
+COPY scripts ./scripts
+COPY data ./data
 RUN uv sync --locked --no-dev --no-editable
 
 FROM python:3.13-slim-bookworm@sha256:9d7f287598e1a5a978c015ee176d8216435aaf335ed69ac3c38dd1bbb10e8d64
 RUN useradd --create-home --uid 10001 appuser
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder /app/scripts /app/scripts
+COPY --from=builder /app/data /app/data
 ENV PATH="/app/.venv/bin:$PATH" PYTHONUNBUFFERED=1
 USER appuser
 EXPOSE 8000

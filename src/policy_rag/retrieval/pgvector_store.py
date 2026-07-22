@@ -10,7 +10,6 @@ from policy_rag.indexing import IndexedPolicyChunk
 from policy_rag.retrieval.models import PolicyRetrievalRequest, RetrievedPolicyChunk
 
 SCHEMA_SQL = """
-CREATE EXTENSION IF NOT EXISTS vector;
 CREATE TABLE IF NOT EXISTS policy_chunks (
   chunk_id text PRIMARY KEY, text text NOT NULL, embedding halfvec({dimensions}) NOT NULL,
   document_id text NOT NULL, document_title text NOT NULL, version text NOT NULL,

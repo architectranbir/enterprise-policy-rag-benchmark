@@ -30,6 +30,7 @@ venv/
 logs/
 build/
 dist/
+node_modules/
 
 # Terraform
 .terraform/

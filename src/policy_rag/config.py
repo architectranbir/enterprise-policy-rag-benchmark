@@ -15,6 +15,8 @@ class Settings(BaseSettings):
     azure_openai_chat_deployment: str = Field(default="", min_length=1)
     entra_tenant_id: str = Field(default="", min_length=1)
     entra_audience: str = Field(default="", min_length=1)
+    entra_required_scope: str = "Policy.Read"
+    entra_group_mapping: dict[str, str] = Field(default_factory=dict)
     allow_insecure_demo_identity: bool = False
     azure_client_id: str | None = None
     azure_monitor_enabled: bool = False
@@ -24,3 +26,4 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://qdrant:6333"
     qdrant_api_key: SecretStr | None = None
     qdrant_collection: str = "policy_chunks"
+    qdrant_timeout_seconds: int = Field(default=60, gt=0, le=300)

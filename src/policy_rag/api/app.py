@@ -113,6 +113,8 @@ def create_configured_app(settings: "Settings | None" = None) -> FastAPI:
         validator = EntraTokenValidator(
             tenant_id=settings.entra_tenant_id,
             audience=settings.entra_audience,
+            required_scope=settings.entra_required_scope,
+            group_mapping=settings.entra_group_mapping,
         )
     return create_app(
         runtime.service,

@@ -57,3 +57,18 @@ output "static_web_app_hostname" {
   description = "Static Web App hostname when the optional platform is enabled."
   value       = try(azurerm_static_web_app.web[0].default_host_name, null)
 }
+
+output "entra_api_client_id" {
+  description = "Public client ID of the protected API application registration."
+  value       = try(azuread_application.api[0].client_id, null)
+}
+
+output "entra_web_client_id" {
+  description = "Public client ID of the Web SPA application registration."
+  value       = try(azuread_application.web[0].client_id, null)
+}
+
+output "entra_api_scope" {
+  description = "Delegated scope requested by the Web SPA."
+  value       = try("${one(azuread_application.api[0].identifier_uris)}/Policy.Read", null)
+}

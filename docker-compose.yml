@@ -7,10 +7,13 @@ services:
       qdrant: {condition: service_started}
     ports: ["8000:8000"]
   web:
-    image: nginx:1.29-alpine
-    volumes:
-      - ./web:/usr/share/nginx/html:ro
-      - ./web/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    build:
+      context: ./web
+      args:
+        VITE_ENTRA_TENANT_ID: ${ENTRA_TENANT_ID:-local-development}
+        VITE_ENTRA_WEB_CLIENT_ID: ${ENTRA_WEB_CLIENT_ID:-local-development}
+        VITE_ENTRA_API_SCOPE: ${ENTRA_API_SCOPE:-api://local-development/Policy.Read}
+        VITE_API_BASE_URL: ${API_BASE_URL:-http://localhost:8000}
     depends_on: [api]
     ports: ["8080:80"]
   postgres:
@@ -21,7 +24,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-development-only}
     healthcheck: {test: ["CMD-SHELL", "pg_isready -U policy_rag"], interval: 5s, timeout: 3s, retries: 10}
     ports: ["5432:5432"]
-    volumes: [pgdata:/var/lib/postgresql]
+    volumes:
+      - pgdata:/var/lib/postgresql
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/10-vector.sql:ro
   qdrant:
     image: qdrant/qdrant:v1.18.2
     environment:

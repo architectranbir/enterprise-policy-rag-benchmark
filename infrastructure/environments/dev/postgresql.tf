@@ -32,6 +32,16 @@ resource "azurerm_postgresql_flexible_server_active_directory_administrator" "ap
   principal_type      = "User"
 }
 
+resource "azurerm_postgresql_flexible_server_active_directory_administrator" "bootstrap" {
+  count               = var.deploy_application_platform && var.enable_postgres_bootstrap ? 1 : 0
+  server_name         = azurerm_postgresql_flexible_server.application[0].name
+  resource_group_name = azurerm_resource_group.main.name
+  tenant_id           = var.tenant_id
+  object_id           = azurerm_user_assigned_identity.postgres_bootstrap[0].principal_id
+  principal_name      = azurerm_user_assigned_identity.postgres_bootstrap[0].name
+  principal_type      = "ServicePrincipal"
+}
+
 resource "azurerm_postgresql_flexible_server_database" "application" {
   count     = var.deploy_application_platform ? 1 : 0
   name      = "policy_rag"

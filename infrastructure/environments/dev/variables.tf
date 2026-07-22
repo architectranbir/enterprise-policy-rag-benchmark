@@ -157,6 +157,13 @@ variable "qdrant_secret_rotation_version" {
   }
 }
 
+variable "enable_postgres_bootstrap" {
+  description = "Temporarily provision a VNet-scoped PostgreSQL Entra administrator job for least-privilege role bootstrap. Disable immediately after a successful run."
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "tenant_id" {
   description = "Microsoft Entra tenant ID for Key Vault and PostgreSQL authentication."
   type        = string
@@ -172,21 +179,6 @@ variable "tenant_id" {
       )
     )
     error_message = "tenant_id must be supplied as a GUID when deploy_application_platform is true."
-  }
-}
-
-variable "entra_audience" {
-  description = "Expected audience claim for Microsoft Entra API access tokens."
-  type        = string
-  default     = null
-  nullable    = true
-
-  validation {
-    condition = (
-      !var.deploy_application_platform ||
-      (var.entra_audience != null && length(trimspace(var.entra_audience)) > 0)
-    )
-    error_message = "entra_audience is required when deploy_application_platform is true."
   }
 }
 

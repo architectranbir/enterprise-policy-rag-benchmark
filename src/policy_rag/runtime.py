@@ -70,7 +70,12 @@ def build_runtime(settings: Settings) -> RuntimeComponents:
     else:
         api_key = settings.qdrant_api_key.get_secret_value() if settings.qdrant_api_key else None
         selected = QdrantStore(
-            QdrantClient(url=settings.qdrant_url, api_key=api_key), settings.qdrant_collection
+            QdrantClient(
+                url=settings.qdrant_url,
+                api_key=api_key,
+                timeout=settings.qdrant_timeout_seconds,
+            ),
+            settings.qdrant_collection,
         )
     store = create_vector_store(settings.vector_backend, {settings.vector_backend: selected})
     embeddings = FoundryEmbeddingProvider(

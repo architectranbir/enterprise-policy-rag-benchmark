@@ -8,7 +8,6 @@
 **/__pycache__
 *.tfplan
 .env
-data
 docs
 infrastructure
 tests

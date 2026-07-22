@@ -94,7 +94,19 @@ resource "azurerm_container_app" "api" {
 
       env {
         name  = "ENTRA_AUDIENCE"
-        value = var.entra_audience
+        value = azuread_application.api[0].client_id
+      }
+
+      env {
+        name  = "ENTRA_REQUIRED_SCOPE"
+        value = "Policy.Read"
+      }
+
+      env {
+        name = "ENTRA_GROUP_MAPPING"
+        value = jsonencode({
+          (azuread_group.policy_employees[0].object_id) = "employees"
+        })
       }
 
       env {
@@ -129,7 +141,7 @@ resource "azurerm_container_app" "api" {
 
       env {
         name  = "QDRANT_URL"
-        value = "https://${azurerm_container_app.qdrant_demo[0].ingress[0].fqdn}"
+        value = "https://${azurerm_container_app.qdrant_demo[0].ingress[0].fqdn}:443"
       }
 
       dynamic "env" {
@@ -173,6 +185,15 @@ resource "azurerm_container_app" "api" {
   ingress {
     external_enabled = true
     target_port      = 8000
+
+    cors {
+      allowed_origins           = ["https://${azurerm_static_web_app.web[0].default_host_name}"]
+      allowed_methods           = ["GET", "POST", "OPTIONS"]
+      allowed_headers           = ["Authorization", "Content-Type", "X-Correlation-ID"]
+      exposed_headers           = ["X-Correlation-ID"]
+      allow_credentials_enabled = false
+      max_age_in_seconds        = 3600
+    }
 
     traffic_weight {
       percentage      = 100

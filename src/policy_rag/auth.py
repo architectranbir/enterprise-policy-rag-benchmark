@@ -34,12 +34,18 @@ class EntraTokenValidator:
         *,
         tenant_id: str,
         audience: str,
+        required_scope: str | None = None,
+        group_mapping: Mapping[str, str] | None = None,
         signing_keys: SigningKeyClient | None = None,
     ) -> None:
         if not tenant_id.strip() or not audience.strip():
             raise ValueError("tenant_id and audience must not be empty")
         self._issuer = f"https://login.microsoftonline.com/{tenant_id}/v2.0"
         self._audience = audience
+        self._required_scope = required_scope
+        self._group_mapping = dict(group_mapping or {})
+        if any(not key.strip() or not value.strip() for key, value in self._group_mapping.items()):
+            raise ValueError("group_mapping keys and values must not be empty")
         self._signing_keys = signing_keys or jwt.PyJWKClient(
             f"{self._issuer}/discovery/v2.0/keys",
             cache_keys=True,
@@ -77,11 +83,28 @@ class EntraTokenValidator:
         ):
             raise TokenValidationError("token does not contain valid group claims")
 
+        if self._required_scope:
+            raw_scopes = claims.get("scp")
+            scopes = raw_scopes.split() if isinstance(raw_scopes, str) else []
+            if self._required_scope not in scopes:
+                raise TokenValidationError("token does not contain the required delegated scope")
+
+        mapped_groups = tuple(
+            self._group_mapping[group] for group in raw_groups if group in self._group_mapping
+        )
+        if self._group_mapping and not mapped_groups:
+            raise TokenValidationError(
+                "token identity is not assigned to an authorised policy group"
+            )
+
         user_id = claims.get("oid") or claims.get("sub")
         if not isinstance(user_id, str) or not user_id.strip():
             raise TokenValidationError("token does not contain a valid user identifier")
 
-        return AuthenticatedIdentity(user_id=user_id, user_groups=tuple(raw_groups))
+        return AuthenticatedIdentity(
+            user_id=user_id,
+            user_groups=mapped_groups or tuple(raw_groups),
+        )
 
 
 def bearer_token(authorization: str | None) -> str:
