@@ -11,8 +11,7 @@
 [Architecture](ARCHITECTURE.md) · [Security](docs/SECURITY.md) ·
 [Benchmark evidence](benchmark_results/)
 
-A production-believable policy assistant that compares Azure AI Search,
-PostgreSQL/pgvector, and Qdrant behind one retrieval contract. Normal requests use
+A production-believable Enterprise Policy Intelligence RAG application that evaluates Azure AI Search, PostgreSQL with pgvector, and Qdrant through a common retrieval contract. It demonstrates secure, ACL-aware retrieval, policy version and effective-date filtering, grounded answers with citations, and separate fair versus platform-optimised benchmarks. Normal requests use
 exactly one backend selected by `VECTOR_BACKEND`. Fair vector-only and platform-optimised
 measurements are executed, validated and reported as separate tracks.
 
