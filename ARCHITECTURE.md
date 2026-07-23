@@ -1,4 +1,6 @@
 # Architecture
+![Uploading image.png…]()
+
 
 ## Purpose
 
