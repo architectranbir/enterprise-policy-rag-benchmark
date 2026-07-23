@@ -1,0 +1,58 @@
+{
+  "mode": "platform-optimized",
+  "dataset": "synthetic-policy-fair-vector-v1",
+  "environment": "development",
+  "runs_per_backend": 3,
+  "artifact_sha256": "e6ca927bf3b2df180a2a0893c2d8d3764098dcd5d4f3ff7d264a37e53dcc759c",
+  "source_sha256": "fe69d136074d41c31c1cd8dcd91fe3175b26755f73a5c5d016ca2f17f05c0cfd",
+  "top_k": 5,
+  "limitations": [
+    "Development-scale results are workload-specific and do not establish a universal winner.",
+    "Latency includes one client-side retrieval call but excludes query embedding generation.",
+    "Platform-optimised features differ by backend and are intentionally not a controlled vector-only comparison."
+  ],
+  "results": [
+    {
+      "backend": "azure_ai_search",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 1.0,
+      "mean_latency_ms": 96.08217570517132,
+      "case_count": 52,
+      "created_at": "2026-07-23T03:41:37.920248+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 1.0,
+      "p50_latency_ms": 75.69149849996393,
+      "p95_latency_ms": 181.34352725064673,
+      "latency_stddev_ms": 42.5921010725765,
+      "measurement_count": 156
+    },
+    {
+      "backend": "pgvector",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 0.9775641025641025,
+      "mean_latency_ms": 97.12677598076807,
+      "case_count": 52,
+      "created_at": "2026-07-23T03:41:34.864491+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 0.983287110645605,
+      "p50_latency_ms": 95.54447150000556,
+      "p95_latency_ms": 117.43162199999091,
+      "latency_stddev_ms": 12.513699449474233,
+      "measurement_count": 156
+    },
+    {
+      "backend": "qdrant",
+      "recall_at_5": 1.0,
+      "mean_reciprocal_rank": 0.967948717948718,
+      "mean_latency_ms": 43.15835664743435,
+      "case_count": 52,
+      "created_at": "2026-07-23T03:41:27.732416+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 0.9763416508699652,
+      "p50_latency_ms": 55.86799799993969,
+      "p95_latency_ms": 60.035226999730185,
+      "latency_stddev_ms": 19.988454061443004,
+      "measurement_count": 156
+    }
+  ]
+}

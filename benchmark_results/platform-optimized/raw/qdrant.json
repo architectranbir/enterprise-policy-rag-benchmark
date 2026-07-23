@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "mode": "fair-vector-only",
-  "created_at": "2026-07-22T18:25:12.324003Z",
-  "backend": "azure_ai_search",
+  "mode": "platform-optimized",
+  "created_at": "2026-07-23T03:41:27.732416Z",
+  "backend": "qdrant",
   "artifact_sha256": "e6ca927bf3b2df180a2a0893c2d8d3764098dcd5d4f3ff7d264a37e53dcc759c",
   "source_sha256": "fe69d136074d41c31c1cd8dcd91fe3175b26755f73a5c5d016ca2f17f05c0cfd",
   "dataset_name": "synthetic-policy-fair-vector-v1",
@@ -10,16 +10,16 @@
   "case_count": 52,
   "measurement_count": 156,
   "recall_at_k": 1.0,
-  "mean_reciprocal_rank": 0.9903846153846154,
-  "mean_latency_ms": 36.19393456410281,
+  "mean_reciprocal_rank": 0.967948717948718,
+  "mean_latency_ms": 43.15835664743435,
   "precision_at_k": 0.2,
-  "ndcg_at_k": 0.9929024952609896,
+  "ndcg_at_k": 0.9763416508699652,
   "warmup_requests": 3,
   "measured_repetitions": 3,
-  "median_latency_ms": 32.57384149998188,
-  "p50_latency_ms": 32.57384149998188,
-  "p95_latency_ms": 45.33204950001846,
-  "latency_stddev_ms": 22.79081796931347,
+  "median_latency_ms": 55.86799799993969,
+  "p50_latency_ms": 55.86799799993969,
+  "p95_latency_ms": 60.035226999730185,
+  "latency_stddev_ms": 19.988454061443004,
   "cases": [
     {
       "case_id": "EQ-HR-001",
@@ -29,18 +29,18 @@
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-003:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-009:CHK-001"
+        "POL-HR-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7945482,
-        0.7243081,
-        0.6848112,
-        0.67741376,
-        0.67082965
+        0.8333334,
+        0.8333334,
+        0.35,
+        0.31111112,
+        0.29761904
       ],
-      "latency_ms": 32.17199300001994,
+      "latency_ms": 13.370411999858334,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -54,19 +54,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-002:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.78954875,
-        0.65530574,
-        0.6326489,
-        0.6290548,
-        0.62136376
+        0.8333334,
+        0.7,
+        0.4047619,
+        0.30555555,
+        0.3
       ],
-      "latency_ms": 32.489592000047196,
+      "latency_ms": 13.449511000089842,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -79,25 +79,25 @@
         "POL-HR-001:1.0:SEC-005:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-011:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-011:CHK-001",
         "POL-HR-001:1.0:SEC-009:CHK-001",
-        "POL-HR-001:1.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7546723,
-        0.73994076,
-        0.73208076,
-        0.71516395,
-        0.689457
+        0.8333334,
+        0.5588235,
+        0.45,
+        0.45,
+        0.42424244
       ],
-      "latency_ms": 46.876043999986905,
+      "latency_ms": 13.250311999854603,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 0.5,
-      "ndcg_at_k": 0.6309297535714575
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-004",
@@ -107,18 +107,18 @@
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.7160484,
-        0.6266946,
-        0.5990265,
-        0.5952788,
-        0.59388596
+        1.0,
+        0.42424244,
+        0.41025642,
+        0.39285713,
+        0.3611111
       ],
-      "latency_ms": 39.37826899993979,
+      "latency_ms": 13.86621199981164,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -134,17 +134,17 @@
         "POL-HR-001:1.0:SEC-007:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7008158,
-        0.63981384,
-        0.6261313,
-        0.6249421,
-        0.61723125
+        1.0,
+        0.45833334,
+        0.39285713,
+        0.33333334,
+        0.33333334
       ],
-      "latency_ms": 32.01489399998536,
+      "latency_ms": 14.49191299980157,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -158,19 +158,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
         "POL-HR-001:1.0:SEC-007:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.75130904,
-        0.65290254,
-        0.6432873,
-        0.634382,
-        0.633167
+        1.0,
+        0.53333336,
+        0.4166667,
+        0.41025642,
+        0.3125
       ],
-      "latency_ms": 30.767996999998104,
+      "latency_ms": 14.63361200012514,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -185,18 +185,18 @@
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-002:CHK-001",
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.77024734,
-        0.67055035,
-        0.6642262,
-        0.65116334,
-        0.6509995
+        1.0,
+        0.39215687,
+        0.39215687,
+        0.36666667,
+        0.35
       ],
-      "latency_ms": 30.396798999959174,
+      "latency_ms": 14.962813000238384,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -210,19 +210,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7761813,
-        0.6817932,
-        0.6547612,
-        0.6474412,
-        0.62970066
+        0.75,
+        0.7,
+        0.43333334,
+        0.4047619,
+        0.28846154
       ],
-      "latency_ms": 33.2914890000211,
+      "latency_ms": 14.736513000116247,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -236,19 +236,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-002:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.8144648,
-        0.672972,
-        0.6501489,
-        0.618627,
-        0.6144418
+        1.0,
+        0.39285713,
+        0.375,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 30.393698000011682,
+      "latency_ms": 12.91241099988838,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -262,19 +262,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-005:CHK-001"
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7309577,
-        0.6038333,
-        0.6011107,
-        0.59773195,
-        0.59657514
+        0.8333334,
+        0.54347825,
+        0.35964912,
+        0.32692307,
+        0.32142857
       ],
-      "latency_ms": 31.069496999975854,
+      "latency_ms": 13.228111999978864,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -288,19 +288,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
         "POL-HR-002:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.7658349,
-        0.6413681,
-        0.6373158,
-        0.6319705,
-        0.6276685
+        1.0,
+        0.5,
+        0.4166667,
+        0.38596493,
+        0.33333334
       ],
-      "latency_ms": 37.23327599993809,
+      "latency_ms": 14.280112000051304,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -313,25 +313,25 @@
         "POL-HR-002:1.0:SEC-007:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
         "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7653499,
-        0.6542158,
-        0.6518457,
-        0.64901394,
-        0.6460431
+        0.75,
+        0.75,
+        0.43333334,
+        0.4,
+        0.35714287
       ],
-      "latency_ms": 35.49788200007242,
+      "latency_ms": 53.95554699998684,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-TRAVEL-2025-001",
@@ -340,19 +340,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
         "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
         "POL-FIN-001:1.0:SEC-006:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.64695346,
-        0.62214017,
-        0.610146,
-        0.5867086,
-        0.58500063
+        0.8333334,
+        0.75,
+        0.53333336,
+        0.45,
+        0.30952382
       ],
-      "latency_ms": 35.147082999969825,
+      "latency_ms": 59.319150999726844,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -366,19 +366,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-004:CHK-001",
-        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
         "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.71015817,
-        0.6546706,
-        0.6197493,
-        0.5977637,
-        0.59241265
+        1.0,
+        0.4761905,
+        0.4166667,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 31.87569400006396,
+      "latency_ms": 56.07964900036677,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -392,19 +392,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001",
         "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001"
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.6875167,
-        0.6420479,
-        0.6361157,
-        0.6275755,
-        0.61626184
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 31.18189600002097,
+      "latency_ms": 55.986348999795155,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -419,18 +419,18 @@
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-006:CHK-001",
         "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.72281104,
-        0.6607894,
-        0.6560445,
-        0.6213715,
-        0.61331254
+        1.0,
+        0.5,
+        0.45833334,
+        0.45,
+        0.39285713
       ],
-      "latency_ms": 39.84026700004506,
+      "latency_ms": 55.84894800040274,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -444,19 +444,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
         "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7483281,
-        0.68879485,
-        0.6756003,
-        0.65549153,
-        0.641962
+        0.8333334,
+        0.5714286,
+        0.4761905,
+        0.33333334,
+        0.28333333
       ],
-      "latency_ms": 37.19687599993904,
+      "latency_ms": 13.331011999980547,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -473,16 +473,16 @@
         "POL-HR-002:1.0:SEC-007:CHK-001",
         "POL-FIN-001:2.0:SEC-002:CHK-001",
         "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001"
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.6832455,
-        0.6227275,
-        0.6225289,
-        0.6035599,
-        0.592507
+        1.0,
+        0.6666667,
+        0.375,
+        0.36666667,
+        0.325
       ],
-      "latency_ms": 36.19777899996279,
+      "latency_ms": 54.83574700019744,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -496,19 +496,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-004:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7212293,
-        0.64109623,
-        0.58432174,
-        0.58193034,
-        0.58121496
+        1.0,
+        0.3703704,
+        0.36666667,
+        0.33333334,
+        0.2857143
       ],
-      "latency_ms": 35.81218099998296,
+      "latency_ms": 17.944315999557148,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -522,19 +522,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-004:CHK-001",
         "POL-FIN-001:2.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7063545,
-        0.6563499,
-        0.6065178,
-        0.6049179,
-        0.59572005
+        0.5625,
+        0.53333336,
+        0.44444445,
+        0.4166667,
+        0.36904764
       ],
-      "latency_ms": 35.46068200000718,
+      "latency_ms": 13.245511000150145,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -548,19 +548,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7171952,
-        0.63966846,
-        0.63433444,
-        0.6274866,
-        0.6268329
+        0.64285713,
+        0.53846157,
+        0.44444445,
+        0.33333334,
+        0.27222222
       ],
-      "latency_ms": 33.116189999987,
+      "latency_ms": 13.431012000182818,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -574,19 +574,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001"
       ],
       "scores": [
-        0.7118852,
-        0.6538058,
-        0.64614236,
-        0.64502364,
-        0.6241227
+        1.0,
+        0.44444445,
+        0.39285713,
+        0.39215687,
+        0.325
       ],
-      "latency_ms": 35.01648300004945,
+      "latency_ms": 14.393912000286946,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -600,19 +600,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-001:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.692471,
-        0.6231589,
-        0.5829701,
-        0.5707816,
-        0.56381077
+        1.0,
+        0.53333336,
+        0.53333336,
+        0.5,
+        0.30952382
       ],
-      "latency_ms": 32.783590999997614,
+      "latency_ms": 12.887812000371923,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -626,19 +626,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7403892,
-        0.60886526,
-        0.60882336,
-        0.6074154,
-        0.59319806
+        1.0,
+        0.5,
+        0.33333334,
+        0.25,
+        0.2
       ],
-      "latency_ms": 30.53029799991691,
+      "latency_ms": 55.71144799978356,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -651,25 +651,25 @@
         "POL-SEC-001:1.0:SEC-004:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001"
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.72803897,
-        0.69547695,
-        0.64236104,
-        0.61813575,
-        0.6030222
+        0.8333334,
+        0.8333334,
+        0.45,
+        0.45,
+        0.2916667
       ],
-      "latency_ms": 31.21029599992653,
+      "latency_ms": 59.96605200016347,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-SEC-004",
@@ -678,19 +678,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-005:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
         "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7675638,
-        0.6164743,
-        0.612303,
-        0.6116598,
-        0.60123277
+        1.0,
+        0.53333336,
+        0.5,
+        0.45,
+        0.4166667
       ],
-      "latency_ms": 39.450769000040964,
+      "latency_ms": 55.996848000177124,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -705,18 +705,18 @@
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.73194337,
-        0.6212511,
-        0.5915891,
-        0.58994776,
-        0.584832
+        1.0,
+        0.5833334,
+        0.5,
+        0.39285713,
+        0.325
       ],
-      "latency_ms": 34.713584000087394,
+      "latency_ms": 56.153949000417924,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -729,25 +729,25 @@
         "POL-SEC-001:1.0:SEC-007:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
         "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.729616,
-        0.6170471,
-        0.5944186,
-        0.58884096,
-        0.5837567
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.375,
+        0.375
       ],
-      "latency_ms": 37.12247600003593,
+      "latency_ms": 55.90404900021895,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-IT-001",
@@ -756,19 +756,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-001:CHK-001",
         "POL-IT-001:1.0:SEC-006:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-007:CHK-001"
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.83121824,
-        0.7006028,
-        0.6918662,
-        0.67470247,
-        0.67272985
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
       ],
-      "latency_ms": 34.23688600003061,
+      "latency_ms": 55.78674800017325,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -782,19 +782,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
         "POL-IT-001:1.0:SEC-005:CHK-001",
         "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.695675,
-        0.61242086,
-        0.6079163,
-        0.579758,
-        0.5790261
+        0.8333334,
+        0.75,
+        0.45,
+        0.36666667,
+        0.33333334
       ],
-      "latency_ms": 31.058095999924262,
+      "latency_ms": 56.19304899983035,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -807,25 +807,25 @@
         "POL-IT-001:1.0:SEC-004:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-004:CHK-001",
         "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
         "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.725651,
-        0.5921418,
-        0.57333946,
-        0.57152784,
-        0.5684403
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
       ],
-      "latency_ms": 39.42276899999797,
+      "latency_ms": 55.87244800017288,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-IT-004",
@@ -834,19 +834,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
         "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
         "POL-IT-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.7025182,
-        0.60899866,
-        0.59220016,
-        0.5836193,
-        0.58325285
+        1.0,
+        0.53333336,
+        0.5,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 42.40105899998525,
+      "latency_ms": 56.104548999883264,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -862,17 +862,17 @@
         "POL-IT-001:1.0:SEC-006:CHK-001",
         "POL-IT-001:1.0:SEC-001:CHK-001",
         "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001"
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.73098546,
-        0.6837788,
-        0.6697947,
-        0.641872,
-        0.63018215
+        1.0,
+        0.53333336,
+        0.5,
+        0.4761905,
+        0.34285715
       ],
-      "latency_ms": 45.80904800002372,
+      "latency_ms": 59.78555199999391,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -886,19 +886,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
         "POL-IT-001:1.0:SEC-001:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.81283545,
-        0.6151344,
-        0.60949075,
-        0.6001541,
-        0.5989552
+        1.0,
+        0.4761905,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 35.59028100005435,
+      "latency_ms": 56.039248000161024,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -911,25 +911,25 @@
         "POL-PROC-001:1.0:SEC-002:CHK-001"
       ],
       "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
         "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.752486,
-        0.677325,
-        0.66333765,
-        0.66208017,
-        0.63418967
+        0.7,
+        0.625,
+        0.53333336,
+        0.5,
+        0.39285713
       ],
-      "latency_ms": 41.341762000001836,
+      "latency_ms": 55.73504900030457,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-PROC-002",
@@ -939,18 +939,18 @@
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-003:CHK-001",
         "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.80866545,
-        0.66803426,
-        0.6633385,
-        0.65732986,
-        0.62667894
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.375,
+        0.33333334
       ],
-      "latency_ms": 40.94056400003865,
+      "latency_ms": 56.10854800033849,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -965,18 +965,18 @@
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-004:CHK-001",
         "POL-PROC-001:1.0:SEC-005:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001"
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.75846535,
-        0.624116,
-        0.61456007,
-        0.61097825,
-        0.6053539
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
       ],
-      "latency_ms": 47.16264299997874,
+      "latency_ms": 55.989849000070535,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -990,19 +990,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-004:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001"
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7304234,
-        0.6654903,
-        0.62850654,
-        0.6243934,
-        0.6243471
+        0.8333334,
+        0.64285713,
+        0.53333336,
+        0.5,
+        0.36666667
       ],
-      "latency_ms": 32.13299300000472,
+      "latency_ms": 60.10375200003182,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -1017,18 +1017,18 @@
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001"
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.7051386,
-        0.6376906,
-        0.6341652,
-        0.62431645,
-        0.6234874
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.4166667,
+        0.34285715
       ],
-      "latency_ms": 33.93118700000741,
+      "latency_ms": 55.68954800037318,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -1042,19 +1042,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
         "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7118362,
-        0.62193304,
-        0.6159114,
-        0.6148119,
-        0.61082405
+        1.0,
+        0.53333336,
+        0.45,
+        0.375,
+        0.33333334
       ],
-      "latency_ms": 43.78455400001258,
+      "latency_ms": 56.30804899965369,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -1069,18 +1069,18 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
         "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-004:CHK-001"
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7052049,
-        0.6528674,
-        0.6473222,
-        0.64694697,
-        0.63699263
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.39285713,
+        0.36666667
       ],
-      "latency_ms": 37.9660739999963,
+      "latency_ms": 55.452948000038305,
       "repetition": 1,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -1095,19 +1095,1371 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-003:CHK-001",
         "POL-LEG-001:1.0:SEC-004:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
+      ],
+      "latency_ms": 56.11664900015967,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-003",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.6666667,
+        0.45,
+        0.45,
+        0.30952382
+      ],
+      "latency_ms": 55.919147999702545,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-004",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
         "POL-LEG-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7839514,
-        0.64018285,
-        0.61670184,
-        0.6127828,
-        0.60961163
+        1.0,
+        0.53333336,
+        0.45,
+        0.4166667,
+        0.33333334
       ],
-      "latency_ms": 33.30248899999333,
+      "latency_ms": 55.77474900019297,
       "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-005",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5,
+        0.4761905,
+        0.4,
+        0.39285713
+      ],
+      "latency_ms": 56.15734799994243,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-006",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.5833334,
+        0.34285715,
+        0.325
+      ],
+      "latency_ms": 55.82404899996618,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-001",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.6666667,
+        0.45,
+        0.4166667,
+        0.325
+      ],
+      "latency_ms": 60.17595200000869,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-002",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.7,
+        0.5,
+        0.4761905,
+        0.34285715
+      ],
+      "latency_ms": 55.7086479998361,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-003",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.325,
+        0.25
+      ],
+      "latency_ms": 56.07764900014445,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-004",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.45833334,
+        0.4166667,
+        0.375
+      ],
+      "latency_ms": 56.179349000103684,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-005",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
+      ],
+      "latency_ms": 55.90504800011331,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-006",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5,
+        0.5,
+        0.45,
+        0.39285713
+      ],
+      "latency_ms": 61.92005399998379,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-001",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.8333334,
+        0.35,
+        0.31111112,
+        0.29761904
+      ],
+      "latency_ms": 16.53941400036274,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
+    },
+    {
+      "case_id": "EQ-HR-002",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.7,
+        0.4047619,
+        0.30555555,
+        0.3
+      ],
+      "latency_ms": 13.051311000253918,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-003",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-011:CHK-001",
+        "POL-HR-001:1.0:SEC-009:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.5588235,
+        0.45,
+        0.45,
+        0.42424244
+      ],
+      "latency_ms": 12.763211000219599,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-004",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.42424244,
+        0.41025642,
+        0.39285713,
+        0.3611111
+      ],
+      "latency_ms": 13.038911000421649,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-005",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.45833334,
+        0.39285713,
+        0.33333334,
+        0.33333334
+      ],
+      "latency_ms": 13.23681200028659,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-006",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.4166667,
+        0.41025642,
+        0.3125
+      ],
+      "latency_ms": 14.699611999731133,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-001",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.39215687,
+        0.39215687,
+        0.36666667,
+        0.35
+      ],
+      "latency_ms": 13.774610999917059,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-002",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.75,
+        0.7,
+        0.43333334,
+        0.4047619,
+        0.28846154
+      ],
+      "latency_ms": 12.854811999659432,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-003",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.39285713,
+        0.375,
+        0.375,
+        0.36666667
+      ],
+      "latency_ms": 13.115910999658809,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-004",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.54347825,
+        0.35964912,
+        0.32692307,
+        0.32142857
+      ],
+      "latency_ms": 13.114310999753798,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-005",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5,
+        0.4166667,
+        0.38596493,
+        0.33333334
+      ],
+      "latency_ms": 12.91341200021634,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-006",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.75,
+        0.75,
+        0.43333334,
+        0.4,
+        0.35714287
+      ],
+      "latency_ms": 55.86154799993892,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.75,
+        0.53333336,
+        0.45,
+        0.30952382
+      ],
+      "latency_ms": 56.06754900009037,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.4761905,
+        0.4166667,
+        0.375,
+        0.36666667
+      ],
+      "latency_ms": 56.13384800017229,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
+      ],
+      "latency_ms": 55.94934900000226,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5,
+        0.45833334,
+        0.45,
+        0.39285713
+      ],
+      "latency_ms": 56.0345479998432,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.5714286,
+        0.4761905,
+        0.33333334,
+        0.28333333
+      ],
+      "latency_ms": 13.513112000055116,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.6666667,
+        0.375,
+        0.36666667,
+        0.325
+      ],
+      "latency_ms": 54.22364700007165,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.3703704,
+        0.36666667,
+        0.33333334,
+        0.2857143
+      ],
+      "latency_ms": 13.18721200004802,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.5625,
+        0.53333336,
+        0.44444445,
+        0.4166667,
+        0.36904764
+      ],
+      "latency_ms": 12.768110999786586,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-005",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.64285713,
+        0.53846157,
+        0.44444445,
+        0.33333334,
+        0.27222222
+      ],
+      "latency_ms": 13.478311000199028,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-006",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.44444445,
+        0.39285713,
+        0.39215687,
+        0.325
+      ],
+      "latency_ms": 16.47301499997411,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-001",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001",
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.53333336,
+        0.5,
+        0.30952382
+      ],
+      "latency_ms": 56.03144799988513,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-002",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5,
+        0.33333334,
+        0.25,
+        0.2
+      ],
+      "latency_ms": 55.95204900009776,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-003",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.8333334,
+        0.45,
+        0.45,
+        0.2916667
+      ],
+      "latency_ms": 55.899548000070354,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-004",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.5,
+        0.45,
+        0.4166667
+      ],
+      "latency_ms": 56.12374900010764,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-005",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.5,
+        0.39285713,
+        0.325
+      ],
+      "latency_ms": 55.8635479997065,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-006",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.375,
+        0.375
+      ],
+      "latency_ms": 60.12855299968578,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
+    },
+    {
+      "case_id": "EQ-IT-001",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
+      ],
+      "latency_ms": 59.80365100003837,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-002",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.75,
+        0.45,
+        0.36666667,
+        0.33333334
+      ],
+      "latency_ms": 56.25174899978447,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-003",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
+      ],
+      "latency_ms": 59.470451999914076,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-004",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.5,
+        0.375,
+        0.36666667
+      ],
+      "latency_ms": 56.184747999850515,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-005",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.5,
+        0.4761905,
+        0.34285715
+      ],
+      "latency_ms": 55.98234900026,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-006",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.4761905,
+        0.4761905,
+        0.4166667,
+        0.375
+      ],
+      "latency_ms": 55.950748000213935,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-001",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.7,
+        0.625,
+        0.53333336,
+        0.5,
+        0.39285713
+      ],
+      "latency_ms": 55.939847999979975,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
+    },
+    {
+      "case_id": "EQ-PROC-002",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.375,
+        0.33333334
+      ],
+      "latency_ms": 60.03635199976998,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-003",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
+      ],
+      "latency_ms": 55.792947999634634,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-004",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.8333334,
+        0.64285713,
+        0.53333336,
+        0.5,
+        0.36666667
+      ],
+      "latency_ms": 56.017348999830574,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-005",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.4166667,
+        0.34285715
+      ],
+      "latency_ms": 55.98804900000687,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-006",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.53333336,
+        0.45,
+        0.375,
+        0.33333334
+      ],
+      "latency_ms": 55.983048000143754,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-001",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.39285713,
+        0.36666667
+      ],
+      "latency_ms": 55.82984900001975,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-002",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
+      ],
+      "latency_ms": 56.02204799970423,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1126,14 +2478,14 @@
         "POL-LEG-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7746664,
-        0.649488,
-        0.5994964,
-        0.59570247,
-        0.5946531
+        1.0,
+        0.6666667,
+        0.45,
+        0.45,
+        0.30952382
       ],
-      "latency_ms": 33.91338699998414,
-      "repetition": 1,
+      "latency_ms": 55.93354899974656,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1146,20 +2498,20 @@
       ],
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-005:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001"
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7501312,
-        0.6045215,
-        0.60431814,
-        0.6000404,
-        0.5917056
+        1.0,
+        0.53333336,
+        0.45,
+        0.4166667,
+        0.33333334
       ],
-      "latency_ms": 42.415858000026674,
-      "repetition": 1,
+      "latency_ms": 56.64274900027522,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1173,19 +2525,19 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-006:CHK-001",
         "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
         "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001"
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7811965,
-        0.6583008,
-        0.6573018,
-        0.64855653,
-        0.64108586
+        1.0,
+        0.5,
+        0.4761905,
+        0.4,
+        0.39285713
       ],
-      "latency_ms": 32.721490999961134,
-      "repetition": 1,
+      "latency_ms": 59.69365100008872,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1198,20 +2550,20 @@
       ],
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001",
         "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001"
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7349632,
-        0.63249326,
-        0.6206186,
-        0.6147113,
-        0.60908645
+        1.0,
+        0.5833334,
+        0.5833334,
+        0.34285715,
+        0.325
       ],
-      "latency_ms": 44.16005299992776,
-      "repetition": 1,
+      "latency_ms": 56.12034900013896,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1226,18 +2578,18 @@
         "POL-COMP-001:1.0:SEC-002:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.792984,
-        0.71263117,
-        0.7076178,
-        0.6731991,
-        0.6443595
+        1.0,
+        0.6666667,
+        0.45,
+        0.4166667,
+        0.325
       ],
-      "latency_ms": 41.34456199994929,
-      "repetition": 1,
+      "latency_ms": 55.53794800016476,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1250,20 +2602,20 @@
       ],
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7822005,
-        0.69496316,
-        0.6836975,
-        0.6697767,
-        0.6678895
+        0.8333334,
+        0.7,
+        0.5,
+        0.4761905,
+        0.34285715
       ],
-      "latency_ms": 41.31866199998058,
-      "repetition": 1,
+      "latency_ms": 55.69484899979216,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1277,19 +2629,19 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-004:CHK-001",
         "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.75037426,
-        0.6772155,
-        0.6528223,
-        0.6482569,
-        0.622022
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.325,
+        0.25
       ],
-      "latency_ms": 35.904480999988664,
-      "repetition": 1,
+      "latency_ms": 55.91064800000822,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1303,19 +2655,19 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.75108147,
-        0.66259325,
-        0.642695,
-        0.6421557,
-        0.63510656
+        1.0,
+        0.53333336,
+        0.45833334,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 40.7110639999928,
-      "repetition": 1,
+      "latency_ms": 56.215949000034016,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1329,19 +2681,19 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-006:CHK-001",
         "POL-COMP-001:1.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001"
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7489826,
-        0.6650369,
-        0.64702886,
-        0.63206255,
-        0.6288489
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 30.379898999967736,
-      "repetition": 1,
+      "latency_ms": 56.99774899994736,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1355,19 +2707,19 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-007:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.77734417,
-        0.6945755,
-        0.6918856,
-        0.6838382,
-        0.67769325
+        1.0,
+        0.5,
+        0.5,
+        0.45,
+        0.39285713
       ],
-      "latency_ms": 32.8150899999855,
-      "repetition": 1,
+      "latency_ms": 54.59664799991515,
+      "repetition": 2,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1381,19 +2733,19 @@
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-003:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-009:CHK-001"
+        "POL-HR-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7945482,
-        0.7243081,
-        0.6848112,
-        0.67741376,
-        0.67082965
+        0.8333334,
+        0.8333334,
+        0.35,
+        0.31111112,
+        0.29761904
       ],
-      "latency_ms": 33.80038800003149,
-      "repetition": 2,
+      "latency_ms": 13.407510999968508,
+      "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1406,20 +2758,20 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-002:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.78954875,
-        0.65530574,
-        0.6326489,
-        0.6290548,
-        0.62136376
+        0.8333334,
+        0.7,
+        0.4047619,
+        0.30555555,
+        0.3
       ],
-      "latency_ms": 34.670285000061085,
-      "repetition": 2,
+      "latency_ms": 12.89281099980144,
+      "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1431,25 +2783,25 @@
         "POL-HR-001:1.0:SEC-005:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-011:CHK-001",
         "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-011:CHK-001",
         "POL-HR-001:1.0:SEC-009:CHK-001",
-        "POL-HR-001:1.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7546723,
-        0.73994076,
-        0.73208076,
-        0.71516395,
-        0.689457
+        0.8333334,
+        0.5588235,
+        0.45,
+        0.45,
+        0.42424244
       ],
-      "latency_ms": 37.13577600001372,
-      "repetition": 2,
+      "latency_ms": 14.036712999768497,
+      "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 0.5,
-      "ndcg_at_k": 0.6309297535714575
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-004",
@@ -1459,19 +2811,19 @@
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.7160484,
-        0.6266946,
-        0.5990265,
-        0.5952788,
-        0.59388596
+        1.0,
+        0.42424244,
+        0.41025642,
+        0.39285713,
+        0.3611111
       ],
-      "latency_ms": 31.202295999946728,
-      "repetition": 2,
+      "latency_ms": 12.819611000395525,
+      "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
       "reciprocal_rank": 1.0,
@@ -1486,1369 +2838,17 @@
         "POL-HR-001:1.0:SEC-007:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7008158,
-        0.63981384,
-        0.6261313,
-        0.6249421,
-        0.61723125
-      ],
-      "latency_ms": 31.120096000108788,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-HR-006",
-      "relevant_chunk_ids": [
-        "POL-HR-001:1.0:SEC-008:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-007:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001"
-      ],
-      "scores": [
-        0.75130904,
-        0.65290254,
-        0.6432873,
-        0.634382,
-        0.633167
-      ],
-      "latency_ms": 30.752298000038536,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-001",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-003:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.77024734,
-        0.67055035,
-        0.6642262,
-        0.65116334,
-        0.6509995
-      ],
-      "latency_ms": 34.80208400003448,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-002",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.7761813,
-        0.6817932,
-        0.6547612,
-        0.6474412,
-        0.62970066
-      ],
-      "latency_ms": 30.746697000040513,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-003",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.8144648,
-        0.672972,
-        0.6501489,
-        0.618627,
-        0.6144418
-      ],
-      "latency_ms": 312.7188580000393,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-004",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.7309577,
-        0.6038333,
-        0.6011107,
-        0.59773195,
-        0.59657514
-      ],
-      "latency_ms": 45.1730500000167,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-005",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.7658349,
-        0.6413681,
-        0.6373158,
-        0.6319705,
-        0.6276685
-      ],
-      "latency_ms": 31.55219500001749,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEAVE-006",
-      "relevant_chunk_ids": [
-        "POL-HR-002:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-002:1.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7653499,
-        0.6542158,
-        0.6518457,
-        0.64901394,
-        0.6460431
-      ],
-      "latency_ms": 37.37247499998375,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2025-001",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:1.0:SEC-006:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.64695346,
-        0.62214017,
-        0.610146,
-        0.5867086,
-        0.58500063
-      ],
-      "latency_ms": 43.8299539999889,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2025-002",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-004:CHK-001",
-        "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.71015817,
-        0.6546706,
-        0.6197493,
-        0.5977637,
-        0.59241265
-      ],
-      "latency_ms": 51.312429000063275,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2025-003",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001",
-        "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.6875167,
-        0.6420479,
-        0.6361157,
-        0.6275755,
-        0.61626184
-      ],
-      "latency_ms": 31.475294999950165,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2025-004",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:1.0:SEC-006:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.72281104,
-        0.6607894,
-        0.6560445,
-        0.6213715,
-        0.61331254
-      ],
-      "latency_ms": 30.576097999983176,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-001",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7483281,
-        0.68879485,
-        0.6756003,
-        0.65549153,
-        0.641962
-      ],
-      "latency_ms": 32.87778999992952,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-002",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.6832455,
-        0.6227275,
-        0.6225289,
-        0.6035599,
-        0.592507
-      ],
-      "latency_ms": 32.01119400000607,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-003",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-004:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.7212293,
-        0.64109623,
-        0.58432174,
-        0.58193034,
-        0.58121496
-      ],
-      "latency_ms": 36.97267600000487,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-004",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001"
-      ],
-      "scores": [
-        0.7063545,
-        0.6563499,
-        0.6065178,
-        0.6049179,
-        0.59572005
-      ],
-      "latency_ms": 31.994793999956528,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-005",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.7171952,
-        0.63966846,
-        0.63433444,
-        0.6274866,
-        0.6268329
-      ],
-      "latency_ms": 32.173791999980494,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-TRAVEL-2026-006",
-      "relevant_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.7118852,
-        0.6538058,
-        0.64614236,
-        0.64502364,
-        0.6241227
-      ],
-      "latency_ms": 32.14109299995016,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-001",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-001:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
-      ],
-      "scores": [
-        0.692471,
-        0.6231589,
-        0.5829701,
-        0.5707816,
-        0.56381077
-      ],
-      "latency_ms": 32.1566930000472,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-002",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.7403892,
-        0.60886526,
-        0.60882336,
-        0.6074154,
-        0.59319806
-      ],
-      "latency_ms": 33.561788000042725,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-003",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001"
-      ],
-      "scores": [
-        0.72803897,
-        0.69547695,
-        0.64236104,
-        0.61813575,
-        0.6030222
-      ],
-      "latency_ms": 31.341896000071756,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-004",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-005:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.7675638,
-        0.6164743,
-        0.612303,
-        0.6116598,
-        0.60123277
-      ],
-      "latency_ms": 31.091695999975855,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-005",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
-      ],
-      "scores": [
-        0.73194337,
-        0.6212511,
-        0.5915891,
-        0.58994776,
-        0.584832
-      ],
-      "latency_ms": 30.870197000012922,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-SEC-006",
-      "relevant_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.729616,
-        0.6170471,
-        0.5944186,
-        0.58884096,
-        0.5837567
-      ],
-      "latency_ms": 30.138099999931,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-001",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-001:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-007:CHK-001"
-      ],
-      "scores": [
-        0.83121824,
-        0.7006028,
-        0.6918662,
-        0.67470247,
-        0.67272985
-      ],
-      "latency_ms": 35.69288200003484,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-002",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.695675,
-        0.61242086,
-        0.6079163,
-        0.579758,
-        0.5790261
-      ],
-      "latency_ms": 34.66088499999387,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-003",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.725651,
-        0.5921418,
-        0.57333946,
-        0.57152784,
-        0.5684403
-      ],
-      "latency_ms": 30.09509999992588,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-004",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7025182,
-        0.60899866,
-        0.59220016,
-        0.5836193,
-        0.58325285
-      ],
-      "latency_ms": 30.455199000016364,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-005",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-006:CHK-001",
-        "POL-IT-001:1.0:SEC-001:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001"
-      ],
-      "scores": [
-        0.73098546,
-        0.6837788,
-        0.6697947,
-        0.641872,
-        0.63018215
-      ],
-      "latency_ms": 32.65539100004844,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-IT-006",
-      "relevant_chunk_ids": [
-        "POL-IT-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-IT-001:1.0:SEC-007:CHK-001",
-        "POL-IT-001:1.0:SEC-001:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.81283545,
-        0.6151344,
-        0.60949075,
-        0.6001541,
-        0.5989552
-      ],
-      "latency_ms": 29.716700999983914,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-001",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.752486,
-        0.677325,
-        0.66333765,
-        0.66208017,
-        0.63418967
-      ],
-      "latency_ms": 30.081099999961225,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-002",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.80866545,
-        0.66803426,
-        0.6633385,
-        0.65732986,
-        0.62667894
-      ],
-      "latency_ms": 30.57079799998519,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-003",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-004:CHK-001",
-        "POL-PROC-001:1.0:SEC-005:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001"
-      ],
-      "scores": [
-        0.75846535,
-        0.624116,
-        0.61456007,
-        0.61097825,
-        0.6053539
-      ],
-      "latency_ms": 34.89428299997144,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-004",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-005:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7304234,
-        0.6654903,
-        0.62850654,
-        0.6243934,
-        0.6243471
-      ],
-      "latency_ms": 30.79369800002496,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-005",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.7051386,
-        0.6376906,
-        0.6341652,
-        0.62431645,
-        0.6234874
-      ],
-      "latency_ms": 30.59079800004838,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-PROC-006",
-      "relevant_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7118362,
-        0.62193304,
-        0.6159114,
-        0.6148119,
-        0.61082405
-      ],
-      "latency_ms": 34.22128600004726,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-001",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7052049,
-        0.6528674,
-        0.6473222,
-        0.64694697,
-        0.63699263
-      ],
-      "latency_ms": 30.679397000085373,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-002",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-004:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.7839514,
-        0.64018285,
-        0.61670184,
-        0.6127828,
-        0.60961163
-      ],
-      "latency_ms": 29.73520099999405,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-003",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-004:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7746664,
-        0.649488,
-        0.5994964,
-        0.59570247,
-        0.5946531
-      ],
-      "latency_ms": 29.932400000006965,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-004",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-005:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001"
-      ],
-      "scores": [
-        0.7501312,
-        0.6045215,
-        0.60431814,
-        0.6000404,
-        0.5917056
-      ],
-      "latency_ms": 31.09979700002441,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-005",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001"
-      ],
-      "scores": [
-        0.7811965,
-        0.6583008,
-        0.6573018,
-        0.64855653,
-        0.64108586
-      ],
-      "latency_ms": 30.619198000067627,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-LEGAL-006",
-      "relevant_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7349632,
-        0.63249326,
-        0.6206186,
-        0.6147113,
-        0.60908645
-      ],
-      "latency_ms": 32.38739200003238,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-001",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-002:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.792984,
-        0.71263117,
-        0.7076178,
-        0.6731991,
-        0.6443595
-      ],
-      "latency_ms": 30.379398999912155,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-002",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-003:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7822005,
-        0.69496316,
-        0.6836975,
-        0.6697767,
-        0.6678895
-      ],
-      "latency_ms": 29.879800000003343,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-003",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.75037426,
-        0.6772155,
-        0.6528223,
-        0.6482569,
-        0.622022
-      ],
-      "latency_ms": 35.72968099990703,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-004",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.75108147,
-        0.66259325,
-        0.642695,
-        0.6421557,
-        0.63510656
-      ],
-      "latency_ms": 31.236395999940214,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-005",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-006:CHK-001",
-        "POL-COMP-001:1.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7489826,
-        0.6650369,
-        0.64702886,
-        0.63206255,
-        0.6288489
-      ],
-      "latency_ms": 31.29039499992814,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-COMP-006",
-      "relevant_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-COMP-001:1.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
-      ],
-      "scores": [
-        0.77734417,
-        0.6945755,
-        0.6918856,
-        0.6838382,
-        0.67769325
-      ],
-      "latency_ms": 33.82238699998652,
-      "repetition": 2,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-HR-001",
-      "relevant_chunk_ids": [
         "POL-HR-001:1.0:SEC-003:CHK-001"
       ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
-        "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-009:CHK-001"
-      ],
       "scores": [
-        0.7945482,
-        0.7243081,
-        0.6848112,
-        0.67741376,
-        0.67082965
+        1.0,
+        0.45833334,
+        0.39285713,
+        0.33333334,
+        0.33333334
       ],
-      "latency_ms": 38.683070999923075,
-      "repetition": 3,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-HR-002",
-      "relevant_chunk_ids": [
-        "POL-HR-001:1.0:SEC-004:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-004:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-002:CHK-001"
-      ],
-      "scores": [
-        0.78954875,
-        0.65530574,
-        0.6326489,
-        0.6290548,
-        0.62136376
-      ],
-      "latency_ms": 32.99789000004694,
-      "repetition": 3,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-HR-003",
-      "relevant_chunk_ids": [
-        "POL-HR-001:1.0:SEC-005:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-011:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-009:CHK-001",
-        "POL-HR-001:1.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7546723,
-        0.73994076,
-        0.73208076,
-        0.71516395,
-        0.689457
-      ],
-      "latency_ms": 31.74969399992733,
-      "repetition": 3,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 0.5,
-      "ndcg_at_k": 0.6309297535714575
-    },
-    {
-      "case_id": "EQ-HR-004",
-      "relevant_chunk_ids": [
-        "POL-HR-001:1.0:SEC-006:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
-      ],
-      "scores": [
-        0.7160484,
-        0.6266946,
-        0.5990265,
-        0.5952788,
-        0.59388596
-      ],
-      "latency_ms": 34.15058600000975,
-      "repetition": 3,
-      "precision_at_k": 0.2,
-      "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
-    },
-    {
-      "case_id": "EQ-HR-005",
-      "relevant_chunk_ids": [
-        "POL-HR-001:1.0:SEC-007:CHK-001"
-      ],
-      "retrieved_chunk_ids": [
-        "POL-HR-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-001:CHK-001"
-      ],
-      "scores": [
-        0.7008158,
-        0.63981384,
-        0.6261313,
-        0.6249421,
-        0.61723125
-      ],
-      "latency_ms": 31.968094000035308,
+      "latency_ms": 13.211311000304704,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2862,19 +2862,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-001:1.0:SEC-008:CHK-001",
-        "POL-HR-001:1.0:SEC-005:CHK-001",
-        "POL-HR-001:1.0:SEC-003:CHK-001",
         "POL-HR-001:1.0:SEC-007:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.75130904,
-        0.65290254,
-        0.6432873,
-        0.634382,
-        0.633167
+        1.0,
+        0.53333336,
+        0.4166667,
+        0.41025642,
+        0.3125
       ],
-      "latency_ms": 30.504497999913838,
+      "latency_ms": 15.087912999661057,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2889,18 +2889,18 @@
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-002:CHK-001",
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.77024734,
-        0.67055035,
-        0.6642262,
-        0.65116334,
-        0.6509995
+        1.0,
+        0.39215687,
+        0.39215687,
+        0.36666667,
+        0.35
       ],
-      "latency_ms": 30.27499900008479,
+      "latency_ms": 13.407811999968544,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2914,19 +2914,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7761813,
-        0.6817932,
-        0.6547612,
-        0.6474412,
-        0.62970066
+        0.75,
+        0.7,
+        0.43333334,
+        0.4047619,
+        0.28846154
       ],
-      "latency_ms": 34.50088499994308,
+      "latency_ms": 13.093811000089772,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2940,19 +2940,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-004:CHK-001",
-        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-HR-002:1.0:SEC-005:CHK-001"
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.8144648,
-        0.672972,
-        0.6501489,
-        0.618627,
-        0.6144418
+        1.0,
+        0.39285713,
+        0.375,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 31.60119400001804,
+      "latency_ms": 13.240111999948567,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2966,19 +2966,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-005:CHK-001"
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7309577,
-        0.6038333,
-        0.6011107,
-        0.59773195,
-        0.59657514
+        0.8333334,
+        0.54347825,
+        0.35964912,
+        0.32692307,
+        0.32142857
       ],
-      "latency_ms": 31.401295999899048,
+      "latency_ms": 14.840913000170985,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -2992,19 +2992,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-006:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001",
         "POL-HR-002:1.0:SEC-003:CHK-001",
-        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
         "POL-HR-002:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.7658349,
-        0.6413681,
-        0.6373158,
-        0.6319705,
-        0.6276685
+        1.0,
+        0.5,
+        0.4166667,
+        0.38596493,
+        0.33333334
       ],
-      "latency_ms": 39.184069000043564,
+      "latency_ms": 12.852310999733163,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3018,19 +3018,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-HR-002:1.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-003:CHK-001",
         "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
         "POL-HR-002:1.0:SEC-001:CHK-001",
-        "POL-HR-002:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7653499,
-        0.6542158,
-        0.6518457,
-        0.64901394,
-        0.6460431
+        0.75,
+        0.75,
+        0.43333334,
+        0.4,
+        0.35714287
       ],
-      "latency_ms": 50.97043000000667,
+      "latency_ms": 54.862148000211164,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3044,19 +3044,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
         "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
         "POL-FIN-001:1.0:SEC-006:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.64695346,
-        0.62214017,
-        0.610146,
-        0.5867086,
-        0.58500063
+        0.8333334,
+        0.75,
+        0.53333336,
+        0.45,
+        0.30952382
       ],
-      "latency_ms": 38.20037300010881,
+      "latency_ms": 55.97824799997397,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3070,19 +3070,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-004:CHK-001",
-        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
         "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.71015817,
-        0.6546706,
-        0.6197493,
-        0.5977637,
-        0.59241265
+        1.0,
+        0.4761905,
+        0.4166667,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 31.642894000015076,
+      "latency_ms": 56.046248999791715,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3096,19 +3096,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-001:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001",
         "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-002:CHK-001"
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.6875167,
-        0.6420479,
-        0.6361157,
-        0.6275755,
-        0.61626184
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 34.48098499995922,
+      "latency_ms": 55.7855480001308,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3123,18 +3123,18 @@
       "retrieved_chunk_ids": [
         "POL-FIN-001:1.0:SEC-006:CHK-001",
         "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-007:CHK-001",
         "POL-FIN-001:1.0:SEC-005:CHK-001",
-        "POL-FIN-001:1.0:SEC-003:CHK-001",
-        "POL-FIN-001:1.0:SEC-004:CHK-001"
+        "POL-FIN-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.72281104,
-        0.6607894,
-        0.6560445,
-        0.6213715,
-        0.61331254
+        1.0,
+        0.5,
+        0.45833334,
+        0.45,
+        0.39285713
       ],
-      "latency_ms": 33.71138800002882,
+      "latency_ms": 59.9945519998073,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3148,19 +3148,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
         "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001",
-        "POL-FIN-001:2.0:SEC-004:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7483281,
-        0.68879485,
-        0.6756003,
-        0.65549153,
-        0.641962
+        0.8333334,
+        0.5714286,
+        0.4761905,
+        0.33333334,
+        0.28333333
       ],
-      "latency_ms": 31.870993999973507,
+      "latency_ms": 13.618211999983032,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3177,16 +3177,16 @@
         "POL-HR-002:1.0:SEC-007:CHK-001",
         "POL-FIN-001:2.0:SEC-002:CHK-001",
         "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-001:CHK-001"
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.6832455,
-        0.6227275,
-        0.6225289,
-        0.6035599,
-        0.592507
+        1.0,
+        0.6666667,
+        0.375,
+        0.36666667,
+        0.325
       ],
-      "latency_ms": 33.23038999997152,
+      "latency_ms": 54.4448470000134,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3200,19 +3200,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-004:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7212293,
-        0.64109623,
-        0.58432174,
-        0.58193034,
-        0.58121496
+        1.0,
+        0.3703704,
+        0.36666667,
+        0.33333334,
+        0.2857143
       ],
-      "latency_ms": 44.33505300005436,
+      "latency_ms": 13.318612000148278,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3226,19 +3226,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
         "POL-FIN-001:2.0:SEC-004:CHK-001",
         "POL-FIN-001:2.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-006:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001"
+        "POL-HR-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7063545,
-        0.6563499,
-        0.6065178,
-        0.6049179,
-        0.59572005
+        0.5625,
+        0.53333336,
+        0.44444445,
+        0.4166667,
+        0.36904764
       ],
-      "latency_ms": 32.492291999915324,
+      "latency_ms": 13.308211000094161,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3252,19 +3252,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-FIN-001:2.0:SEC-005:CHK-001",
-        "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001"
+        "POL-HR-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7171952,
-        0.63966846,
-        0.63433444,
-        0.6274866,
-        0.6268329
+        0.64285713,
+        0.53846157,
+        0.44444445,
+        0.33333334,
+        0.27222222
       ],
-      "latency_ms": 31.38479599999755,
+      "latency_ms": 13.053012000000308,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3278,19 +3278,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-FIN-001:2.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
         "POL-FIN-001:2.0:SEC-003:CHK-001",
-        "POL-HR-001:1.0:SEC-010:CHK-001",
-        "POL-FIN-001:2.0:SEC-002:CHK-001"
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001"
       ],
       "scores": [
-        0.7118852,
-        0.6538058,
-        0.64614236,
-        0.64502364,
-        0.6241227
+        1.0,
+        0.44444445,
+        0.39285713,
+        0.39215687,
+        0.325
       ],
-      "latency_ms": 31.25889599994025,
+      "latency_ms": 12.845810999806417,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3305,18 +3305,18 @@
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-002:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-001:CHK-001",
         "POL-SEC-001:1.0:SEC-006:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
+        "POL-SEC-001:1.0:SEC-001:CHK-001",
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.692471,
-        0.6231589,
-        0.5829701,
-        0.5707816,
-        0.56381077
+        1.0,
+        0.53333336,
+        0.53333336,
+        0.5,
+        0.30952382
       ],
-      "latency_ms": 30.43289899994761,
+      "latency_ms": 55.278348000229016,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3330,19 +3330,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7403892,
-        0.60886526,
-        0.60882336,
-        0.6074154,
-        0.59319806
+        1.0,
+        0.5,
+        0.33333334,
+        0.25,
+        0.2
       ],
-      "latency_ms": 32.21699200003059,
+      "latency_ms": 55.90704799988089,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3357,18 +3357,18 @@
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001"
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.72803897,
-        0.69547695,
-        0.64236104,
-        0.61813575,
-        0.6030222
+        0.8333334,
+        0.8333334,
+        0.45,
+        0.45,
+        0.2916667
       ],
-      "latency_ms": 30.129999999985557,
+      "latency_ms": 57.464149999759684,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3382,19 +3382,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-005:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
         "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-004:CHK-001",
         "POL-SEC-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7675638,
-        0.6164743,
-        0.612303,
-        0.6116598,
-        0.60123277
+        1.0,
+        0.53333336,
+        0.5,
+        0.45,
+        0.4166667
       ],
-      "latency_ms": 31.244195999988733,
+      "latency_ms": 54.74884699970062,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3409,18 +3409,18 @@
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-006:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
         "POL-SEC-001:1.0:SEC-002:CHK-001",
-        "POL-SEC-001:1.0:SEC-007:CHK-001",
-        "POL-SEC-001:1.0:SEC-003:CHK-001"
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.73194337,
-        0.6212511,
-        0.5915891,
-        0.58994776,
-        0.584832
+        1.0,
+        0.5833334,
+        0.5,
+        0.39285713,
+        0.325
       ],
-      "latency_ms": 34.45068500002435,
+      "latency_ms": 55.48974899966197,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3435,18 +3435,18 @@
       "retrieved_chunk_ids": [
         "POL-SEC-001:1.0:SEC-007:CHK-001",
         "POL-SEC-001:1.0:SEC-003:CHK-001",
-        "POL-SEC-001:1.0:SEC-002:CHK-001",
         "POL-SEC-001:1.0:SEC-004:CHK-001",
-        "POL-SEC-001:1.0:SEC-006:CHK-001"
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.729616,
-        0.6170471,
-        0.5944186,
-        0.58884096,
-        0.5837567
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.375,
+        0.375
       ],
-      "latency_ms": 31.22029600001497,
+      "latency_ms": 56.267947999913304,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3460,19 +3460,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-001:CHK-001",
         "POL-IT-001:1.0:SEC-006:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-007:CHK-001"
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.83121824,
-        0.7006028,
-        0.6918662,
-        0.67470247,
-        0.67272985
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
       ],
-      "latency_ms": 36.34247900004084,
+      "latency_ms": 55.96484899979259,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3486,19 +3486,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
         "POL-IT-001:1.0:SEC-005:CHK-001",
         "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.695675,
-        0.61242086,
-        0.6079163,
-        0.579758,
-        0.5790261
+        0.8333334,
+        0.75,
+        0.45,
+        0.36666667,
+        0.33333334
       ],
-      "latency_ms": 59.82380099999318,
+      "latency_ms": 59.94075199987492,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3513,18 +3513,18 @@
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-004:CHK-001",
         "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
         "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.725651,
-        0.5921418,
-        0.57333946,
-        0.57152784,
-        0.5684403
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
       ],
-      "latency_ms": 32.159693000039624,
+      "latency_ms": 56.15024899998389,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3538,19 +3538,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-005:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
         "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001",
         "POL-IT-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.7025182,
-        0.60899866,
-        0.59220016,
-        0.5836193,
-        0.58325285
+        1.0,
+        0.53333336,
+        0.5,
+        0.375,
+        0.36666667
       ],
-      "latency_ms": 31.000397000070734,
+      "latency_ms": 55.76484799985337,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3566,17 +3566,17 @@
         "POL-IT-001:1.0:SEC-006:CHK-001",
         "POL-IT-001:1.0:SEC-001:CHK-001",
         "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-003:CHK-001"
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.73098546,
-        0.6837788,
-        0.6697947,
-        0.641872,
-        0.63018215
+        1.0,
+        0.53333336,
+        0.5,
+        0.4761905,
+        0.34285715
       ],
-      "latency_ms": 33.679886999948394,
+      "latency_ms": 55.64734799963844,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3590,19 +3590,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
         "POL-IT-001:1.0:SEC-001:CHK-001",
-        "POL-IT-001:1.0:SEC-002:CHK-001",
-        "POL-IT-001:1.0:SEC-004:CHK-001",
-        "POL-IT-001:1.0:SEC-006:CHK-001"
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.81283545,
-        0.6151344,
-        0.60949075,
-        0.6001541,
-        0.5989552
+        1.0,
+        0.4761905,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 32.44629200003146,
+      "latency_ms": 56.130549000044994,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3615,25 +3615,25 @@
         "POL-PROC-001:1.0:SEC-002:CHK-001"
       ],
       "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
         "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.752486,
-        0.677325,
-        0.66333765,
-        0.66208017,
-        0.63418967
+        0.7,
+        0.625,
+        0.53333336,
+        0.5,
+        0.39285713
       ],
-      "latency_ms": 30.088800000044102,
+      "latency_ms": 60.14395199963474,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-PROC-002",
@@ -3643,18 +3643,18 @@
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-003:CHK-001",
         "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
         "POL-PROC-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.80866545,
-        0.66803426,
-        0.6633385,
-        0.65732986,
-        0.62667894
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.375,
+        0.33333334
       ],
-      "latency_ms": 53.97431999995206,
+      "latency_ms": 60.03485199971692,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3667,25 +3667,25 @@
         "POL-PROC-001:1.0:SEC-004:CHK-001"
       ],
       "retrieved_chunk_ids": [
-        "POL-PROC-001:1.0:SEC-004:CHK-001",
         "POL-PROC-001:1.0:SEC-005:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-007:CHK-001"
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.75846535,
-        0.624116,
-        0.61456007,
-        0.61097825,
-        0.6053539
+        0.8333334,
+        0.8333334,
+        0.4,
+        0.39285713,
+        0.375
       ],
-      "latency_ms": 35.23178199998256,
+      "latency_ms": 55.76324799994836,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
-      "reciprocal_rank": 1.0,
-      "ndcg_at_k": 1.0
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-PROC-004",
@@ -3694,19 +3694,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-004:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001"
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7304234,
-        0.6654903,
-        0.62850654,
-        0.6243934,
-        0.6243471
+        0.8333334,
+        0.64285713,
+        0.53333336,
+        0.5,
+        0.36666667
       ],
-      "latency_ms": 32.18189300002905,
+      "latency_ms": 63.90505600029428,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3721,18 +3721,18 @@
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-006:CHK-001",
         "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
         "POL-PROC-001:1.0:SEC-003:CHK-001",
-        "POL-PROC-001:1.0:SEC-001:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001"
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
       ],
       "scores": [
-        0.7051386,
-        0.6376906,
-        0.6341652,
-        0.62431645,
-        0.6234874
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.4166667,
+        0.34285715
       ],
-      "latency_ms": 31.09499599997889,
+      "latency_ms": 55.998448000082135,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3746,19 +3746,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-PROC-001:1.0:SEC-007:CHK-001",
-        "POL-PROC-001:1.0:SEC-002:CHK-001",
-        "POL-PROC-001:1.0:SEC-003:CHK-001",
         "POL-PROC-001:1.0:SEC-006:CHK-001",
-        "POL-PROC-001:1.0:SEC-004:CHK-001"
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.7118362,
-        0.62193304,
-        0.6159114,
-        0.6148119,
-        0.61082405
+        1.0,
+        0.53333336,
+        0.45,
+        0.375,
+        0.33333334
       ],
-      "latency_ms": 29.628902000013113,
+      "latency_ms": 55.909748999965814,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3773,18 +3773,18 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
         "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-004:CHK-001"
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7052049,
-        0.6528674,
-        0.6473222,
-        0.64694697,
-        0.63699263
+        1.0,
+        0.5833334,
+        0.45833334,
+        0.39285713,
+        0.36666667
       ],
-      "latency_ms": 33.66928800005553,
+      "latency_ms": 56.03014799999073,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3799,18 +3799,18 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-003:CHK-001",
         "POL-LEG-001:1.0:SEC-004:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-001:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001"
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7839514,
-        0.64018285,
-        0.61670184,
-        0.6127828,
-        0.60961163
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.4166667,
+        0.325
       ],
-      "latency_ms": 30.68529799998032,
+      "latency_ms": 59.88455199985765,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3825,18 +3825,18 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-004:CHK-001",
         "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001"
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7746664,
-        0.649488,
-        0.5994964,
-        0.59570247,
-        0.5946531
+        1.0,
+        0.6666667,
+        0.45,
+        0.45,
+        0.30952382
       ],
-      "latency_ms": 33.43738800003848,
+      "latency_ms": 56.02204899969365,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3850,19 +3850,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-005:CHK-001",
-        "POL-LEG-001:1.0:SEC-006:CHK-001",
-        "POL-LEG-001:1.0:SEC-002:CHK-001",
         "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001"
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
       ],
       "scores": [
-        0.7501312,
-        0.6045215,
-        0.60431814,
-        0.6000404,
-        0.5917056
+        1.0,
+        0.53333336,
+        0.45,
+        0.4166667,
+        0.33333334
       ],
-      "latency_ms": 34.35348599998633,
+      "latency_ms": 55.88424799998393,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3877,18 +3877,18 @@
       "retrieved_chunk_ids": [
         "POL-LEG-001:1.0:SEC-006:CHK-001",
         "POL-LEG-001:1.0:SEC-007:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
         "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-005:CHK-001"
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7811965,
-        0.6583008,
-        0.6573018,
-        0.64855653,
-        0.64108586
+        1.0,
+        0.5,
+        0.4761905,
+        0.4,
+        0.39285713
       ],
-      "latency_ms": 33.51438800007145,
+      "latency_ms": 60.04995200009944,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3904,17 +3904,17 @@
         "POL-LEG-001:1.0:SEC-007:CHK-001",
         "POL-LEG-001:1.0:SEC-005:CHK-001",
         "POL-LEG-001:1.0:SEC-002:CHK-001",
-        "POL-LEG-001:1.0:SEC-003:CHK-001",
-        "POL-LEG-001:1.0:SEC-001:CHK-001"
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.7349632,
-        0.63249326,
-        0.6206186,
-        0.6147113,
-        0.60908645
+        1.0,
+        0.5833334,
+        0.5833334,
+        0.34285715,
+        0.325
       ],
-      "latency_ms": 31.38079600000765,
+      "latency_ms": 55.89774899999611,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3930,17 +3930,17 @@
         "POL-COMP-001:1.0:SEC-002:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.792984,
-        0.71263117,
-        0.7076178,
-        0.6731991,
-        0.6443595
+        1.0,
+        0.6666667,
+        0.45,
+        0.4166667,
+        0.325
       ],
-      "latency_ms": 29.969800999992913,
+      "latency_ms": 56.156049000037456,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3954,19 +3954,19 @@
       ],
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
       ],
       "scores": [
-        0.7822005,
-        0.69496316,
-        0.6836975,
-        0.6697767,
-        0.6678895
+        0.8333334,
+        0.7,
+        0.5,
+        0.4761905,
+        0.34285715
       ],
-      "latency_ms": 29.962801000010586,
+      "latency_ms": 59.83215200012637,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -3981,18 +3981,18 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-004:CHK-001",
         "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001"
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
       ],
       "scores": [
-        0.75037426,
-        0.6772155,
-        0.6528223,
-        0.6482569,
-        0.622022
+        1.0,
+        0.5833334,
+        0.53333336,
+        0.325,
+        0.25
       ],
-      "latency_ms": 30.803396999999677,
+      "latency_ms": 55.91594799989252,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -4007,18 +4007,18 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-005:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-002:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
       ],
       "scores": [
-        0.75108147,
-        0.66259325,
-        0.642695,
-        0.6421557,
-        0.63510656
+        1.0,
+        0.53333336,
+        0.45833334,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 31.315495999933773,
+      "latency_ms": 55.78494800010958,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -4033,18 +4033,18 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-006:CHK-001",
         "POL-COMP-001:1.0:SEC-007:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-003:CHK-001",
-        "POL-COMP-001:1.0:SEC-004:CHK-001"
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
       ],
       "scores": [
-        0.7489826,
-        0.6650369,
-        0.64702886,
-        0.63206255,
-        0.6288489
+        1.0,
+        0.53333336,
+        0.4761905,
+        0.4166667,
+        0.375
       ],
-      "latency_ms": 29.87280100001044,
+      "latency_ms": 55.914048999966326,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,
@@ -4059,18 +4059,18 @@
       "retrieved_chunk_ids": [
         "POL-COMP-001:1.0:SEC-007:CHK-001",
         "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
         "POL-COMP-001:1.0:SEC-005:CHK-001",
-        "POL-COMP-001:1.0:SEC-001:CHK-001",
-        "POL-COMP-001:1.0:SEC-006:CHK-001"
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
       ],
       "scores": [
-        0.77734417,
-        0.6945755,
-        0.6918856,
-        0.6838382,
-        0.67769325
+        1.0,
+        0.5,
+        0.5,
+        0.45,
+        0.39285713
       ],
-      "latency_ms": 29.55170100005944,
+      "latency_ms": 56.18554900001982,
       "repetition": 3,
       "precision_at_k": 0.2,
       "recall_at_k": 1.0,

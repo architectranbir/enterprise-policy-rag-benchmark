@@ -258,14 +258,15 @@ Power BI is removed from scope. No report, template, connector, embedding, docum
 infrastructure for Power BI will be built. The Web application owns benchmark history,
 comparisons, per-question evidence and exports.
 
-## ADR-013: Keep three benchmark tracks and artifacts separate
+## ADR-013: Keep four benchmark tracks and artifacts separate
 
 **Status:** Accepted
 **Date:** 22 July 2026
 
-Fair vector-only, platform-optimised and enterprise-control evaluations are separate modes with
-separate outputs. Controls score security and answer behaviour rather than contaminating positive
-Recall@K. A mode guard prevents optimised runs from entering the fair comparison.
+Fair vector-only, platform-optimised, enterprise-control and representative end-to-end RAG
+evaluations are separate modes with separate outputs. Controls score security and answer
+behaviour rather than contaminating positive Recall@K. Mode and dataset guards prevent optimised
+or generated-answer runs from entering the fair comparison.
 
 ## ADR-014: Do not add LangGraph to a linear workflow
 
@@ -274,3 +275,18 @@ Recall@K. A mode guard prevents optimised runs from entering the fair comparison
 
 The flow is embed, retrieve, generate, validate citations and return or refuse. It does not require
 graph state or branching orchestration, so LangGraph is not implemented.
+
+## ADR-015: Publish evidence and durable engineering documentation, not work diaries
+
+**Status:** Accepted
+**Date:** 23 July 2026
+
+The public repository retains the README, architecture, security model, accepted decisions,
+reproducible setup, synthetic datasets and benchmark evidence. Temporary console captures,
+progress diaries, error journals and next-step scratchpads are excluded from the current public
+tree. Resolved implementation history remains available through Git commits and pull requests.
+Terraform state remains ignored and is never removed as part of documentation cleanup.
+
+Live answer-generation benchmark jobs run sequentially because the development Foundry deployment
+throttles concurrent generation with HTTP 429. Retrieval-only tracks may run concurrently because
+they use precomputed query embeddings and do not consume generation quota.

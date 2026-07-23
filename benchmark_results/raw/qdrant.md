@@ -1,0 +1,10 @@
+# fair-vector-only: qdrant
+
+- Dataset: `synthetic-policy-fair-vector-v1`
+- Cases: 52
+- Measured repetitions: 3
+- Recall@5: 1.0000
+- Precision@5: 0.2000
+- MRR: 0.9904
+- nDCG@5: 0.9929
+- Retrieval p50 / p95: 51.86 / 55.92 ms

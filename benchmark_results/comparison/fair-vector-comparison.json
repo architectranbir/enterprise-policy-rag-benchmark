@@ -2,40 +2,57 @@
   "mode": "fair-vector-only",
   "dataset": "synthetic-policy-fair-vector-v1",
   "environment": "development",
-  "runs_per_backend": 1,
+  "runs_per_backend": 3,
   "artifact_sha256": "e6ca927bf3b2df180a2a0893c2d8d3764098dcd5d4f3ff7d264a37e53dcc759c",
   "source_sha256": "fe69d136074d41c31c1cd8dcd91fe3175b26755f73a5c5d016ca2f17f05c0cfd",
   "top_k": 5,
   "limitations": [
     "Development-scale results are workload-specific and do not establish a universal winner.",
     "Latency includes one client-side retrieval call but excludes query embedding generation.",
-    "Platform-optimised hybrid, sparse and semantic features are outside this comparison.",
-    "Each backend has one measured run; latency has no warm-up exclusion or confidence interval."
+    "Platform-optimised hybrid, sparse and semantic features are outside this comparison."
   ],
   "results": [
     {
       "backend": "azure_ai_search",
       "recall_at_5": 1.0,
       "mean_reciprocal_rank": 0.9903846153846154,
-      "mean_latency_ms": 48.63072701922332,
+      "mean_latency_ms": 36.19393456410281,
       "case_count": 52,
-      "created_at": "2026-07-22T11:57:20.346048+00:00"
+      "created_at": "2026-07-22T18:25:12.324003+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 0.9929024952609896,
+      "p50_latency_ms": 32.57384149998188,
+      "p95_latency_ms": 45.33204950001846,
+      "latency_stddev_ms": 22.79081796931347,
+      "measurement_count": 156
     },
     {
       "backend": "pgvector",
       "recall_at_5": 1.0,
       "mean_reciprocal_rank": 0.9903846153846154,
-      "mean_latency_ms": 114.97106326922992,
+      "mean_latency_ms": 96.25870723076866,
       "case_count": 52,
-      "created_at": "2026-07-22T11:57:29.956437+00:00"
+      "created_at": "2026-07-22T18:26:49.130311+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 0.9929024952609896,
+      "p50_latency_ms": 94.44418050003378,
+      "p95_latency_ms": 121.02655775004223,
+      "latency_stddev_ms": 16.95495114229404,
+      "measurement_count": 156
     },
     {
       "backend": "qdrant",
       "recall_at_5": 1.0,
       "mean_reciprocal_rank": 0.9903846153846154,
-      "mean_latency_ms": 45.784235346153295,
+      "mean_latency_ms": 45.29431591666731,
       "case_count": 52,
-      "created_at": "2026-07-22T11:57:29.056417+00:00"
+      "created_at": "2026-07-22T18:26:41.676953+00:00",
+      "precision_at_5": 0.2,
+      "ndcg_at_5": 0.9929024952609896,
+      "p50_latency_ms": 51.862416999995276,
+      "p95_latency_ms": 55.924653000005264,
+      "latency_stddev_ms": 16.04073399042107,
+      "measurement_count": 156
     }
   ]
 }
