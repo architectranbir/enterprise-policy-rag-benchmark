@@ -1,0 +1,132 @@
+{
+  "dataset": "synthetic-policy-enterprise-controls-v1",
+  "environment": "development",
+  "results": [
+    {
+      "backend": "azure_ai_search",
+      "case_count": 8,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 200.0621530000899,
+          "median": 114.77171149999776,
+          "p50": 114.77171149999776,
+          "p95": 554.6630500499983,
+          "stddev": 209.75707212292872
+        },
+        "retrieval": {
+          "mean": 552.8261497501035,
+          "median": 143.9471555002001,
+          "p50": 143.9471555002001,
+          "p95": 2265.178702600131,
+          "stddev": 1036.6743743271024
+        },
+        "generation": {
+          "mean": 38759.17067187487,
+          "median": 61323.50240049982,
+          "p50": 61323.50240049982,
+          "p95": 61974.359871449786,
+          "stddev": 29441.193782560204
+        },
+        "end_to_end": {
+          "mean": 39512.153088250045,
+          "median": 61547.11967349999,
+          "p50": 61547.11967349999,
+          "p95": 62242.34270765014,
+          "stddev": 28779.86875735563
+        }
+      }
+    },
+    {
+      "backend": "pgvector",
+      "case_count": 8,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 200.8634000000029,
+          "median": 112.7866740000627,
+          "p50": 112.7866740000627,
+          "p95": 574.973935699995,
+          "stddev": 233.2207031969616
+        },
+        "retrieval": {
+          "mean": 119.50952887497124,
+          "median": 113.31312249990333,
+          "p50": 113.31312249990333,
+          "p95": 167.81389750010476,
+          "stddev": 28.379648663502667
+        },
+        "generation": {
+          "mean": 53674.0207118749,
+          "median": 61316.977074499846,
+          "p50": 61316.977074499846,
+          "p95": 61627.240662349795,
+          "stddev": 20287.701506382007
+        },
+        "end_to_end": {
+          "mean": 53994.49059062505,
+          "median": 61538.654635500054,
+          "p50": 61538.654635500054,
+          "p95": 61876.296598200126,
+          "stddev": 20034.08557288047
+        }
+      }
+    },
+    {
+      "backend": "qdrant",
+      "case_count": 8,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 214.6687317499527,
+          "median": 131.52203499998905,
+          "p50": 131.52203499998905,
+          "p95": 578.074775650043,
+          "stddev": 212.77359768485263
+        },
+        "retrieval": {
+          "mean": 21.50126075002845,
+          "median": 23.41388250010823,
+          "p50": 23.41388250010823,
+          "p95": 27.971787749993382,
+          "stddev": 5.714340884971323
+        },
+        "generation": {
+          "mean": 38922.10268525002,
+          "median": 46339.85212049993,
+          "p50": 46339.85212049993,
+          "p95": 62629.04273165004,
+          "stddev": 25519.217061968935
+        },
+        "end_to_end": {
+          "mean": 39158.35410175003,
+          "median": 46501.04090849982,
+          "p50": 46501.04090849982,
+          "p95": 62786.992162600196,
+          "stddev": 25416.776269393846
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Results use a synthetic policy corpus and a development-scale Azure deployment.",
+    "Generation is non-deterministic; this run is evidence, not a universal quality claim.",
+    "Backends ran sequentially to remain within the development model quota.",
+    "Generation and end-to-end latency include quota retry/queue time in this development deployment."
+  ]
+}

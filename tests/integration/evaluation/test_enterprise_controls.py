@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from policy_rag.domain.chunk import PolicyChunk
 from policy_rag.evaluation.enterprise import EnterpriseEvaluationDataset
 from policy_rag.ingestion.chunks import create_section_chunks
 from policy_rag.ingestion.corpus import load_policy_corpus
@@ -13,8 +14,16 @@ def test_enterprise_controls_reference_real_access_and_version_boundaries() -> N
         for section in extract_policy_sections(source)
         for chunk in create_section_chunks(section)
     }
+    for dataset_path in (
+        Path("data/evaluation/enterprise-controls-v1.json"),
+        Path("data/evaluation/end-to-end-v1.json"),
+    ):
+        _assert_dataset(dataset_path, chunks)
+
+
+def _assert_dataset(dataset_path: Path, chunks: dict[str, PolicyChunk]) -> None:
     dataset = EnterpriseEvaluationDataset.model_validate_json(
-        Path("data/evaluation/enterprise-controls-v1.json").read_text(encoding="utf-8")
+        dataset_path.read_text(encoding="utf-8")
     )
     assert len({case.case_id for case in dataset.cases}) == len(dataset.cases)
     for case in dataset.cases:

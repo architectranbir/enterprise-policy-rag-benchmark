@@ -1,0 +1,212 @@
+{
+  "dataset_name": "synthetic-policy-end-to-end-v1",
+  "case_count": 12,
+  "pass_rate": 1.0,
+  "acl_isolation_rate": 1.0,
+  "refusal_accuracy": 1.0,
+  "citation_correctness": 1.0,
+  "groundedness": 1.0,
+  "answer_correctness": 1.0,
+  "cases": [
+    {
+      "case_id": "E2E-HR-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 2075.430599000015,
+      "embedding_ms": 819.420550000018,
+      "retrieval_ms": 148.05230700000038,
+      "generation_ms": 1107.6449420000358
+    },
+    {
+      "case_id": "E2E-LEAVE-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61514.70902899996,
+      "embedding_ms": 126.54494700001351,
+      "retrieval_ms": 97.62296799999604,
+      "generation_ms": 61290.466913999975
+    },
+    {
+      "case_id": "E2E-TRAVEL-OLD",
+      "control": "policy_version",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61530.463904999975,
+      "embedding_ms": 93.59235699997726,
+      "retrieval_ms": 123.50973899998507,
+      "generation_ms": 61313.27771099996
+    },
+    {
+      "case_id": "E2E-TRAVEL-NEW",
+      "control": "policy_version",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 31690.544822999982,
+      "embedding_ms": 104.70282799997221,
+      "retrieval_ms": 119.24983699998393,
+      "generation_ms": 31466.512858999977
+    },
+    {
+      "case_id": "E2E-SEC-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 62331.00246400005,
+      "embedding_ms": 121.7476040000065,
+      "retrieval_ms": 97.05282800001669,
+      "generation_ms": 62112.13323299995
+    },
+    {
+      "case_id": "E2E-IT-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61936.545731999955,
+      "embedding_ms": 103.99679900001502,
+      "retrieval_ms": 112.26058800002647,
+      "generation_ms": 61720.22214600003
+    },
+    {
+      "case_id": "E2E-PROC-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61494.077409000056,
+      "embedding_ms": 120.63093500000832,
+      "retrieval_ms": 91.49001200000839,
+      "generation_ms": 61281.885961999935
+    },
+    {
+      "case_id": "E2E-LEGAL-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 62274.45595899996,
+      "embedding_ms": 123.73105000006035,
+      "retrieval_ms": 127.24390400001084,
+      "generation_ms": 62023.412506
+    },
+    {
+      "case_id": "E2E-COMP-001",
+      "control": "grounded_answer",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 62064.394678999975,
+      "embedding_ms": 138.28016699994805,
+      "retrieval_ms": 86.50025300005382,
+      "generation_ms": 61839.543359999996
+    },
+    {
+      "case_id": "E2E-ACL-001",
+      "control": "acl_isolation",
+      "passed": true,
+      "refused": true,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 203.14150600006542,
+      "embedding_ms": 112.61140699991756,
+      "retrieval_ms": 90.48710000001847,
+      "generation_ms": 0.0
+    },
+    {
+      "case_id": "E2E-REFUSE-001",
+      "control": "unsupported_refusal",
+      "passed": true,
+      "refused": true,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61657.79607000002,
+      "embedding_ms": 104.07662000000073,
+      "retrieval_ms": 104.06121999994866,
+      "generation_ms": 61449.566230999946
+    },
+    {
+      "case_id": "E2E-CITE-001",
+      "control": "citation_correctness",
+      "passed": true,
+      "refused": false,
+      "citation_correct": true,
+      "grounded": true,
+      "answer_correct": true,
+      "returned_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001"
+      ],
+      "forbidden_chunk_ids_returned": [],
+      "latency_ms": 61968.94124799997,
+      "embedding_ms": 104.16144300006636,
+      "retrieval_ms": 135.92889799997465,
+      "generation_ms": 61728.777607999975
+    }
+  ]
+}

@@ -26,5 +26,6 @@ class Settings(BaseSettings):
     qdrant_url: str = "http://qdrant:6333"
     qdrant_api_key: SecretStr | None = None
     qdrant_collection: str = "policy_chunks"
+    qdrant_optimized_schema: bool = False
     qdrant_timeout_seconds: int = Field(default=60, gt=0, le=300)
     benchmark_results_dir: str = "benchmark_results"

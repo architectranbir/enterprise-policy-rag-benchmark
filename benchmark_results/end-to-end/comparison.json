@@ -1,0 +1,132 @@
+{
+  "dataset": "synthetic-policy-end-to-end-v1",
+  "environment": "development",
+  "results": [
+    {
+      "backend": "azure_ai_search",
+      "case_count": 12,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 178.81670174998968,
+          "median": 120.38196349999453,
+          "p50": 120.38196349999453,
+          "p95": 454.6837357500318,
+          "stddev": 179.11529120705805
+        },
+        "retrieval": {
+          "mean": 88.95185625000106,
+          "median": 81.40097850002803,
+          "p50": 81.40097850002803,
+          "p95": 146.2756177999807,
+          "stddev": 35.9504252164669
+        },
+        "generation": {
+          "mean": 46481.48851091666,
+          "median": 61676.59470550001,
+          "p50": 61676.59470550001,
+          "p95": 62001.61843494999,
+          "stddev": 26371.937815014007
+        },
+        "end_to_end": {
+          "mean": 46749.34011966666,
+          "median": 61872.5990035,
+          "p50": 61872.5990035,
+          "p95": 62210.96610729999,
+          "stddev": 26257.722510632113
+        }
+      }
+    },
+    {
+      "backend": "pgvector",
+      "case_count": 12,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 172.7913922500003,
+          "median": 116.62117099996294,
+          "p50": 116.62117099996294,
+          "p95": 444.7933393499791,
+          "stddev": 195.3387615423631
+        },
+        "retrieval": {
+          "mean": 111.12163783333528,
+          "median": 108.16090399998757,
+          "p50": 108.16090399998757,
+          "p95": 141.38443204998623,
+          "stddev": 18.946029269683965
+        },
+        "generation": {
+          "mean": 48944.453622666646,
+          "median": 61381.42197099995,
+          "p50": 61381.42197099995,
+          "p95": 62063.33683314997,
+          "stddev": 23167.48735180566
+        },
+        "end_to_end": {
+          "mean": 49228.45861858333,
+          "median": 61594.1299875,
+          "p50": 61594.1299875,
+          "p95": 62299.90188625,
+          "stddev": 23043.698775009972
+        }
+      }
+    },
+    {
+      "backend": "qdrant",
+      "case_count": 12,
+      "pass_rate": 1.0,
+      "acl_isolation_rate": 1.0,
+      "refusal_accuracy": 1.0,
+      "citation_correctness": 1.0,
+      "groundedness": 1.0,
+      "answer_correctness": 1.0,
+      "latency_ms": {
+        "embedding": {
+          "mean": 162.66400724998675,
+          "median": 112.14255400000184,
+          "p50": 112.14255400000184,
+          "p95": 402.35654064997516,
+          "stddev": 174.93899046940973
+        },
+        "retrieval": {
+          "mean": 19.42746208331414,
+          "median": 20.039116500015552,
+          "p50": 20.039116500015552,
+          "p95": 24.927340649986714,
+          "stddev": 4.73769478563172
+        },
+        "generation": {
+          "mean": 48969.29110916667,
+          "median": 61629.398610500066,
+          "p50": 61629.398610500066,
+          "p95": 61837.11504970002,
+          "stddev": 23147.731701965724
+        },
+        "end_to_end": {
+          "mean": 49151.46958758336,
+          "median": 61745.85174300001,
+          "p50": 61745.85174300001,
+          "p95": 61970.890659950026,
+          "stddev": 23039.87029217631
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Results use a synthetic policy corpus and a development-scale Azure deployment.",
+    "Generation is non-deterministic; this run is evidence, not a universal quality claim.",
+    "Backends ran sequentially to remain within the development model quota.",
+    "Generation and end-to-end latency include quota retry/queue time in this development deployment."
+  ]
+}

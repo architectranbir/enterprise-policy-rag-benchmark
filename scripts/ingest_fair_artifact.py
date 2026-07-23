@@ -1,6 +1,7 @@
 """Ingest the exact pre-embedded fair-vector artifact into one selected backend."""
 
 import argparse
+import sys
 from pathlib import Path
 
 from policy_rag.config import Settings
@@ -17,7 +18,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=ROOT / "data" / "generated" / "fair-vector-v1.json.gz",
     )
-    return parser.parse_args()
+    return parser.parse_args([argument for argument in sys.argv[1:] if argument])
 
 
 def main() -> None:

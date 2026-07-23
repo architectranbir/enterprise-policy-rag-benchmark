@@ -1,11 +1,19 @@
 # Enterprise Policy RAG Benchmark
 
+[![CI](https://github.com/architectranbir/enterprise-policy-rag-benchmark/actions/workflows/ci.yml/badge.svg)](https://github.com/architectranbir/enterprise-policy-rag-benchmark/actions/workflows/ci.yml)
+
+[Live Web application](https://thankful-water-035fd740f.7.azurestaticapps.net/) ·
+[Architecture](ARCHITECTURE.md) · [Security](docs/SECURITY.md) ·
+[Benchmark evidence](benchmark_results/)
+
 A production-believable policy assistant that compares Azure AI Search,
 PostgreSQL/pgvector, and Qdrant behind one retrieval contract. Normal requests use
-exactly one backend selected by `VECTOR_BACKEND`. Fair vector-only and future
-platform-optimised measurements are kept separate.
+exactly one backend selected by `VECTOR_BACKEND`. Fair vector-only and platform-optimised
+measurements are executed, validated and reported as separate tracks.
 
-The Web UI contains the Policy Assistant and Benchmark Lab. Power BI is intentionally out of scope.
+The Web UI contains the Policy Assistant and Benchmark Lab. The public application requires an
+authorised Microsoft Entra identity for policy queries; benchmark evidence remains reproducible
+from the repository. Power BI is intentionally out of scope.
 
 ## Local setup
 
@@ -92,18 +100,49 @@ Fair-vector dataset v1 contains 8 synthetic policies across 9 effective-dated ve
 67 deterministic canonical chunks and 52 positive retrieval cases. Integrity tests verify every
 ground-truth chunk ID, ACL and effective date.
 
-The deployed development indexes contain the same 67 pre-embedded canonical chunks. A verified
-single-run fair vector-only evaluation produced the following evidence:
+The deployed development indexes contain the same 67 pre-embedded canonical chunks. Each
+retrieval track uses three warm-ups and three measured repetitions over 52 questions: 156 measured
+retrievals per backend and 468 per track.
 
-| Backend | Recall@5 | MRR | Mean retrieval latency |
-|---|---:|---:|---:|
-| Azure AI Search | 1.0000 | 0.9904 | 48.63 ms |
-| PostgreSQL/pgvector | 1.0000 | 0.9904 | 114.97 ms |
-| Qdrant | 1.0000 | 0.9904 | 45.78 ms |
+### Fair vector-only results
 
-These development-scale results are workload-specific, use one measured run per backend and do
-not establish a universal winner. Query embedding time is excluded. Raw rankings and the
-publish-ready comparison are in `benchmark_results`.
+| Backend | Recall@5 | MRR | nDCG@5 | p50 | p95 |
+|---|---:|---:|---:|---:|---:|
+| Azure AI Search | 1.0000 | 0.9904 | 0.9929 | 32.57 ms | 45.33 ms |
+| PostgreSQL/pgvector | 1.0000 | 0.9904 | 0.9929 | 94.44 ms | 121.03 ms |
+| Qdrant | 1.0000 | 0.9904 | 0.9929 | 51.86 ms | 55.92 ms |
+
+### Platform-optimised results
+
+| Backend | Recall@5 | MRR | nDCG@5 | p50 | p95 |
+|---|---:|---:|---:|---:|---:|
+| Azure AI Search hybrid + semantic | 1.0000 | 1.0000 | 1.0000 | 75.69 ms | 181.34 ms |
+| PostgreSQL FTS + vector fusion | 1.0000 | 0.9776 | 0.9833 | 95.54 ms | 117.43 ms |
+| Qdrant dense + sparse RRF | 1.0000 | 0.9679 | 0.9763 | 55.87 ms | 60.04 ms |
+
+### Enterprise controls
+
+All three backends passed all eight synthetic control cases. ACL isolation, department/group
+access, effective dates, policy-version selection, unsupported-question refusal, citation
+correctness, groundedness and answer correctness each scored `1.0000` in this run. Per-case
+evidence and phase-level embedding, retrieval, generation and end-to-end timings are published
+under [`benchmark_results/enterprise-controls`](benchmark_results/enterprise-controls/).
+
+### End-to-end RAG
+
+All three backends passed all 12 representative questions. Citation correctness, groundedness and
+answer correctness each scored `1.0000`. End-to-end p50 was 61.87 s for Azure AI Search, 61.59 s
+for pgvector and 61.75 s for Qdrant. These generation latencies include development Foundry quota
+retry/queue time and must not be interpreted as production serving latency.
+
+Across the four isolated tracks, the published evidence contains exactly 996 measured executions:
+468 fair retrievals, 468 platform-optimised retrievals, 24 enterprise-control cases and 36
+end-to-end answers.
+
+These development-scale measurements are workload-specific and do not establish a universal
+winner. Retrieval latency excludes query embedding and answer generation. Complete raw rankings,
+per-question metrics, control evidence and publish-ready comparisons are in
+[`benchmark_results`](benchmark_results/).
 
 For an existing Terraform-managed environment, build the Web UI from authoritative state outputs
 instead of copying Entra IDs manually:

@@ -1,6 +1,7 @@
 """Validate comparable raw runs and produce publish-ready JSON and Markdown summaries."""
 
 import argparse
+import csv
 import json
 from pathlib import Path
 
@@ -16,6 +17,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-dir", type=Path, default=ROOT / "benchmark_results" / "comparison"
     )
+    parser.add_argument(
+        "--mode", choices=("fair-vector-only", "platform-optimized"), default="fair-vector-only"
+    )
     return parser.parse_args()
 
 
@@ -27,14 +31,38 @@ def main() -> None:
         )
         for backend in BACKENDS
     )
+    for backend, run in zip(BACKENDS, runs, strict=True):
+        raw_path = args.raw_dir / f"{backend}.json"
+        with raw_path.with_suffix(".csv").open("w", newline="", encoding="utf-8") as stream:
+            writer = csv.DictWriter(stream, fieldnames=list(type(run.cases[0]).model_fields))
+            writer.writeheader()
+            writer.writerows(item.model_dump(mode="json") for item in run.cases)
+        raw_path.with_suffix(".md").write_text(
+            "\n".join(
+                (
+                    f"# {run.mode}: {run.backend}",
+                    "",
+                    f"- Dataset: `{run.dataset_name}`",
+                    f"- Cases: {run.case_count}",
+                    f"- Measured repetitions: {run.measured_repetitions}",
+                    f"- Recall@{run.top_k}: {run.recall_at_k:.4f}",
+                    f"- Precision@{run.top_k}: {run.precision_at_k:.4f}",
+                    f"- MRR: {run.mean_reciprocal_rank:.4f}",
+                    f"- nDCG@{run.top_k}: {run.ndcg_at_k:.4f}",
+                    f"- Retrieval p50 / p95: {run.p50_latency_ms:.2f} / {run.p95_latency_ms:.2f} ms",
+                    "",
+                )
+            ),
+            encoding="utf-8",
+        )
     signatures = {
         (run.artifact_sha256, run.source_sha256, run.dataset_name, run.top_k, run.case_count)
         for run in runs
     }
     if len(signatures) != 1:
         raise ValueError("raw runs are not comparable: artifact or dataset signatures differ")
-    if any(run.mode != "fair-vector-only" for run in runs):
-        raise ValueError("platform-optimized runs must not enter the fair comparison")
+    if any(run.mode != args.mode for run in runs):
+        raise ValueError(f"raw runs do not all belong to the {args.mode} track")
 
     strong = all(run.measurement_count > 0 for run in runs)
     rows = [
@@ -60,10 +88,16 @@ def main() -> None:
         }
         for run in runs
     ]
+    track_limitation = (
+        "Platform-optimised features differ by backend and are intentionally not a controlled "
+        "vector-only comparison."
+        if args.mode == "platform-optimized"
+        else "Platform-optimised hybrid, sparse and semantic features are outside this comparison."
+    )
     limitations = (
         "Development-scale results are workload-specific and do not establish a universal winner.",
         "Latency includes one client-side retrieval call but excludes query embedding generation.",
-        "Platform-optimised hybrid, sparse and semantic features are outside this comparison.",
+        track_limitation,
         *(
             ()
             if strong
@@ -73,7 +107,7 @@ def main() -> None:
         ),
     )
     comparison = {
-        "mode": "fair-vector-only",
+        "mode": args.mode,
         "dataset": runs[0].dataset_name,
         "environment": "development",
         "runs_per_backend": runs[0].measured_repetitions,
@@ -84,13 +118,20 @@ def main() -> None:
         "results": rows,
     }
     args.output_dir.mkdir(parents=True, exist_ok=True)
-    (args.output_dir / "fair-vector-comparison.json").write_text(
+    report_stem = (
+        "fair-vector-comparison" if args.mode == "fair-vector-only" else "platform-comparison"
+    )
+    (args.output_dir / f"{report_stem}.json").write_text(
         json.dumps(comparison, indent=2) + "\n", encoding="utf-8"
     )
 
     metric = f"Recall@{runs[0].top_k}"
     lines = [
-        "# Fair vector-only retrieval comparison",
+        (
+            "# Fair vector-only retrieval comparison"
+            if args.mode == "fair-vector-only"
+            else "# Platform-optimised retrieval comparison"
+        ),
         "",
         f"Dataset: `{runs[0].dataset_name}` · Cases: {runs[0].case_count} · Top k: {runs[0].top_k}",
         "",
@@ -124,7 +165,7 @@ def main() -> None:
         *[f"- {limitation}" for limitation in limitations],
         "",
     ]
-    (args.output_dir / "fair-vector-comparison.md").write_text("\n".join(lines), encoding="utf-8")
+    (args.output_dir / f"{report_stem}.md").write_text("\n".join(lines), encoding="utf-8")
     print(f"Wrote comparison reports to {args.output_dir}")
 
 

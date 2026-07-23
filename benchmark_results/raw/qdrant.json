@@ -1,15 +1,25 @@
 {
   "schema_version": "1.0",
-  "created_at": "2026-07-22T11:57:29.056417Z",
+  "mode": "fair-vector-only",
+  "created_at": "2026-07-22T18:26:41.676953Z",
   "backend": "qdrant",
   "artifact_sha256": "e6ca927bf3b2df180a2a0893c2d8d3764098dcd5d4f3ff7d264a37e53dcc759c",
   "source_sha256": "fe69d136074d41c31c1cd8dcd91fe3175b26755f73a5c5d016ca2f17f05c0cfd",
   "dataset_name": "synthetic-policy-fair-vector-v1",
   "top_k": 5,
   "case_count": 52,
+  "measurement_count": 156,
   "recall_at_k": 1.0,
   "mean_reciprocal_rank": 0.9903846153846154,
-  "mean_latency_ms": 45.784235346153295,
+  "mean_latency_ms": 45.29431591666731,
+  "precision_at_k": 0.2,
+  "ndcg_at_k": 0.9929024952609896,
+  "warmup_requests": 3,
+  "measured_repetitions": 3,
+  "median_latency_ms": 51.862416999995276,
+  "p50_latency_ms": 51.862416999995276,
+  "p95_latency_ms": 55.924653000005264,
+  "latency_stddev_ms": 16.04073399042107,
   "cases": [
     {
       "case_id": "EQ-HR-001",
@@ -30,7 +40,12 @@
         0.5237973,
         0.5093086
       ],
-      "latency_ms": 25.946571000005747
+      "latency_ms": 7.902172000058272,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-002",
@@ -51,7 +66,12 @@
         0.4103135,
         0.3906368
       ],
-      "latency_ms": 8.553824000003374
+      "latency_ms": 8.113971000057063,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-003",
@@ -72,7 +92,12 @@
         0.6017192,
         0.5495832
       ],
-      "latency_ms": 7.96862199999282
+      "latency_ms": 7.9610720000573565,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
     },
     {
       "case_id": "EQ-HR-004",
@@ -93,7 +118,12 @@
         0.3201148,
         0.31617504
       ],
-      "latency_ms": 7.553819999998268
+      "latency_ms": 7.354773999963982,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-005",
@@ -114,7 +144,12 @@
         0.39985186,
         0.37986165
       ],
-      "latency_ms": 8.292322000002628
+      "latency_ms": 8.206170999983442,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-HR-006",
@@ -135,7 +170,12 @@
         0.42366284,
         0.42063808
       ],
-      "latency_ms": 7.422220000009361
+      "latency_ms": 8.622568999953728,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-001",
@@ -156,7 +196,12 @@
         0.464287,
         0.46390045
       ],
-      "latency_ms": 54.44375000000434
+      "latency_ms": 51.75691799991,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-002",
@@ -177,7 +222,12 @@
         0.45545834,
         0.41194376
       ],
-      "latency_ms": 56.061253999999394
+      "latency_ms": 56.086001999915425,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-003",
@@ -198,7 +248,12 @@
         0.38351697,
         0.37250662
       ],
-      "latency_ms": 51.9715429999934
+      "latency_ms": 52.3748150000074,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-004",
@@ -219,7 +274,12 @@
         0.3270091,
         0.32376528
       ],
-      "latency_ms": 8.176222000003008
+      "latency_ms": 8.24647100000675,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-005",
@@ -240,7 +300,12 @@
         0.41764784,
         0.40680242
       ],
-      "latency_ms": 51.62624099999391
+      "latency_ms": 50.984421000066504,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEAVE-006",
@@ -261,7 +326,12 @@
         0.45920095,
         0.45211574
       ],
-      "latency_ms": 52.188542999999754
+      "latency_ms": 49.28762600002301,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2025-001",
@@ -282,7 +352,12 @@
         0.29557645,
         0.29060024
       ],
-      "latency_ms": 51.73654200000044
+      "latency_ms": 51.022020000004886,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2025-002",
@@ -303,7 +378,12 @@
         0.32709825,
         0.31198746
       ],
-      "latency_ms": 51.94294300000024
+      "latency_ms": 55.73700300010387,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2025-003",
@@ -324,7 +404,12 @@
         0.40656623,
         0.37731305
       ],
-      "latency_ms": 51.89264300000218
+      "latency_ms": 51.863217000004624,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2025-004",
@@ -345,7 +430,12 @@
         0.39065683,
         0.36950994
       ],
-      "latency_ms": 51.92794299999548
+      "latency_ms": 52.18531599996368,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-001",
@@ -366,7 +456,12 @@
         0.47442737,
         0.4422754
       ],
-      "latency_ms": 56.08065399999873
+      "latency_ms": 51.74661699993521,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-002",
@@ -387,7 +482,12 @@
         0.3431636,
         0.31225628
       ],
-      "latency_ms": 51.70704200000387
+      "latency_ms": 52.536115000066275,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-003",
@@ -408,7 +508,12 @@
         0.28158134,
         0.27946615
       ],
-      "latency_ms": 51.99244300000316
+      "latency_ms": 52.71151399995233,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-004",
@@ -429,7 +534,12 @@
         0.34688306,
         0.3213591
       ],
-      "latency_ms": 51.927542999990806
+      "latency_ms": 54.742606999980126,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-005",
@@ -450,7 +560,12 @@
         0.40634048,
         0.40467864
       ],
-      "latency_ms": 52.11264300000096
+      "latency_ms": 55.904003000023295,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-TRAVEL-2026-006",
@@ -471,7 +586,12 @@
         0.44966918,
         0.39775085
       ],
-      "latency_ms": 8.374822999996923
+      "latency_ms": 7.744872999978725,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-001",
@@ -492,7 +612,12 @@
         0.24801624,
         0.22635537
       ],
-      "latency_ms": 51.20363999999711
+      "latency_ms": 52.15351599997575,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-002",
@@ -513,7 +638,12 @@
         0.3536802,
         0.31422234
       ],
-      "latency_ms": 51.863241999996035
+      "latency_ms": 52.20901599989247,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-003",
@@ -534,7 +664,12 @@
         0.3822322,
         0.3416862
       ],
-      "latency_ms": 51.828043000000434
+      "latency_ms": 51.63241799994012,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-004",
@@ -555,7 +690,12 @@
         0.36510426,
         0.33675072
       ],
-      "latency_ms": 52.16604299999972
+      "latency_ms": 52.08121700002266,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-005",
@@ -576,7 +716,12 @@
         0.3049348,
         0.29010728
       ],
-      "latency_ms": 51.862243000002195
+      "latency_ms": 51.83571700001721,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-SEC-006",
@@ -597,7 +742,12 @@
         0.3017486,
         0.2869575
       ],
-      "latency_ms": 51.79074200000855
+      "latency_ms": 48.90002699994511,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-001",
@@ -618,7 +768,12 @@
         0.5178652,
         0.51351917
       ],
-      "latency_ms": 52.26094300000739
+      "latency_ms": 55.32780500004719,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-002",
@@ -639,7 +794,12 @@
         0.27514225,
         0.27296215
       ],
-      "latency_ms": 51.751941999995665
+      "latency_ms": 51.969016999919404,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-003",
@@ -660,7 +820,12 @@
         0.25030404,
         0.24080034
       ],
-      "latency_ms": 51.68224200001248
+      "latency_ms": 51.83321699996668,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-004",
@@ -681,7 +846,12 @@
         0.28655425,
         0.28547764
       ],
-      "latency_ms": 52.19074299999704
+      "latency_ms": 52.69481400000586,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-005",
@@ -702,7 +872,12 @@
         0.44205698,
         0.41315725
       ],
-      "latency_ms": 51.89244199999621
+      "latency_ms": 51.303119000067454,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-IT-006",
@@ -723,7 +898,12 @@
         0.3337613,
         0.33042613
       ],
-      "latency_ms": 51.86614299999803
+      "latency_ms": 51.980016000015894,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-001",
@@ -744,7 +924,12 @@
         0.4896089,
         0.42318463
       ],
-      "latency_ms": 55.87485300000594
+      "latency_ms": 51.843017999999574,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-002",
@@ -765,7 +950,12 @@
         0.47869384,
         0.4042866
       ],
-      "latency_ms": 52.445243999997615
+      "latency_ms": 53.00541299993711,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-003",
@@ -786,7 +976,12 @@
         0.3632806,
         0.34807387
       ],
-      "latency_ms": 52.342443999989996
+      "latency_ms": 51.17491999999402,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-004",
@@ -807,7 +1002,12 @@
         0.39844567,
         0.39832678
       ],
-      "latency_ms": 50.97013999998978
+      "latency_ms": 51.76001699999233,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-005",
@@ -828,7 +1028,12 @@
         0.39824817,
         0.39611834
       ],
-      "latency_ms": 51.90484300000264
+      "latency_ms": 51.861417000054644,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-PROC-006",
@@ -849,7 +1054,12 @@
         0.3734863,
         0.3628673
       ],
-      "latency_ms": 55.74475299999904
+      "latency_ms": 51.98991700001443,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-001",
@@ -870,7 +1080,12 @@
         0.45427823,
         0.4301232
       ],
-      "latency_ms": 52.08754299999896
+      "latency_ms": 52.275615000098696,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-002",
@@ -891,7 +1106,12 @@
         0.3681005,
         0.35961133
       ],
-      "latency_ms": 51.59834199999125
+      "latency_ms": 51.66551799993613,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-003",
@@ -912,7 +1132,12 @@
         0.32130957,
         0.31834733
       ],
-      "latency_ms": 51.88024199999575
+      "latency_ms": 51.90721700000722,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-004",
@@ -933,7 +1158,12 @@
         0.33344555,
         0.30997047
       ],
-      "latency_ms": 51.98634299999583
+      "latency_ms": 52.09971600004337,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-005",
@@ -954,7 +1184,12 @@
         0.4581145,
         0.44014657
       ],
-      "latency_ms": 51.744041999995716
+      "latency_ms": 51.77481700002318,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-LEGAL-006",
@@ -975,7 +1210,12 @@
         0.37322003,
         0.3581971
       ],
-      "latency_ms": 48.03033199999618
+      "latency_ms": 51.97871699999723,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-001",
@@ -996,7 +1236,12 @@
         0.51455545,
         0.44807142
       ],
-      "latency_ms": 52.17164300000832
+      "latency_ms": 48.76202800005558,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-002",
@@ -1017,7 +1262,12 @@
         0.5069649,
         0.50274634
       ],
-      "latency_ms": 51.97914299999695
+      "latency_ms": 51.20101900001828,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-003",
@@ -1038,7 +1288,12 @@
         0.4574016,
         0.3923399
       ],
-      "latency_ms": 52.17834399999788
+      "latency_ms": 47.90433099992697,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-004",
@@ -1059,7 +1314,12 @@
         0.44274536,
         0.425461
       ],
-      "latency_ms": 51.47054100000048
+      "latency_ms": 51.95941700003459,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-005",
@@ -1080,7 +1340,12 @@
         0.4178782,
         0.40979296
       ],
-      "latency_ms": 51.91654300000437
+      "latency_ms": 51.887916999930894,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     },
     {
       "case_id": "EQ-COMP-006",
@@ -1101,7 +1366,2716 @@
         0.5376656,
         0.5244061
       ],
-      "latency_ms": 52.196343999995065
+      "latency_ms": 48.11763099996824,
+      "repetition": 1,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-001",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-009:CHK-001"
+      ],
+      "scores": [
+        0.7414231,
+        0.619372,
+        0.5397434,
+        0.5237973,
+        0.5093086
+      ],
+      "latency_ms": 8.311869999943156,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-002",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.73345405,
+        0.47399473,
+        0.41934443,
+        0.4103135,
+        0.3906368
+      ],
+      "latency_ms": 8.215971000026911,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-003",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-011:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-009:CHK-001",
+        "POL-HR-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6749216,
+        0.6485405,
+        0.6340306,
+        0.6017192,
+        0.5495832
+      ],
+      "latency_ms": 7.782473000020218,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
+    },
+    {
+      "case_id": "EQ-HR-004",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6034465,
+        0.40432656,
+        0.33062482,
+        0.3201148,
+        0.31617504
+      ],
+      "latency_ms": 7.86567299996932,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-005",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-008:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.5730915,
+        0.43704534,
+        0.40289098,
+        0.39985186,
+        0.37986165
+      ],
+      "latency_ms": 7.4046729999963645,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-006",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001"
+      ],
+      "scores": [
+        0.66899014,
+        0.4683779,
+        0.4454847,
+        0.42366284,
+        0.42063808
+      ],
+      "latency_ms": 8.361871000033716,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-001",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7017158,
+        0.50868785,
+        0.49448884,
+        0.464287,
+        0.46390045
+      ],
+      "latency_ms": 47.80563099996016,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-002",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.71164113,
+        0.53327954,
+        0.47272563,
+        0.45545834,
+        0.41194376
+      ],
+      "latency_ms": 52.07161599992105,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-003",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7722,
+        0.51405406,
+        0.46189106,
+        0.38351697,
+        0.37250662
+      ],
+      "latency_ms": 51.84421699993891,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-004",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.63193154,
+        0.34391373,
+        0.33641285,
+        0.3270091,
+        0.32376528
+      ],
+      "latency_ms": 7.916071999943597,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-005",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.6942353,
+        0.44083297,
+        0.43091932,
+        0.41764784,
+        0.40680242
+      ],
+      "latency_ms": 48.12723099996674,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-006",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6934082,
+        0.47145241,
+        0.46589464,
+        0.45920095,
+        0.45211574
+      ],
+      "latency_ms": 52.232016000061776,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.45429367,
+        0.39264518,
+        0.36104804,
+        0.29557645,
+        0.29060024
+      ],
+      "latency_ms": 53.58491100002993,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.59186316,
+        0.4725144,
+        0.38644445,
+        0.32709825,
+        0.31198746
+      ],
+      "latency_ms": 53.50381099992774,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.5454899,
+        0.44248378,
+        0.42795894,
+        0.40656623,
+        0.37731305
+      ],
+      "latency_ms": 52.295415999992656,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.61651266,
+        0.48665833,
+        0.47571307,
+        0.39065683,
+        0.36950994
+      ],
+      "latency_ms": 51.91051700001026,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-001:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6636878,
+        0.548189,
+        0.5198349,
+        0.47442737,
+        0.4422754
+      ],
+      "latency_ms": 51.75291800003379,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.5363972,
+        0.39416125,
+        0.3936488,
+        0.3431636,
+        0.31225628
+      ],
+      "latency_ms": 53.43421100008072,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.61347854,
+        0.44017178,
+        0.28861398,
+        0.28158134,
+        0.27946615
+      ],
+      "latency_ms": 55.57390399997075,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.5842802,
+        0.47642243,
+        0.3512437,
+        0.34688306,
+        0.3213591
+      ],
+      "latency_ms": 51.241219000075944,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-005",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.60567963,
+        0.43669033,
+        0.4235445,
+        0.40634048,
+        0.40467864
+      ],
+      "latency_ms": 52.18051600002127,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-006",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.59527904,
+        0.47049376,
+        0.4523535,
+        0.44966918,
+        0.39775085
+      ],
+      "latency_ms": 8.284471000024496,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-001",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.55589664,
+        0.39527273,
+        0.28464603,
+        0.24801624,
+        0.22635537
+      ],
+      "latency_ms": 51.04191999998875,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-002",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.6493591,
+        0.35760063,
+        0.35748753,
+        0.3536802,
+        0.31422234
+      ],
+      "latency_ms": 51.83891700005461,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-003",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.6264473,
+        0.56213784,
+        0.44324297,
+        0.3822322,
+        0.3416862
+      ],
+      "latency_ms": 48.268030000031104,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-004",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.6971769,
+        0.37787223,
+        0.36682165,
+        0.36510426,
+        0.33675072
+      ],
+      "latency_ms": 51.73711700001604,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-005",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.633774,
+        0.3903448,
+        0.3096376,
+        0.3049348,
+        0.29010728
+      ],
+      "latency_ms": 48.03013100001863,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-006",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.629416,
+        0.37937802,
+        0.31768382,
+        0.3017486,
+        0.2869575
+      ],
+      "latency_ms": 47.92003099998965,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-001",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.7969466,
+        0.57265776,
+        0.55463386,
+        0.5178652,
+        0.51351917
+      ],
+      "latency_ms": 52.20301600002131,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-002",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.5625472,
+        0.36713594,
+        0.35503668,
+        0.27514225,
+        0.27296215
+      ],
+      "latency_ms": 51.793218000057095,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-003",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.62192726,
+        0.31121534,
+        0.25583273,
+        0.25030404,
+        0.24080034
+      ],
+      "latency_ms": 52.06881699996302,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-004",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5765494,
+        0.35796028,
+        0.31138176,
+        0.28655425,
+        0.28547764
+      ],
+      "latency_ms": 51.83501699991666,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-005",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.6319839,
+        0.53753865,
+        0.5070052,
+        0.44205698,
+        0.41315725
+      ],
+      "latency_ms": 56.028601999969396,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-006",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.7697387,
+        0.37433922,
+        0.35928595,
+        0.3337613,
+        0.33042613
+      ],
+      "latency_ms": 52.089016000081756,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-001",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.67107177,
+        0.5236038,
+        0.4924722,
+        0.4896089,
+        0.42318463
+      ],
+      "latency_ms": 51.99031700010437,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-002",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.76339483,
+        0.50307083,
+        0.49247402,
+        0.47869384,
+        0.4042866
+      ],
+      "latency_ms": 51.9010169999774,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-003",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.6815484,
+        0.39773375,
+        0.37281972,
+        0.3632806,
+        0.34807387
+      ],
+      "latency_ms": 51.93991599992387,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-004",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.63093096,
+        0.4973486,
+        0.40892667,
+        0.39844567,
+        0.39832678
+      ],
+      "latency_ms": 51.9602169999871,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-005",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.5818392,
+        0.4318415,
+        0.42312396,
+        0.39824817,
+        0.39611834
+      ],
+      "latency_ms": 48.17233000005672,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-006",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5951825,
+        0.39210993,
+        0.37638998,
+        0.3734863,
+        0.3628673
+      ],
+      "latency_ms": 51.396918000023106,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-001",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5819725,
+        0.46829545,
+        0.4551741,
+        0.45427823,
+        0.4301232
+      ],
+      "latency_ms": 51.95361699998102,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-002",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.72441065,
+        0.43794623,
+        0.37847096,
+        0.3681005,
+        0.35961133
+      ],
+      "latency_ms": 52.045816000031664,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-003",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.7091218,
+        0.4603256,
+        0.33193344,
+        0.32130957,
+        0.31834733
+      ],
+      "latency_ms": 52.15651599996818,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-004",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.66689974,
+        0.34579915,
+        0.34524238,
+        0.33344555,
+        0.30997047
+      ],
+      "latency_ms": 51.713818000052925,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-005",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7199124,
+        0.48093772,
+        0.47862887,
+        0.4581145,
+        0.44014657
+      ],
+      "latency_ms": 52.03821700001754,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-006",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.6393877,
+        0.41895533,
+        0.38870442,
+        0.37322003,
+        0.3581971
+      ],
+      "latency_ms": 56.07990200007862,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-001",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.73894066,
+        0.5967494,
+        0.5868076,
+        0.51455545,
+        0.44807142
+      ],
+      "latency_ms": 51.79521700006262,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-002",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.72155565,
+        0.56107473,
+        0.53736484,
+        0.5069649,
+        0.50274634
+      ],
+      "latency_ms": 52.044716999944285,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-003",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.6673318,
+        0.5233653,
+        0.4681896,
+        0.4574016,
+        0.3923399
+      ],
+      "latency_ms": 51.99671599996236,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-004",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.66858655,
+        0.49077845,
+        0.4440521,
+        0.44274536,
+        0.425461
+      ],
+      "latency_ms": 52.15651599996818,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-005",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.66485554,
+        0.49632418,
+        0.4544739,
+        0.4178782,
+        0.40979296
+      ],
+      "latency_ms": 51.52421799994045,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-006",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.7135689,
+        0.5602716,
+        0.5546745,
+        0.5376656,
+        0.5244061
+      ],
+      "latency_ms": 51.93171700000221,
+      "repetition": 2,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-001",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-009:CHK-001"
+      ],
+      "scores": [
+        0.7414231,
+        0.619372,
+        0.5397434,
+        0.5237973,
+        0.5093086
+      ],
+      "latency_ms": 8.206870999970306,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-002",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-004:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.73345405,
+        0.47399473,
+        0.41934443,
+        0.4103135,
+        0.3906368
+      ],
+      "latency_ms": 7.608172999994167,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-003",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-011:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-009:CHK-001",
+        "POL-HR-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6749216,
+        0.6485405,
+        0.6340306,
+        0.6017192,
+        0.5495832
+      ],
+      "latency_ms": 7.745972000066104,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 0.5,
+      "ndcg_at_k": 0.6309297535714575
+    },
+    {
+      "case_id": "EQ-HR-004",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6034465,
+        0.40432656,
+        0.33062482,
+        0.3201148,
+        0.31617504
+      ],
+      "latency_ms": 7.957472000043708,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-005",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-HR-001:1.0:SEC-008:CHK-001",
+        "POL-HR-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.5730915,
+        0.43704534,
+        0.40289098,
+        0.39985186,
+        0.37986165
+      ],
+      "latency_ms": 8.75476900000649,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-HR-006",
+      "relevant_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-001:1.0:SEC-008:CHK-001",
+        "POL-HR-001:1.0:SEC-005:CHK-001",
+        "POL-HR-001:1.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-007:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001"
+      ],
+      "scores": [
+        0.66899014,
+        0.4683779,
+        0.4454847,
+        0.42366284,
+        0.42063808
+      ],
+      "latency_ms": 7.4120739999443686,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-001",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7017158,
+        0.50868785,
+        0.49448884,
+        0.464287,
+        0.46390045
+      ],
+      "latency_ms": 48.1575310000153,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-002",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.71164113,
+        0.53327954,
+        0.47272563,
+        0.45545834,
+        0.41194376
+      ],
+      "latency_ms": 52.31201499998406,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-003",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7722,
+        0.51405406,
+        0.46189106,
+        0.38351697,
+        0.37250662
+      ],
+      "latency_ms": 51.54081800003496,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-004",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.63193154,
+        0.34391373,
+        0.33641285,
+        0.3270091,
+        0.32376528
+      ],
+      "latency_ms": 7.9407719999835535,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-005",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001",
+        "POL-HR-002:1.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-002:CHK-001",
+        "POL-HR-002:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.6942353,
+        0.44083297,
+        0.43091932,
+        0.41764784,
+        0.40680242
+      ],
+      "latency_ms": 48.11073000007582,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEAVE-006",
+      "relevant_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-006:CHK-001",
+        "POL-HR-002:1.0:SEC-001:CHK-001",
+        "POL-HR-002:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6934082,
+        0.47145241,
+        0.46589464,
+        0.45920095,
+        0.45211574
+      ],
+      "latency_ms": 64.84517199999118,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.45429367,
+        0.39264518,
+        0.36104804,
+        0.29557645,
+        0.29060024
+      ],
+      "latency_ms": 50.96372100001645,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-004:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.59186316,
+        0.4725144,
+        0.38644445,
+        0.32709825,
+        0.31198746
+      ],
+      "latency_ms": 52.203915000063716,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.5454899,
+        0.44248378,
+        0.42795894,
+        0.40656623,
+        0.37731305
+      ],
+      "latency_ms": 51.697917999945275,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2025-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:1.0:SEC-006:CHK-001",
+        "POL-FIN-001:1.0:SEC-001:CHK-001",
+        "POL-FIN-001:1.0:SEC-005:CHK-001",
+        "POL-FIN-001:1.0:SEC-003:CHK-001",
+        "POL-FIN-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.61651266,
+        0.48665833,
+        0.47571307,
+        0.39065683,
+        0.36950994
+      ],
+      "latency_ms": 51.991417000067486,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-001",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-001:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.6636878,
+        0.548189,
+        0.5198349,
+        0.47442737,
+        0.4422754
+      ],
+      "latency_ms": 51.98031700001593,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-002",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-002:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.5363972,
+        0.39416125,
+        0.3936488,
+        0.3431636,
+        0.31225628
+      ],
+      "latency_ms": 52.4300150000272,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-003",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.61347854,
+        0.44017178,
+        0.28861398,
+        0.28158134,
+        0.27946615
+      ],
+      "latency_ms": 54.29130899995016,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-004",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-004:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.5842802,
+        0.47642243,
+        0.3512437,
+        0.34688306,
+        0.3213591
+      ],
+      "latency_ms": 49.26462699995682,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-005",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-FIN-001:2.0:SEC-005:CHK-001",
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.60567963,
+        0.43669033,
+        0.4235445,
+        0.40634048,
+        0.40467864
+      ],
+      "latency_ms": 56.01090300001488,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-TRAVEL-2026-006",
+      "relevant_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-FIN-001:2.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-FIN-001:2.0:SEC-003:CHK-001",
+        "POL-HR-001:1.0:SEC-010:CHK-001",
+        "POL-FIN-001:2.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.59527904,
+        0.47049376,
+        0.4523535,
+        0.44966918,
+        0.39775085
+      ],
+      "latency_ms": 7.917971999972906,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-001",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-001:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.55589664,
+        0.39527273,
+        0.28464603,
+        0.24801624,
+        0.22635537
+      ],
+      "latency_ms": 47.70973100005449,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-002",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.6493591,
+        0.35760063,
+        0.35748753,
+        0.3536802,
+        0.31422234
+      ],
+      "latency_ms": 48.745528000040395,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-003",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.6264473,
+        0.56213784,
+        0.44324297,
+        0.3822322,
+        0.3416862
+      ],
+      "latency_ms": 55.55610399994748,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-004",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-005:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.6971769,
+        0.37787223,
+        0.36682165,
+        0.36510426,
+        0.33675072
+      ],
+      "latency_ms": 55.35280499998407,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-005",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-006:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.633774,
+        0.3903448,
+        0.3096376,
+        0.3049348,
+        0.29010728
+      ],
+      "latency_ms": 55.86570299999494,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-SEC-006",
+      "relevant_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-SEC-001:1.0:SEC-007:CHK-001",
+        "POL-SEC-001:1.0:SEC-003:CHK-001",
+        "POL-SEC-001:1.0:SEC-002:CHK-001",
+        "POL-SEC-001:1.0:SEC-004:CHK-001",
+        "POL-SEC-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.629416,
+        0.37937802,
+        0.31768382,
+        0.3017486,
+        0.2869575
+      ],
+      "latency_ms": 56.02100299995527,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-001",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.7969466,
+        0.57265776,
+        0.55463386,
+        0.5178652,
+        0.51351917
+      ],
+      "latency_ms": 51.86161699998593,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-002",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.5625472,
+        0.36713594,
+        0.35503668,
+        0.27514225,
+        0.27296215
+      ],
+      "latency_ms": 51.982316000021456,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-003",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.62192726,
+        0.31121534,
+        0.25583273,
+        0.25030404,
+        0.24080034
+      ],
+      "latency_ms": 55.986602999951174,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-004",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-005:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5765494,
+        0.35796028,
+        0.31138176,
+        0.28655425,
+        0.28547764
+      ],
+      "latency_ms": 52.697013999932096,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-005",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-006:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.6319839,
+        0.53753865,
+        0.5070052,
+        0.44205698,
+        0.41315725
+      ],
+      "latency_ms": 55.16740600000958,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-IT-006",
+      "relevant_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-IT-001:1.0:SEC-007:CHK-001",
+        "POL-IT-001:1.0:SEC-001:CHK-001",
+        "POL-IT-001:1.0:SEC-002:CHK-001",
+        "POL-IT-001:1.0:SEC-004:CHK-001",
+        "POL-IT-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.7697387,
+        0.37433922,
+        0.35928595,
+        0.3337613,
+        0.33042613
+      ],
+      "latency_ms": 51.9683160000568,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-001",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.67107177,
+        0.5236038,
+        0.4924722,
+        0.4896089,
+        0.42318463
+      ],
+      "latency_ms": 51.81441700005962,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-002",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.76339483,
+        0.50307083,
+        0.49247402,
+        0.47869384,
+        0.4042866
+      ],
+      "latency_ms": 56.11400299994784,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-003",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001"
+      ],
+      "scores": [
+        0.6815484,
+        0.39773375,
+        0.37281972,
+        0.3632806,
+        0.34807387
+      ],
+      "latency_ms": 51.804518000039934,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-004",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-005:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.63093096,
+        0.4973486,
+        0.40892667,
+        0.39844567,
+        0.39832678
+      ],
+      "latency_ms": 52.150116000007074,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-005",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-001:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001"
+      ],
+      "scores": [
+        0.5818392,
+        0.4318415,
+        0.42312396,
+        0.39824817,
+        0.39611834
+      ],
+      "latency_ms": 51.9424159999744,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-PROC-006",
+      "relevant_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-PROC-001:1.0:SEC-007:CHK-001",
+        "POL-PROC-001:1.0:SEC-002:CHK-001",
+        "POL-PROC-001:1.0:SEC-003:CHK-001",
+        "POL-PROC-001:1.0:SEC-006:CHK-001",
+        "POL-PROC-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5951825,
+        0.39210993,
+        0.37638998,
+        0.3734863,
+        0.3628673
+      ],
+      "latency_ms": 52.108816999975716,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-001",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.5819725,
+        0.46829545,
+        0.4551741,
+        0.45427823,
+        0.4301232
+      ],
+      "latency_ms": 51.88801700001022,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-002",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.72441065,
+        0.43794623,
+        0.37847096,
+        0.3681005,
+        0.35961133
+      ],
+      "latency_ms": 51.890116999970815,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-003",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-004:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.7091218,
+        0.4603256,
+        0.33193344,
+        0.32130957,
+        0.31834733
+      ],
+      "latency_ms": 51.88121699995918,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-004",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001"
+      ],
+      "scores": [
+        0.66689974,
+        0.34579915,
+        0.34524238,
+        0.33344555,
+        0.30997047
+      ],
+      "latency_ms": 51.74251800008278,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-005",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-006:CHK-001",
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001"
+      ],
+      "scores": [
+        0.7199124,
+        0.48093772,
+        0.47862887,
+        0.4581145,
+        0.44014657
+      ],
+      "latency_ms": 52.050316999952884,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-LEGAL-006",
+      "relevant_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-LEG-001:1.0:SEC-007:CHK-001",
+        "POL-LEG-001:1.0:SEC-005:CHK-001",
+        "POL-LEG-001:1.0:SEC-002:CHK-001",
+        "POL-LEG-001:1.0:SEC-003:CHK-001",
+        "POL-LEG-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.6393877,
+        0.41895533,
+        0.38870442,
+        0.37322003,
+        0.3581971
+      ],
+      "latency_ms": 52.28381500000978,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-001",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.73894066,
+        0.5967494,
+        0.5868076,
+        0.51455545,
+        0.44807142
+      ],
+      "latency_ms": 51.65481799997451,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-002",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.72155565,
+        0.56107473,
+        0.53736484,
+        0.5069649,
+        0.50274634
+      ],
+      "latency_ms": 52.383415000008426,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-003",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001"
+      ],
+      "scores": [
+        0.6673318,
+        0.5233653,
+        0.4681896,
+        0.4574016,
+        0.3923399
+      ],
+      "latency_ms": 51.75311800007876,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-004",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-002:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.66858655,
+        0.49077845,
+        0.4440521,
+        0.44274536,
+        0.425461
+      ],
+      "latency_ms": 55.78520300002765,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-005",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-006:CHK-001",
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-003:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001"
+      ],
+      "scores": [
+        0.66485554,
+        0.49632418,
+        0.4544739,
+        0.4178782,
+        0.40979296
+      ],
+      "latency_ms": 47.95713099997556,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
+    },
+    {
+      "case_id": "EQ-COMP-006",
+      "relevant_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001"
+      ],
+      "retrieved_chunk_ids": [
+        "POL-COMP-001:1.0:SEC-007:CHK-001",
+        "POL-COMP-001:1.0:SEC-004:CHK-001",
+        "POL-COMP-001:1.0:SEC-005:CHK-001",
+        "POL-COMP-001:1.0:SEC-001:CHK-001",
+        "POL-COMP-001:1.0:SEC-006:CHK-001"
+      ],
+      "scores": [
+        0.7135689,
+        0.5602716,
+        0.5546745,
+        0.5376656,
+        0.5244061
+      ],
+      "latency_ms": 48.919127999965895,
+      "repetition": 3,
+      "precision_at_k": 0.2,
+      "recall_at_k": 1.0,
+      "reciprocal_rank": 1.0,
+      "ndcg_at_k": 1.0
     }
   ]
 }

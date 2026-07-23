@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "name": "synthetic-policy-end-to-end-v1",
+  "mode": "enterprise-controls",
+  "cases": [
+    {"case_id":"E2E-HR-001","control":"grounded_answer","question":"How much may an employee claim for approved home-office equipment?","user_groups":["employees"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-HR-001:1.0:SEC-006:CHK-001"],"required_answer_terms":["250"]},
+    {"case_id":"E2E-LEAVE-001","control":"grounded_answer","question":"What is the annual leave entitlement for a full-time employee?","user_groups":["employees"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-HR-002:1.0:SEC-003:CHK-001"],"required_answer_terms":["25"]},
+    {"case_id":"E2E-TRAVEL-OLD","control":"policy_version","question":"What was the maximum reimbursable hotel rate in June 2025?","user_groups":["employees"],"as_of":"2025-06-01","expected_refusal":false,"expected_chunk_ids":["POL-FIN-001:1.0:SEC-004:CHK-001"],"forbidden_chunk_ids":["POL-FIN-001:2.0:SEC-004:CHK-001"]},
+    {"case_id":"E2E-TRAVEL-NEW","control":"policy_version","question":"What is the current maximum reimbursable hotel room rate?","user_groups":["employees"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-FIN-001:2.0:SEC-004:CHK-001"],"forbidden_chunk_ids":["POL-FIN-001:1.0:SEC-004:CHK-001"]},
+    {"case_id":"E2E-SEC-001","control":"grounded_answer","question":"How quickly must a suspected security incident be reported?","user_groups":["information-security"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-SEC-001:1.0:SEC-005:CHK-001"]},
+    {"case_id":"E2E-IT-001","control":"grounded_answer","question":"What information must not be entered into a public generative-AI service?","user_groups":["information-technology"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-IT-001:1.0:SEC-004:CHK-001"]},
+    {"case_id":"E2E-PROC-001","control":"grounded_answer","question":"When are three written supplier quotations required?","user_groups":["procurement"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-PROC-001:1.0:SEC-003:CHK-001"]},
+    {"case_id":"E2E-LEGAL-001","control":"grounded_answer","question":"How long are core employment records retained after employment ends?","user_groups":["legal"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-LEG-001:1.0:SEC-003:CHK-001"]},
+    {"case_id":"E2E-COMP-001","control":"grounded_answer","question":"What is the annual gifts and hospitality value limit from one source?","user_groups":["compliance"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-COMP-001:1.0:SEC-002:CHK-001"]},
+    {"case_id":"E2E-ACL-001","control":"acl_isolation","question":"What are the information classification levels?","user_groups":["contractors"],"as_of":"2026-07-22","expected_refusal":true,"forbidden_chunk_ids":["POL-SEC-001:1.0:SEC-002:CHK-001"]},
+    {"case_id":"E2E-REFUSE-001","control":"unsupported_refusal","question":"What is the fictional company share price tomorrow?","user_groups":["employees"],"as_of":"2026-07-22","expected_refusal":true},
+    {"case_id":"E2E-CITE-001","control":"citation_correctness","question":"How far in advance should planned leave be submitted?","user_groups":["employees"],"as_of":"2026-07-22","expected_refusal":false,"expected_chunk_ids":["POL-HR-002:1.0:SEC-007:CHK-001"]}
+  ]
+}
