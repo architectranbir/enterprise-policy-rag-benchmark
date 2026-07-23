@@ -2,6 +2,8 @@
 
 import argparse
 import csv
+import os
+import sys
 from datetime import UTC, datetime
 from pathlib import Path
 from time import perf_counter
@@ -25,6 +27,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def parse_args() -> argparse.Namespace:
+    emit_json_default = os.getenv("BENCHMARK_EMIT_JSON", "false").lower() in {
+        "1",
+        "true",
+        "yes",
+    }
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--artifact",
@@ -32,15 +39,21 @@ def parse_args() -> argparse.Namespace:
         default=ROOT / "data" / "generated" / "fair-vector-v1.json.gz",
     )
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--emit-json", action="store_true")
-    parser.add_argument("--warmup-requests", type=int, default=3)
-    parser.add_argument("--repetitions", type=int, default=5)
+    parser.add_argument("--emit-json", action="store_true", default=emit_json_default)
+    parser.add_argument(
+        "--warmup-requests", type=int, default=int(os.getenv("BENCHMARK_WARMUP_REQUESTS", "3"))
+    )
+    parser.add_argument(
+        "--repetitions", type=int, default=int(os.getenv("BENCHMARK_REPETITIONS", "5"))
+    )
     parser.add_argument("--csv-output", type=Path)
     parser.add_argument("--markdown-output", type=Path)
     parser.add_argument(
-        "--mode", choices=("fair-vector-only", "platform-optimized"), default="fair-vector-only"
+        "--mode",
+        choices=("fair-vector-only", "platform-optimized"),
+        default=os.getenv("BENCHMARK_MODE", "fair-vector-only"),
     )
-    return parser.parse_args()
+    return parser.parse_args([argument for argument in sys.argv[1:] if argument])
 
 
 def main() -> None:

@@ -86,10 +86,13 @@ function renderRuns(runs) {
   document.querySelector("#benchmark-empty").hidden = runs.length > 0;
   document.querySelector("#benchmark-content").hidden = runs.length === 0;
   if (!runs.length) return;
-  document.querySelector("#comparison-cards").innerHTML = runs.map((run) => `<article class="metric-card"><h3>${run.backend}</h3><p class="metric">Recall ${metric(run.recall_at_k)}</p><p>MRR ${metric(run.mrr)} · nDCG ${metric(run.ndcg_at_k)}</p><p>p50 ${milliseconds(run.p50_latency_ms)} · p95 ${milliseconds(run.p95_latency_ms)}</p></article>`).join("");
-  document.querySelector("#quality-chart").innerHTML = runs.map((run) => bar(run.backend, run.recall_at_k)).join("");
-  const maximum = Math.max(...runs.map((run) => run.p95_latency_ms ?? 0), 1);
-  document.querySelector("#latency-chart").innerHTML = runs.map((run) => bar(run.backend, run.p95_latency_ms, maximum)).join("");
+  document.querySelector("#comparison-cards").innerHTML = runs.map((run) => run.recall_at_k == null
+    ? `<article class="metric-card"><h3>${run.backend}</h3><p class="muted">${run.mode}</p><p class="metric">Pass ${metric(run.pass_rate)}</p><p>ACL ${metric(run.acl_isolation_rate)} · Refusal ${metric(run.refusal_accuracy)}</p><p>Citations ${metric(run.citation_correctness)} · Grounded ${metric(run.groundedness)}</p></article>`
+    : `<article class="metric-card"><h3>${run.backend}</h3><p class="muted">${run.mode}</p><p class="metric">Recall ${metric(run.recall_at_k)}</p><p>MRR ${metric(run.mrr)} · nDCG ${metric(run.ndcg_at_k)}</p><p>p50 ${milliseconds(run.p50_latency_ms)} · p95 ${milliseconds(run.p95_latency_ms)}</p></article>`).join("");
+  const retrievalRuns = runs.filter((run) => run.recall_at_k != null);
+  document.querySelector("#quality-chart").innerHTML = retrievalRuns.map((run) => bar(`${run.mode}: ${run.backend}`, run.recall_at_k)).join("");
+  const maximum = Math.max(...retrievalRuns.map((run) => run.p95_latency_ms ?? 0), 1);
+  document.querySelector("#latency-chart").innerHTML = retrievalRuns.map((run) => bar(`${run.mode}: ${run.backend}`, run.p95_latency_ms, maximum)).join("");
   document.querySelector("#run-history").innerHTML = runs.map((run) => `<tr><td>${run.backend}</td><td>${run.mode}</td><td>${run.dataset}</td><td>${metric(run.recall_at_k)}</td><td>${metric(run.mrr)}</td><td>${metric(run.ndcg_at_k)}</td><td>${milliseconds(run.p50_latency_ms)}</td><td>${milliseconds(run.p95_latency_ms)}</td><td><button type="button" data-run-id="${run.run_id}">View</button></td></tr>`).join("");
   document.querySelectorAll("[data-run-id]").forEach((button) => button.addEventListener("click", () => loadRun(button.dataset.runId)));
 }
@@ -105,7 +108,7 @@ async function loadRun(runId) {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   selectedRun = await response.json();
   document.querySelector("#run-detail").hidden = false;
-  document.querySelector("#case-history").innerHTML = selectedRun.cases.map((item) => `<tr><td>${item.case_id}</td><td>${item.repetition || 1}</td><td>${item.retrieved_chunk_ids.join("<br>")}</td><td>${metric(item.recall_at_k)}</td><td>${metric(item.reciprocal_rank)}</td><td>${metric(item.ndcg_at_k)}</td><td>${milliseconds(item.latency_ms)}</td></tr>`).join("");
+  document.querySelector("#case-history").innerHTML = selectedRun.cases.map((item) => `<tr><td>${item.case_id}</td><td>${item.repetition || 1}</td><td>${(item.retrieved_chunk_ids || item.returned_chunk_ids || []).join("<br>")}</td><td>${item.control ? (item.passed ? "Pass" : "Fail") : metric(item.recall_at_k)}</td><td>${item.control ? metric(item.citation_correct) : metric(item.reciprocal_rank)}</td><td>${item.control ? metric(item.grounded) : metric(item.ndcg_at_k)}</td><td>${milliseconds(item.latency_ms)}</td></tr>`).join("");
 }
 document.querySelector("#refresh-runs").addEventListener("click", loadRuns);
 document.querySelector("#benchmark-form").addEventListener("submit", async (event) => {

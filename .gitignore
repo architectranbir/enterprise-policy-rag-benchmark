@@ -51,11 +51,30 @@ qdrant_storage/
 # Generated results
 benchmark_results/*
 !benchmark_results/.gitkeep
+!benchmark_results/README.md
 !benchmark_results/raw/
 !benchmark_results/raw/*.json
+!benchmark_results/raw/*.csv
+!benchmark_results/raw/*.md
 !benchmark_results/comparison/
 !benchmark_results/comparison/*.json
 !benchmark_results/comparison/*.md
+!benchmark_results/platform-optimized/
+!benchmark_results/platform-optimized/raw/
+!benchmark_results/platform-optimized/raw/*.json
+!benchmark_results/platform-optimized/raw/*.csv
+!benchmark_results/platform-optimized/raw/*.md
+!benchmark_results/platform-optimized/comparison/
+!benchmark_results/platform-optimized/comparison/*.json
+!benchmark_results/platform-optimized/comparison/*.md
+!benchmark_results/enterprise-controls/
+!benchmark_results/enterprise-controls/*.json
+!benchmark_results/enterprise-controls/*.csv
+!benchmark_results/enterprise-controls/*.md
+!benchmark_results/end-to-end/
+!benchmark_results/end-to-end/*.json
+!benchmark_results/end-to-end/*.csv
+!benchmark_results/end-to-end/*.md
 data/generated/*
 !data/generated/.gitkeep
 # Local Terraform backend configuration
