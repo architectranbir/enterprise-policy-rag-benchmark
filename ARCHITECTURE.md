@@ -1,5 +1,6 @@
 # Architecture
-![Uploading image.png…]()
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/ccd09c79-8859-43a3-a109-f28f3a9eedf6" />
+
 
 
 ## Purpose
