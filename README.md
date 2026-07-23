@@ -1,3 +1,8 @@
+# Architecture
+
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/e215fc59-0bd9-4193-bb8d-aebe91b75208" />
+
+
 # Enterprise Policy RAG Benchmark
 
 [![CI](https://github.com/architectranbir/enterprise-policy-rag-benchmark/actions/workflows/ci.yml/badge.svg)](https://github.com/architectranbir/enterprise-policy-rag-benchmark/actions/workflows/ci.yml)
